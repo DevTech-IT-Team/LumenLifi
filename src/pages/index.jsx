@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Head from 'next/head';
 import Link from 'next/link';
+import homebackground from '../assets/styles/Homebg.png'; // Imported for modern Next.js image loading if needed later
 import {
   Shield,
   Zap,
@@ -20,6 +21,9 @@ import {
 import Header from '../components/common/Header';
 import Footer from '../components/common/Footer';
 
+// Alternately import the image statically if it resides within your src directories:
+// import HomeBgImage from '../assets/styles/Homebg.png';
+
 /* ─────────────────────────────────────────────────────────────
    ANIMATION VARIANTS
 ───────────────────────────────────────────────────────────── */
@@ -33,7 +37,6 @@ const fadeUp = {
 
 /* ─────────────────────────────────────────────────────────────
    ANIMATED LIGHT BEAM CONE (inline SVG)
-   Mimics the isometric LED-to-desk beam from reference images
 ───────────────────────────────────────────────────────────── */
 function LightBeamCone({ color = '#10b981', opacity = 0.18, delay = 0 }) {
   return (
@@ -50,28 +53,17 @@ function LightBeamCone({ color = '#10b981', opacity = 0.18, delay = 0 }) {
             <stop offset="100%" stopColor={color} stopOpacity="0" />
           </linearGradient>
         </defs>
-        {/* LED housing */}
         <rect x="40" y="0" width="40" height="10" rx="3" fill={color} opacity="0.9" />
         <rect x="44" y="3" width="32" height="4" rx="2" fill="white" opacity="0.4" />
-        {/* Beam cone */}
-        <polygon
-          points="60,10 10,160 110,160"
-          fill={`url(#beamGrad${delay})`}
-          opacity={opacity}
-        />
-        {/* Inner bright cone */}
-        <polygon
-          points="60,10 40,160 80,160"
-          fill={color}
-          opacity="0.08"
-        />
+        <polygon points="60,10 10,160 110,160" fill={`url(#beamGrad${delay})`} opacity={opacity} />
+        <polygon points="60,10 40,160 80,160" fill={color} opacity="0.08" />
       </svg>
     </motion.div>
   );
 }
 
 /* ─────────────────────────────────────────────────────────────
-   BINARY PARTICLES — data bits falling through the light beam
+   BINARY PARTICLES
 ───────────────────────────────────────────────────────────── */
 function BinaryParticles() {
   const bits = ['1', '0', '1', '1', '0', '1', '0', '0', '1', '0', '1', '0'];
@@ -99,7 +91,7 @@ function BinaryParticles() {
 }
 
 /* ─────────────────────────────────────────────────────────────
-   SECTION 1 — HERO
+   SECTION 1 — HERO (Updated with structural Background Image Layer)
 ───────────────────────────────────────────────────────────── */
 function HeroSection() {
   const [activeStep, setActiveStep] = useState(0);
@@ -117,12 +109,20 @@ function HeroSection() {
   ];
 
   return (
-    <section className="relative min-h-screen pt-28 pb-20 flex items-center justify-center overflow-hidden bg-slate-950" id="hero">
-
+    <section
+      className="relative min-h-screen pt-28 pb-20 flex items-center justify-center overflow-hidden bg-slate-950 bg-cover bg-center bg-no-repeat"
+      id="hero"
+      style={{
+        // Serves the background graphic efficiently over web ports.
+        // Copy your file into your Next.js project directory under /public/images/Homebg.png
+        backgroundImage: `linear-gradient(to bottom, rgba(2, 6, 23, 0.85), rgba(2, 6, 23, 0.95)), url('/images/Homebg.png')`
+      }}
+    >
       {/* Dark-mode ambient glows */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-emerald-500/8 rounded-full blur-[120px]" />
-        <div className="absolute bottom-0 left-1/4 w-96 h-64 bg-src/assets/styles/Homebg.png rounded-full blur-[100px]" />
+        {/* Fixed broken background injection path with an ambient emerald/teal fallback mix */}
+        <div className="absolute bottom-0 left-1/4 w-96 h-64 bg-teal-500/10 rounded-full blur-[100px]" />
         <div className="absolute bottom-0 right-1/4 w-96 h-64 bg-emerald-400/5 rounded-full blur-[100px]" />
       </div>
 
@@ -133,8 +133,6 @@ function HeroSection() {
 
         {/* ── LEFT: Headline ── */}
         <div className="lg:col-span-5 text-left space-y-7">
-
-
           <motion.h1
             custom={1} variants={fadeUp} initial="hidden" animate="visible"
             className="text-5xl sm:text-6xl font-black tracking-tight leading-[1.02]"
@@ -194,7 +192,6 @@ function HeroSection() {
           custom={2} variants={fadeUp} initial="hidden" animate="visible"
           className="lg:col-span-7 bg-slate-900/80 backdrop-blur-sm border border-white/8 rounded-3xl p-6 sm:p-8 shadow-2xl relative overflow-hidden"
         >
-          {/* Corner badge */}
           <div className="absolute top-4 right-4 flex items-center gap-1.5 bg-emerald-500/10 border border-emerald-500/20 px-3 py-1 rounded-md text-[10px] font-mono text-emerald-400 font-bold">
             <Activity className="w-3 h-3 animate-pulse" /> LIVE SCHEMATIC
           </div>
@@ -204,47 +201,36 @@ function HeroSection() {
           </h3>
 
           <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
-
-            {/* Visual column — animated beam */}
             <div className="md:col-span-5 relative flex flex-col items-center bg-slate-800/50 rounded-2xl border border-white/6 overflow-hidden h-80">
               <BinaryParticles />
 
-              {/* Step 0: Network router icon */}
               <div className={`mt-5 p-2.5 rounded-xl transition-all duration-400 z-10 ${activeStep === 0 ? 'bg-emerald-500 text-white shadow-lg shadow-emerald-500/40 scale-110' : 'bg-slate-700 text-slate-400'}`}>
                 <Activity className="w-5 h-5" />
               </div>
 
               <ArrowDown className={`w-4 h-4 mt-1 mb-1 transition-colors z-10 ${activeStep === 0 ? 'text-emerald-400' : 'text-slate-600'}`} />
 
-              {/* Step 1+2: LED Luminaire */}
               <div className="relative flex flex-col items-center z-10">
                 <div className={`p-3 rounded-full transition-all duration-400 ${(activeStep === 1 || activeStep === 2) ? 'bg-amber-400/20 border border-amber-400/40 scale-110' : 'bg-slate-700 border border-transparent'}`}>
                   <Lightbulb className={`w-7 h-7 transition-colors ${(activeStep === 1 || activeStep === 2) ? 'text-amber-300' : 'text-slate-500'}`} />
                 </div>
 
-                {/* Beam cone */}
                 <div className="relative w-28 mt-1">
-                  <motion.div
-                    animate={{ opacity: (activeStep === 2 || activeStep === 3) ? 1 : 0 }}
-                    transition={{ duration: 0.5 }}
-                  >
+                  <motion.div animate={{ opacity: (activeStep === 2 || activeStep === 3) ? 1 : 0 }} transition={{ duration: 0.5 }}>
                     <LightBeamCone color="#10b981" opacity={0.22} delay={0} />
                   </motion.div>
                 </div>
               </div>
 
-              {/* Step 3: Laptop */}
               <div className={`absolute bottom-5 p-2.5 rounded-xl transition-all duration-400 z-10 ${activeStep === 3 ? 'bg-emerald-500 text-white shadow-lg shadow-emerald-500/40 scale-110' : 'bg-slate-700 text-slate-400'}`}>
                 <Laptop className="w-5 h-5" />
               </div>
 
-              {/* Step labels */}
               <div className={`absolute bottom-1 left-1/2 -translate-x-1/2 text-[8px] font-mono font-bold px-2 py-0.5 rounded transition-all ${activeStep === 3 ? 'text-emerald-400 opacity-100' : 'opacity-0'}`}>
                 DATA RECEIVED
               </div>
             </div>
 
-            {/* Step cards */}
             <div className="md:col-span-7 space-y-2">
               {steps.map((step, idx) => (
                 <div
@@ -267,8 +253,7 @@ function HeroSection() {
 }
 
 /* ─────────────────────────────────────────────────────────────
-   SECTION 2 — LiFi IN ACTION (room scenario strip)
-   Inspired by reference image 1 (isometric office) and image 4
+   SECTION 2 — LiFi IN ACTION
 ───────────────────────────────────────────────────────────── */
 function LiFiInActionSection() {
   const scenarios = [
@@ -335,7 +320,6 @@ function LiFiInActionSection() {
           </p>
         </motion.div>
 
-        {/* Scenario tabs */}
         <div className="flex flex-wrap gap-2 mb-10">
           {scenarios.map(s => (
             <button
@@ -357,7 +341,6 @@ function LiFiInActionSection() {
             transition={{ duration: 0.25 }}
             className={`grid grid-cols-1 lg:grid-cols-12 gap-0 rounded-3xl border ${cur.border} overflow-hidden shadow-sm`}
           >
-            {/* Left: text panel */}
             <div className={`lg:col-span-5 bg-gradient-to-br ${cur.color} p-8 md:p-12 flex flex-col justify-center space-y-5`}>
               <div className="text-5xl">{cur.icon}</div>
               <div>
@@ -372,29 +355,21 @@ function LiFiInActionSection() {
               </Link>
             </div>
 
-            {/* Right: LiFi room visualizer */}
             <div className="lg:col-span-7 bg-slate-950 p-8 md:p-12 relative overflow-hidden flex items-center justify-center min-h-[320px]">
-              {/* Grid */}
               <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(16,185,129,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(16,185,129,0.03)_1px,transparent_1px)] bg-[size:32px_32px]" />
 
-              {/* Room outline (simplified house/office cross-section) */}
               <div className="relative w-full max-w-md">
-                {/* Room walls */}
                 <div className="relative bg-slate-800/60 border border-slate-600/40 rounded-2xl p-6 overflow-hidden">
-                  {/* Ceiling label */}
                   <div className="absolute top-2 left-1/2 -translate-x-1/2 text-[9px] font-mono text-slate-500 tracking-widest uppercase">Ceiling</div>
 
-                  {/* 3 LED fixtures */}
                   <div className="flex justify-around mb-0 pt-3">
                     {[0, 1, 2].map(i => (
                       <div key={i} className="relative flex flex-col items-center">
-                        {/* LED chip */}
                         <motion.div
                           animate={{ boxShadow: ['0 0 8px #10b981aa', '0 0 20px #10b981cc', '0 0 8px #10b981aa'] }}
                           transition={{ duration: 1.5, delay: i * 0.4, repeat: Infinity }}
                           className="w-8 h-2.5 bg-emerald-400 rounded-b-sm"
                         />
-                        {/* Beam cone SVG */}
                         <svg viewBox="0 0 80 100" className="w-20 h-24 -mt-0.5" xmlns="http://www.w3.org/2000/svg">
                           <defs>
                             <linearGradient id={`g${i}`} x1="0%" y1="0%" x2="0%" y2="100%">
@@ -404,7 +379,6 @@ function LiFiInActionSection() {
                           </defs>
                           <polygon points="40,0 5,100 75,100" fill={`url(#g${i})`} />
                           <polygon points="40,0 28,100 52,100" fill="#10b981" opacity="0.08" />
-                          {/* Data bits */}
                           {[20, 45, 70].map((y, j) => (
                             <motion.text
                               key={j} x={38 + j} y={y}
@@ -416,7 +390,6 @@ function LiFiInActionSection() {
                             </motion.text>
                           ))}
                         </svg>
-                        {/* Desk + laptop at bottom */}
                         <div className="flex items-end gap-1 mt-1">
                           <div className="w-12 h-1 bg-slate-600 rounded" />
                         </div>
@@ -427,11 +400,9 @@ function LiFiInActionSection() {
                     ))}
                   </div>
 
-                  {/* Floor label */}
                   <div className="mt-2 text-center text-[9px] font-mono text-slate-600 tracking-widest uppercase">Floor Level — Connected Devices</div>
                 </div>
 
-                {/* Label overlay */}
                 <div className="absolute top-3 right-3 bg-emerald-500/10 border border-emerald-500/20 px-2 py-1 rounded text-[9px] font-mono text-emerald-400 font-bold uppercase tracking-widest">
                   {cur.label}
                 </div>
@@ -445,8 +416,7 @@ function LiFiInActionSection() {
 }
 
 /* ─────────────────────────────────────────────────────────────
-   SECTION 3 — WIFI vs LiFi TOP-DOWN ROOM COMPARISON
-   Inspired directly by reference image 5 (top-down room layout)
+   SECTION 3 — ROOM COMPARISON
 ───────────────────────────────────────────────────────────── */
 function RoomComparisonSection() {
   const [showLifi, setShowLifi] = useState(true);
@@ -469,7 +439,6 @@ function RoomComparisonSection() {
           </p>
         </motion.div>
 
-        {/* Toggle */}
         <div className="flex justify-center mb-10">
           <div className="flex bg-slate-800 border border-slate-700 rounded-xl p-1 gap-1">
             <button
@@ -494,25 +463,15 @@ function RoomComparisonSection() {
             transition={{ duration: 0.3 }}
             className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center"
           >
-            {/* Top-down room SVG */}
             <div className="bg-slate-900 border border-white/8 rounded-3xl p-8 flex items-center justify-center min-h-[360px]">
               <svg viewBox="0 0 280 280" className="w-full max-w-xs" xmlns="http://www.w3.org/2000/svg">
-                {/* Room border */}
-                <rect x="10" y="10" width="260" height="260" rx="16"
-                  fill={showLifi ? '#0a1a12' : '#1a1210'}
-                  stroke={showLifi ? '#10b981' : '#f59e0b'}
-                  strokeWidth="2.5"
-                />
-
-                {/* Door */}
+                <rect x="10" y="10" width="260" height="260" rx="16" fill={showLifi ? '#0a1a12' : '#1a1210'} stroke={showLifi ? '#10b981' : '#f59e0b'} strokeWidth="2.5" />
                 <rect x="110" y="10" width="40" height="5" rx="1" fill={showLifi ? '#1a2e22' : '#2e2010'} stroke={showLifi ? '#10b981' : '#f59e0b'} strokeWidth="1.5" />
 
                 {showLifi ? (
                   <>
-                    {/* LiFi: Ceiling LED fixtures (top-down dots with cone circles) */}
                     {[[90, 80], [190, 80], [90, 180], [190, 180]].map(([cx, cy], i) => (
                       <g key={i}>
-                        {/* Light spread circle */}
                         <motion.circle
                           cx={cx} cy={cy} r={55}
                           fill="none" stroke="#10b981" strokeOpacity="0.12" strokeWidth="1"
@@ -521,59 +480,43 @@ function RoomComparisonSection() {
                         />
                         <circle cx={cx} cy={cy} r={38} fill="#10b981" fillOpacity="0.07" />
                         <circle cx={cx} cy={cy} r={18} fill="#10b981" fillOpacity="0.14" />
-                        {/* LED fixture (square, top-down) */}
-                        <rect x={cx - 7} y={cy - 7} width={14} height={14} rx="3"
-                          fill="#10b981" opacity="0.9"
-                        />
-                        <rect x={cx - 4} y={cy - 4} width={8} height={8} rx="2"
-                          fill="white" opacity="0.5"
-                        />
+                        <rect x={cx - 7} y={cy - 7} width={14} height={14} rx="3" fill="#10b981" opacity="0.9" />
+                        <rect x={cx - 4} y={cy - 4} width={8} height={8} rx="2" fill="white" opacity="0.5" />
                       </g>
                     ))}
-                    {/* Furniture silhouettes */}
                     <rect x="30" y="120" width="50" height="35" rx="4" fill="#0f2d1e" stroke="#10b981" strokeOpacity="0.3" strokeWidth="1" />
                     <rect x="200" y="120" width="50" height="35" rx="4" fill="#0f2d1e" stroke="#10b981" strokeOpacity="0.3" strokeWidth="1" />
                     <rect x="110" y="210" width="60" height="30" rx="4" fill="#0f2d1e" stroke="#10b981" strokeOpacity="0.2" strokeWidth="1" />
-                    {/* People / devices */}
                     <circle cx="55" cy="137" r="6" fill="#10b981" opacity="0.7" />
                     <circle cx="225" cy="137" r="6" fill="#10b981" opacity="0.7" />
                     <circle cx="140" cy="225" r="6" fill="#10b981" opacity="0.5" />
-                    {/* Label */}
                     <text x="140" y="268" textAnchor="middle" fontSize="9" fill="#10b981" fontFamily="monospace" opacity="0.8" fontWeight="bold">LiFi — CONTAINED BEAMS</text>
                   </>
                 ) : (
                   <>
-                    {/* WiFi: Single central router with expanding rings that leak outside */}
                     {[30, 55, 80, 105, 130].map((r, i) => (
                       <motion.circle
-                        key={i}
-                        cx={140} cy={140} r={r}
+                        key={i} cx={140} cy={140} r={r}
                         fill="none" stroke="#f59e0b"
-                        strokeOpacity={0.35 - i * 0.05}
-                        strokeWidth="1.5"
+                        strokeOpacity={0.35 - i * 0.05} strokeWidth="1.5"
                         strokeDasharray={i % 2 === 0 ? '0' : '4 3'}
                         animate={{ r: [r, r + 8, r] }}
                         transition={{ duration: 2, delay: i * 0.3, repeat: Infinity }}
                       />
                     ))}
-                    {/* Router icon (center) */}
                     <rect x="128" y="128" width="24" height="24" rx="5" fill="#f59e0b" opacity="0.8" />
                     <text x="140" y="144" textAnchor="middle" fontSize="10" fill="white" fontFamily="monospace" fontWeight="bold">AP</text>
-                    {/* Leaking outside walls */}
                     <text x="255" y="60" fontSize="7" fill="#f59e0b" opacity="0.7" fontFamily="monospace">Leaking</text>
                     <text x="255" y="70" fontSize="7" fill="#f59e0b" opacity="0.7" fontFamily="monospace">→</text>
                     <text x="5" y="200" fontSize="7" fill="#f59e0b" opacity="0.7" fontFamily="monospace">←</text>
-                    {/* Furniture */}
                     <rect x="30" y="120" width="50" height="35" rx="4" fill="#2e1a08" stroke="#f59e0b" strokeOpacity="0.2" strokeWidth="1" />
                     <rect x="200" y="120" width="50" height="35" rx="4" fill="#2e1a08" stroke="#f59e0b" strokeOpacity="0.2" strokeWidth="1" />
-                    {/* Label */}
                     <text x="140" y="268" textAnchor="middle" fontSize="9" fill="#f59e0b" fontFamily="monospace" opacity="0.8" fontWeight="bold">WiFi — SIGNAL LEAKS OUT</text>
                   </>
                 )}
               </svg>
             </div>
 
-            {/* Comparison bullets */}
             <div className="space-y-5">
               <h3 className={`text-2xl font-black ${showLifi ? 'text-emerald-400' : 'text-amber-400'}`}>
                 {showLifi ? 'LiFi: Optical Wireless' : 'WiFi: Radio Frequency'}
@@ -627,20 +570,12 @@ function ComparisonTable() {
   return (
     <section className="py-24 bg-white border-t border-slate-100" id="comparison">
       <div className="max-w-5xl mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }} className="text-center mb-12"
-        >
-          <span className="text-[10px] font-bold font-mono tracking-widest text-emerald-600 uppercase mb-3 block">
-            Performance Benchmarks
-          </span>
-          <h2 className="text-4xl font-black text-slate-900 tracking-tight">
-            Direct Architectural Metrics
-          </h2>
+        <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
+          <span className="text-[10px] font-bold font-mono tracking-widest text-emerald-600 uppercase mb-3 block">Performance Benchmarks</span>
+          <h2 className="text-4xl font-black text-slate-900 tracking-tight">Direct Architectural Metrics</h2>
         </motion.div>
 
         <div className="border border-slate-200 rounded-2xl overflow-hidden shadow-sm bg-white">
-          {/* Header */}
           <div className="grid grid-cols-3 bg-slate-50 border-b border-slate-200 px-6 py-4 font-mono text-[10px] font-bold text-slate-400 uppercase tracking-widest">
             <div>Attribute</div>
             <div className="text-center text-emerald-600">LiFi · Optical</div>
@@ -666,7 +601,7 @@ function ComparisonTable() {
 }
 
 /* ─────────────────────────────────────────────────────────────
-   SECTION 5 — SPECTRUM VISUALIZER (radial burst inspired by image 3)
+   SECTION 5 — SPECTRUM VISUALIZER
 ───────────────────────────────────────────────────────────── */
 const bands = [
   { label: 'Radio', range: '3 Hz – 300 GHz', width: 13, color: 'bg-slate-300', text: 'text-slate-700', desc: 'Congested' },
@@ -679,25 +614,14 @@ function SpectrumSection() {
   return (
     <section className="py-24 bg-slate-50 border-t border-slate-200" id="spectrum">
       <div className="max-w-5xl mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }} className="text-center mb-14"
-        >
-          <span className="text-[10px] font-bold font-mono tracking-widest text-emerald-600 uppercase mb-3 block">
-            Frequency Scalability
-          </span>
-          <h2 className="text-4xl font-black text-slate-900 tracking-tight mb-3">
-            Light Unlocks a 1,000× Wider Channel
-          </h2>
-          <p className="text-slate-500 text-sm max-w-md mx-auto">
-            The visible light spectrum gives LiFi thousands of times more transmission space than the entire radio dial combined.
-          </p>
+        <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-14">
+          <span className="text-[10px] font-bold font-mono tracking-widest text-emerald-600 uppercase mb-3 block">Frequency Scalability</span>
+          <h2 className="text-4xl font-black text-slate-900 tracking-tight mb-3">Light Unlocks a 1,000× Wider Channel</h2>
+          <p className="text-slate-500 text-sm max-w-md mx-auto">The visible light spectrum gives LiFi thousands of times more transmission space than the entire radio dial combined.</p>
         </motion.div>
 
-        {/* Radial burst graphic — inspired by the fiber-optic WiFi symbol in image 3 */}
         <div className="flex justify-center mb-14">
           <div className="relative w-64 h-64">
-            {/* Outer glow */}
             <div className="absolute inset-0 rounded-full bg-emerald-400/10 blur-2xl" />
             <svg viewBox="0 0 200 200" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
               <defs>
@@ -706,9 +630,7 @@ function SpectrumSection() {
                   <stop offset="100%" stopColor="#10b981" stopOpacity="0" />
                 </radialGradient>
               </defs>
-              {/* Background burst */}
               <circle cx="100" cy="100" r="95" fill="url(#radBg)" />
-              {/* Fiber lines radiating outward */}
               {Array.from({ length: 24 }).map((_, i) => {
                 const angle = (i / 24) * 360;
                 const rad = (angle * Math.PI) / 180;
@@ -718,37 +640,27 @@ function SpectrumSection() {
                 const y2 = 100 + Math.sin(rad) * 90;
                 return (
                   <motion.line key={i} x1={x1} y1={y1} x2={x2} y2={y2}
-                    stroke="#10b981"
-                    strokeOpacity={i % 3 === 0 ? 0.7 : 0.25}
-                    strokeWidth={i % 3 === 0 ? 1.5 : 0.8}
-                    initial={{ opacity: 0 }}
+                    stroke="#10b981" strokeOpacity={i % 3 === 0 ? 0.7 : 0.25} strokeWidth={i % 3 === 0 ? 1.5 : 0.8}
                     animate={{ opacity: [0.2, i % 3 === 0 ? 0.9 : 0.35, 0.2] }}
                     transition={{ duration: 2.5, delay: i * 0.08, repeat: Infinity }}
                   />
                 );
               })}
-              {/* WiFi-like arc symbol */}
               <path d="M 100 100 m -60 0 a 60 60 0 0 1 120 0" fill="none" stroke="#10b981" strokeWidth="3" strokeOpacity="0.6" strokeLinecap="round" />
               <path d="M 100 100 m -40 0 a 40 40 0 0 1 80 0" fill="none" stroke="#10b981" strokeWidth="3" strokeOpacity="0.8" strokeLinecap="round" />
               <path d="M 100 100 m -20 0 a 20 20 0 0 1 40 0" fill="none" stroke="#10b981" strokeWidth="3" strokeOpacity="1" strokeLinecap="round" />
               <circle cx="100" cy="100" r="5" fill="#10b981" />
-              {/* Center label */}
               <text x="100" y="125" textAnchor="middle" fontSize="7" fill="#10b981" fontFamily="monospace" fontWeight="bold" opacity="0.8">LiFi CORE</text>
             </svg>
           </div>
         </div>
 
-        {/* Bar chart */}
         <div className="flex h-14 rounded-xl overflow-hidden border border-slate-200 bg-white p-1 mb-6 shadow-sm gap-0.5">
           {bands.map((band) => (
             <motion.div
-              key={band.label}
-              style={{ width: `${band.width}%` }}
-              initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, ease: 'easeOut' }}
+              key={band.label} style={{ width: `${band.width}%` }}
+              initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }} viewport={{ once: true }} transition={{ duration: 0.8, ease: 'easeOut' }}
               className={`${band.color} ${band.text} flex items-center justify-center relative group cursor-default rounded-lg transition-all hover:brightness-110`}
-
             >
               <span className="text-[9px] font-mono font-bold tracking-wide truncate px-2">{band.label}</span>
               <div className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 bg-slate-900 text-white rounded-lg px-3 py-2 text-[9px] font-mono opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10 whitespace-nowrap shadow-lg">
@@ -764,19 +676,13 @@ function SpectrumSection() {
           <span>Massive Unlicensed Bandwidth →</span>
         </div>
 
-        {/* 3 stat cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {[
             { val: '1,000×', label: 'More Spectrum than Radio', icon: BarChart2, color: 'text-emerald-600' },
             { val: 'Sub-ms', label: 'Deterministic Latency', icon: Zap, color: 'text-teal-600' },
             { val: 'License-Free', label: 'Zero Spectrum Tariffs', icon: Lock, color: 'text-emerald-700' },
           ].map(({ val, label, icon: Icon, color }) => (
-            <motion.div
-              key={label}
-              initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="bg-white border border-slate-200 rounded-2xl p-6 text-center shadow-sm hover:shadow-md transition-shadow"
-            >
+            <motion.div key={label} initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="bg-white border border-slate-200 rounded-2xl p-6 text-center shadow-sm hover:shadow-md transition-shadow">
               <Icon className={`w-6 h-6 ${color} mx-auto mb-3`} />
               <div className="text-2xl font-black text-slate-900 mb-1" style={{ fontFamily: "'Outfit', sans-serif" }}>{val}</div>
               <div className="text-xs text-slate-500 font-medium">{label}</div>
@@ -789,7 +695,7 @@ function SpectrumSection() {
 }
 
 /* ─────────────────────────────────────────────────────────────
-   SECTION 6 — ANIMATED COUNTER + DEPLOYMENT STATS
+   SECTION 6 — STATS & DEPLOYMENTS
 ───────────────────────────────────────────────────────────── */
 function useCounter(target, duration = 1600) {
   const [count, setCount] = useState(0);
@@ -830,20 +736,16 @@ function Stat({ target, suffix = '', label, icon: Icon }) {
   );
 }
 
+/* ─────────────────────────────────────────────────────────────
+   STATS SECTION PANEL
+───────────────────────────────────────────────────────────── */
 function StatsSection() {
   return (
     <section className="py-24 bg-slate-950 border-t border-white/5" id="deployments">
       <div className="max-w-5xl mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }} className="text-center mb-14"
-        >
-          <span className="text-[10px] font-bold font-mono tracking-widest text-emerald-400 uppercase mb-3 block">
-            Operational Metrics
-          </span>
-          <h2 className="text-4xl font-black text-white tracking-tight">
-            Validated Optical Deployments
-          </h2>
+        <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-14">
+          <span className="text-[10px] font-bold font-mono tracking-widest text-emerald-400 uppercase mb-3 block">Operational Metrics</span>
+          <h2 className="text-4xl font-black text-white tracking-tight">Validated Optical Deployments</h2>
         </motion.div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
@@ -853,61 +755,36 @@ function StatsSection() {
           <Stat target={100} suffix="%" label="Physical Isolation" icon={Shield} />
         </div>
 
-        {/* Feature cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-16">
           {[
             { title: 'Containment Validation', desc: 'Verify absolute signal boundary at the physical layer. Zero spillage beyond walls.', badge: 'Physical Security', color: 'text-emerald-400 bg-emerald-500/10 border-emerald-500/20', href: '/products#security' },
             { title: 'EMI-Free Zone Maps', desc: 'Installation blueprints for heavy-machinery, hospitals, and sensitive equipment spaces.', badge: 'Industrial Blueprint', color: 'text-teal-400 bg-teal-500/10 border-teal-500/20', href: '/products#environments' },
             { title: 'Telemetry Logs', desc: 'Authenticated throughput benchmarks and link-quality registries across all deployments.', badge: 'Analytics', color: 'text-slate-300 bg-slate-500/10 border-slate-500/20', href: '/insights#studies' },
           ].map(card => (
-            <Link key={card.title} href={card.href}
-              className="group block bg-white/3 border border-white/8 rounded-2xl p-6 hover:bg-white/6 hover:-translate-y-0.5 transition-all duration-200"
-            >
-              <span className={`inline-block text-[9px] font-mono font-bold px-2.5 py-0.5 rounded-md mb-4 uppercase tracking-widest border ${card.color}`}>
-                {card.badge}
-              </span>
+            <Link key={card.title} href={card.href} className="group block bg-white/3 border border-white/8 rounded-2xl p-6 hover:bg-white/6 hover:-translate-y-0.5 transition-all duration-200">
+              <span className={`inline-block text-[9px] font-mono font-bold px-2.5 py-0.5 rounded-md mb-4 uppercase tracking-widest border ${card.color}`}>{card.badge}</span>
               <h4 className="text-sm font-black text-white mb-2 group-hover:text-emerald-400 transition-colors">{card.title}</h4>
               <p className="text-xs text-slate-500 leading-relaxed">{card.desc}</p>
-              <div className="mt-4 flex items-center gap-1 text-xs text-emerald-500 font-bold font-mono uppercase tracking-widest">
-                View <ArrowRight size={11} />
-              </div>
+              <div className="mt-4 flex items-center gap-1 text-xs text-emerald-500 font-bold font-mono uppercase tracking-widest">View <ArrowRight size={11} /></div>
             </Link>
           ))}
         </div>
 
-        {/* CTA Banner */}
         <div className="relative bg-gradient-to-br from-emerald-900/60 via-slate-900 to-slate-950 border border-emerald-500/20 rounded-3xl p-10 md:p-14 text-center overflow-hidden">
-          {/* Glow */}
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-32 bg-emerald-500/10 blur-3xl rounded-full pointer-events-none" />
-          {/* Grid */}
           <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(16,185,129,0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgba(16,185,129,0.04)_1px,transparent_1px)] bg-[size:28px_28px]" />
 
           <div className="relative z-10 max-w-xl mx-auto space-y-5">
-            {/* Animated LED icon */}
-            <motion.div
-              animate={{ scale: [1, 1.08, 1] }}
-              transition={{ duration: 2.5, repeat: Infinity }}
-              className="w-16 h-16 mx-auto rounded-2xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center"
-            >
+            <motion.div animate={{ scale: [1, 1.08, 1] }} transition={{ duration: 2.5, repeat: Infinity }} className="w-16 h-16 mx-auto rounded-2xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center">
               <Lightbulb className="w-8 h-8 text-emerald-400" />
             </motion.div>
-            <h3 className="text-3xl font-black text-white">
-              Begin Designing Your Optical Network
-            </h3>
-            <p className="text-slate-400 text-sm leading-relaxed">
-              Consult with our integration specialists to calculate coverage profiles, lux levels, and system parameters for your deployment.
-            </p>
+            <h3 className="text-3xl font-black text-white">Begin Designing Your Optical Network</h3>
+            <p className="text-slate-400 text-sm leading-relaxed">Consult with our integration specialists to calculate coverage profiles, lux levels, and system parameters for your deployment.</p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <Link href="/contact"
-                className="inline-flex items-center justify-center gap-2 h-12 px-7 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-white font-mono font-bold rounded-xl text-xs uppercase tracking-widest shadow-lg shadow-emerald-500/20 transition-all"
-              >
+              <Link href="/contact" className="inline-flex items-center justify-center gap-2 h-12 px-7 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-white font-mono font-bold rounded-xl text-xs uppercase tracking-widest shadow-lg shadow-emerald-500/20 transition-all">
                 <Zap className="w-4 h-4" /> Request Engineering Review
               </Link>
-              <Link href="/insights"
-                className="inline-flex items-center justify-center h-12 px-7 bg-white/6 hover:bg-white/10 text-white border border-white/10 rounded-xl text-xs font-mono font-bold uppercase tracking-widest transition-colors"
-              >
-                Browse Specs
-              </Link>
+              <Link href="/insights" className="inline-flex items-center justify-center h-12 px-7 bg-white/6 hover:bg-white/10 text-white border border-white/10 rounded-xl text-xs font-mono font-bold uppercase tracking-widest transition-colors">Browse Specs</Link>
             </div>
           </div>
         </div>
@@ -924,10 +801,7 @@ export default function HomePage() {
     <div className="flex flex-col min-h-screen font-sans antialiased bg-white selection:bg-emerald-200/60 text-slate-800">
       <Head>
         <title>LiFi Next-Gen Optical Wireless Systems | LumenFi</title>
-        <meta
-          name="description"
-          content="LumenFi designs high-capacity optical wireless arrays — secure, multi-gigabit visible light transmission networks free of electromagnetic interference."
-        />
+        <meta name="description" content="LumenFi designs high-capacity optical wireless arrays — secure, multi-gigabit visible light transmission networks free of electromagnetic interference." />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&display=swap" rel="stylesheet" />
