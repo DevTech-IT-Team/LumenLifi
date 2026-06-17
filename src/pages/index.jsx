@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Head from 'next/head';
 import Link from 'next/link';
-import homebackground from '../assets/styles/Homebg.png'; // Imported for modern Next.js image loading if needed later
+import Image from 'next/image';
 import {
   Shield,
   Zap,
@@ -15,14 +15,9 @@ import {
   Lightbulb,
   Laptop,
   ArrowDown,
-  Wifi,
-  Cpu,
 } from 'lucide-react';
 import Header from '../components/common/Header';
 import Footer from '../components/common/Footer';
-
-// Alternately import the image statically if it resides within your src directories:
-// import HomeBgImage from '../assets/styles/Homebg.png';
 
 /* ─────────────────────────────────────────────────────────────
    ANIMATION VARIANTS
@@ -91,47 +86,23 @@ function BinaryParticles() {
 }
 
 /* ─────────────────────────────────────────────────────────────
-   SECTION 1 — HERO (Updated with structural Background Image Layer)
+   SECTION 1 — HERO
 ───────────────────────────────────────────────────────────── */
 function HeroSection() {
-  const [activeStep, setActiveStep] = useState(0);
-
-  useEffect(() => {
-    const t = setInterval(() => setActiveStep(p => (p + 1) % 4), 2800);
-    return () => clearInterval(t);
-  }, []);
-
-  const steps = [
-    { title: '1. Fiber Ingress', desc: 'High-speed fiber feeds data into the optical driver controller.' },
-    { title: '2. LED Modulation', desc: 'Driver modulates LED at MHz frequencies — imperceptible to the eye.' },
-    { title: '3. Photon Beam Transmission', desc: 'A focused light cone carries gigabits per second downward.' },
-    { title: '4. Photodetector Decode', desc: 'USB dongle or embedded sensor reconstructs the data stream.' },
-  ];
-
   return (
     <section
-      className="relative min-h-screen pt-28 pb-20 flex items-center justify-center overflow-hidden bg-slate-950 bg-cover bg-center bg-no-repeat"
+      className="relative min-h-screen pt-28 pb-20 flex items-center justify-center overflow-hidden bg-slate-950"
       id="hero"
-      style={{
-        // Serves the background graphic efficiently over web ports.
-        // Copy your file into your Next.js project directory under /public/images/Homebg.png
-        backgroundImage: `linear-gradient(to bottom, rgba(2, 6, 23, 0.85), rgba(2, 6, 23, 0.95)), url('/images/Homebg.png')`
-      }}
     >
-      {/* Dark-mode ambient glows */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-emerald-500/8 rounded-full blur-[120px]" />
-        {/* Fixed broken background injection path with an ambient emerald/teal fallback mix */}
         <div className="absolute bottom-0 left-1/4 w-96 h-64 bg-teal-500/10 rounded-full blur-[100px]" />
         <div className="absolute bottom-0 right-1/4 w-96 h-64 bg-emerald-400/5 rounded-full blur-[100px]" />
       </div>
 
-      {/* Grid overlay */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(16,185,129,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(16,185,129,0.03)_1px,transparent_1px)] bg-[size:48px_48px]" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-16 items-center w-full">
-
-        {/* ── LEFT: Headline ── */}
         <div className="lg:col-span-5 text-left space-y-7">
           <motion.h1
             custom={1} variants={fadeUp} initial="hidden" animate="visible"
@@ -169,7 +140,6 @@ function HeroSection() {
             </Link>
           </motion.div>
 
-          {/* Metric strip */}
           <motion.div
             custom={4} variants={fadeUp} initial="hidden" animate="visible"
             className="pt-6 border-t border-white/8 grid grid-cols-3 gap-6"
@@ -187,10 +157,60 @@ function HeroSection() {
           </motion.div>
         </div>
 
-        {/* ── RIGHT: Schematic Visualizer ── */}
         <motion.div
           custom={2} variants={fadeUp} initial="hidden" animate="visible"
-          className="lg:col-span-7 bg-slate-900/80 backdrop-blur-sm border border-white/8 rounded-3xl p-6 sm:p-8 shadow-2xl relative overflow-hidden"
+          className="lg:col-span-7 relative w-full h-[480px] sm:h-[550px] rounded-3xl overflow-hidden border border-white/10 shadow-2xl bg-slate-900"
+        >
+          <Image
+            src="/images/hero/Homebg.png"
+            alt="LumenFi Hardware Architecture"
+            fill
+            priority
+            className="object-cover"
+          />
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+/* ─────────────────────────────────────────────────────────────
+   SECTION 2 — LIVE SCHEMATIC (Updated with your path)
+───────────────────────────────────────────────────────────── */
+function SchematicSection() {
+  const [activeStep, setActiveStep] = useState(0);
+
+  useEffect(() => {
+    const t = setInterval(() => setActiveStep(p => (p + 1) % 4), 2800);
+    return () => clearInterval(t);
+  }, []);
+
+  const steps = [
+    { title: '1. Fiber Ingress', desc: 'High-speed fiber feeds data into the optical driver controller.' },
+    { title: '2. LED Modulation', desc: 'Driver modulates LED at MHz frequencies — imperceptible to the eye.' },
+    { title: '3. Photon Beam Transmission', desc: 'A focused light cone carries gigabits per second downward.' },
+    { title: '4. Photodetector Decode', desc: 'USB dongle or embedded sensor reconstructs the data stream.' },
+  ];
+
+  return (
+    <section className="relative py-24 bg-slate-950 overflow-hidden border-t border-white/5" id="live-schematic">
+      {/* Updated Background Address Strategy to map products/schematic-bg.jpg */}
+      <div className="absolute inset-0 z-0 opacity-20 mix-blend-lighten pointer-events-none">
+        <Image
+          src="/images/products/schematic-bg.jpg"
+          alt="Optical Mesh Background Architecture"
+          fill
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-slate-950/80 to-slate-950" />
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="bg-slate-900/40 backdrop-blur-md border border-white/8 rounded-3xl p-6 sm:p-8 shadow-2xl relative overflow-hidden"
         >
           <div className="absolute top-4 right-4 flex items-center gap-1.5 bg-emerald-500/10 border border-emerald-500/20 px-3 py-1 rounded-md text-[10px] font-mono text-emerald-400 font-bold">
             <Activity className="w-3 h-3 animate-pulse" /> LIVE SCHEMATIC
@@ -201,17 +221,17 @@ function HeroSection() {
           </h3>
 
           <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
-            <div className="md:col-span-5 relative flex flex-col items-center bg-slate-800/50 rounded-2xl border border-white/6 overflow-hidden h-80">
+            <div className="md:col-span-5 relative flex flex-col items-center bg-slate-950/60 rounded-2xl border border-white/6 overflow-hidden h-80">
               <BinaryParticles />
 
-              <div className={`mt-5 p-2.5 rounded-xl transition-all duration-400 z-10 ${activeStep === 0 ? 'bg-emerald-500 text-white shadow-lg shadow-emerald-500/40 scale-110' : 'bg-slate-700 text-slate-400'}`}>
+              <div className={`mt-5 p-2.5 rounded-xl transition-all duration-400 z-10 ${activeStep === 0 ? 'bg-emerald-500 text-white shadow-lg shadow-emerald-500/40 scale-110' : 'bg-slate-800 text-slate-400'}`}>
                 <Activity className="w-5 h-5" />
               </div>
 
-              <ArrowDown className={`w-4 h-4 mt-1 mb-1 transition-colors z-10 ${activeStep === 0 ? 'text-emerald-400' : 'text-slate-600'}`} />
+              <ArrowDown className={`w-4 h-4 mt-1 mb-1 transition-colors z-10 ${activeStep === 0 ? 'text-emerald-400' : 'text-slate-700'}`} />
 
               <div className="relative flex flex-col items-center z-10">
-                <div className={`p-3 rounded-full transition-all duration-400 ${(activeStep === 1 || activeStep === 2) ? 'bg-amber-400/20 border border-amber-400/40 scale-110' : 'bg-slate-700 border border-transparent'}`}>
+                <div className={`p-3 rounded-full transition-all duration-400 ${(activeStep === 1 || activeStep === 2) ? 'bg-amber-400/20 border border-amber-400/40 scale-110' : 'bg-slate-800 border border-transparent'}`}>
                   <Lightbulb className={`w-7 h-7 transition-colors ${(activeStep === 1 || activeStep === 2) ? 'text-amber-300' : 'text-slate-500'}`} />
                 </div>
 
@@ -222,7 +242,7 @@ function HeroSection() {
                 </div>
               </div>
 
-              <div className={`absolute bottom-5 p-2.5 rounded-xl transition-all duration-400 z-10 ${activeStep === 3 ? 'bg-emerald-500 text-white shadow-lg shadow-emerald-500/40 scale-110' : 'bg-slate-700 text-slate-400'}`}>
+              <div className={`absolute bottom-5 p-2.5 rounded-xl transition-all duration-400 z-10 ${activeStep === 3 ? 'bg-emerald-500 text-white shadow-lg shadow-emerald-500/40 scale-110' : 'bg-slate-800 text-slate-400'}`}>
                 <Laptop className="w-5 h-5" />
               </div>
 
@@ -253,7 +273,7 @@ function HeroSection() {
 }
 
 /* ─────────────────────────────────────────────────────────────
-   SECTION 2 — LiFi IN ACTION
+   SECTION 3 — LiFi IN ACTION
 ───────────────────────────────────────────────────────────── */
 function LiFiInActionSection() {
   const scenarios = [
@@ -265,7 +285,6 @@ function LiFiInActionSection() {
       desc: 'Ceiling luminaires transmit dedicated data cones to each workstation. No shared radio channel — every seat gets a private optical link.',
       color: 'from-emerald-500/20 to-teal-500/10',
       border: 'border-emerald-500/20',
-      dot: 'bg-emerald-400',
     },
     {
       id: 'home',
@@ -275,7 +294,6 @@ function LiFiInActionSection() {
       desc: 'Replace a congested router with smart LED luminaires. Your ceiling light IS your internet — no radio leakage through walls.',
       color: 'from-teal-500/20 to-cyan-500/10',
       border: 'border-teal-500/20',
-      dot: 'bg-teal-400',
     },
     {
       id: 'street',
@@ -285,7 +303,6 @@ function LiFiInActionSection() {
       desc: 'Municipal LED street lights deliver secure, high-bandwidth zones for pedestrians and outdoor workspaces — no tower infrastructure needed.',
       color: 'from-cyan-500/20 to-blue-500/10',
       border: 'border-cyan-500/20',
-      dot: 'bg-cyan-400',
     },
     {
       id: 'medical',
@@ -295,7 +312,6 @@ function LiFiInActionSection() {
       desc: 'Operating suites and MRI rooms run high-speed data networks with zero electromagnetic interference — impossible with traditional WiFi.',
       color: 'from-purple-500/20 to-indigo-500/10',
       border: 'border-purple-500/20',
-      dot: 'bg-purple-400',
     },
   ];
 
@@ -416,14 +432,25 @@ function LiFiInActionSection() {
 }
 
 /* ─────────────────────────────────────────────────────────────
-   SECTION 3 — ROOM COMPARISON
+   SECTION 4 — ROOM COMPARISON (Updated with your path)
 ───────────────────────────────────────────────────────────── */
 function RoomComparisonSection() {
   const [showLifi, setShowLifi] = useState(true);
 
   return (
-    <section className="py-24 bg-slate-950 border-t border-white/5" id="comparison-room">
-      <div className="max-w-6xl mx-auto px-6">
+    <section className="relative py-24 bg-slate-950 border-t border-white/5 overflow-hidden" id="comparison-room">
+      {/* Updated Background Address Strategy to map hero/room-bg.jpg */}
+      <div className="absolute inset-0 z-0 opacity-15 pointer-events-none mix-blend-color-dodge">
+        <Image
+          src="/images/hero/room-bg.jpg"
+          alt="High tech server and data infrastructure background room"
+          fill
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/90 to-slate-950" />
+      </div>
+
+      <div className="relative z-10 max-w-6xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }} className="text-center mb-12"
@@ -440,7 +467,7 @@ function RoomComparisonSection() {
         </motion.div>
 
         <div className="flex justify-center mb-10">
-          <div className="flex bg-slate-800 border border-slate-700 rounded-xl p-1 gap-1">
+          <div className="flex bg-slate-900 border border-slate-800 rounded-xl p-1 gap-1">
             <button
               onClick={() => setShowLifi(true)}
               className={`px-8 py-2.5 rounded-lg text-xs font-mono font-bold transition-all duration-200 ${showLifi ? 'bg-emerald-500 text-white shadow-md' : 'text-slate-400 hover:text-white'}`}
@@ -463,7 +490,7 @@ function RoomComparisonSection() {
             transition={{ duration: 0.3 }}
             className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center"
           >
-            <div className="bg-slate-900 border border-white/8 rounded-3xl p-8 flex items-center justify-center min-h-[360px]">
+            <div className="bg-slate-900/80 backdrop-blur-sm border border-white/8 rounded-3xl p-8 flex items-center justify-center min-h-[360px]">
               <svg viewBox="0 0 280 280" className="w-full max-w-xs" xmlns="http://www.w3.org/2000/svg">
                 <rect x="10" y="10" width="260" height="260" rx="16" fill={showLifi ? '#0a1a12' : '#1a1210'} stroke={showLifi ? '#10b981' : '#f59e0b'} strokeWidth="2.5" />
                 <rect x="110" y="10" width="40" height="5" rx="1" fill={showLifi ? '#1a2e22' : '#2e2010'} stroke={showLifi ? '#10b981' : '#f59e0b'} strokeWidth="1.5" />
@@ -517,11 +544,11 @@ function RoomComparisonSection() {
               </svg>
             </div>
 
-            <div className="space-y-5">
+            <div className="space-y-3 z-10">
               <h3 className={`text-2xl font-black ${showLifi ? 'text-emerald-400' : 'text-amber-400'}`}>
                 {showLifi ? 'LiFi: Optical Wireless' : 'WiFi: Radio Frequency'}
               </h3>
-              <div className="space-y-3">
+              <div className="space-y-2">
                 {(showLifi ? [
                   { label: 'Signal Boundary', val: 'Strictly contained within walls', ok: true },
                   { label: 'Spectrum', val: 'Visible & IR — unlicensed, uncongested', ok: true },
@@ -535,7 +562,7 @@ function RoomComparisonSection() {
                   { label: 'Security', val: 'Susceptible to long-range interception', ok: false },
                   { label: 'Speed', val: 'Up to 9.6 Gbps (shared, degrades)', ok: false },
                 ]).map(({ label, val, ok }) => (
-                  <div key={label} className="flex items-start gap-3 p-3.5 rounded-xl bg-white/3 border border-white/6">
+                  <div key={label} className="flex items-start gap-3 p-3.5 rounded-xl bg-slate-900/60 border border-white/6 backdrop-blur-xs">
                     <div className={`w-4 h-4 rounded-full flex items-center justify-center shrink-0 mt-0.5 ${ok ? 'bg-emerald-500/20' : 'bg-red-500/20'}`}>
                       <div className={`w-1.5 h-1.5 rounded-full ${ok ? 'bg-emerald-400' : 'bg-red-400'}`} />
                     </div>
@@ -555,7 +582,7 @@ function RoomComparisonSection() {
 }
 
 /* ─────────────────────────────────────────────────────────────
-   SECTION 4 — TECH SPEC COMPARISON TABLE
+   SECTION 5 — TECH SPEC COMPARISON TABLE
 ───────────────────────────────────────────────────────────── */
 const compRows = [
   { feature: 'Data Rate', lifi: '≤ 10 Gbps per beam', wifi: '≤ 9.6 Gbps (shared, Wi-Fi 6E)', winner: 'lifi' },
@@ -601,7 +628,7 @@ function ComparisonTable() {
 }
 
 /* ─────────────────────────────────────────────────────────────
-   SECTION 5 — SPECTRUM VISUALIZER
+   SECTION 6 — SPECTRUM VISUALIZER
 ───────────────────────────────────────────────────────────── */
 const bands = [
   { label: 'Radio', range: '3 Hz – 300 GHz', width: 13, color: 'bg-slate-300', text: 'text-slate-700', desc: 'Congested' },
@@ -695,7 +722,7 @@ function SpectrumSection() {
 }
 
 /* ─────────────────────────────────────────────────────────────
-   SECTION 6 — STATS & DEPLOYMENTS
+   SECTION 7 — STATS & DEPLOYMENTS
 ───────────────────────────────────────────────────────────── */
 function useCounter(target, duration = 1600) {
   const [count, setCount] = useState(0);
@@ -726,7 +753,7 @@ function useCounter(target, duration = 1600) {
 function Stat({ target, suffix = '', label, icon: Icon }) {
   const { ref, count } = useCounter(target);
   return (
-    <div ref={ref} className="text-center p-7 bg-white/4 border border-white/8 rounded-2xl">
+    <div ref={ref} className="text-center p-7 bg-slate-900/60 backdrop-blur-md border border-white/8 rounded-2xl">
       <Icon className="w-5 h-5 text-emerald-400 mx-auto mb-3 opacity-80" />
       <div className="text-4xl font-black text-white mb-1" style={{ fontFamily: "'Outfit', sans-serif" }}>
         {count.toLocaleString()}{suffix}
@@ -736,13 +763,14 @@ function Stat({ target, suffix = '', label, icon: Icon }) {
   );
 }
 
-/* ─────────────────────────────────────────────────────────────
-   STATS SECTION PANEL
-───────────────────────────────────────────────────────────── */
 function StatsSection() {
   return (
-    <section className="py-24 bg-slate-950 border-t border-white/5" id="deployments">
-      <div className="max-w-5xl mx-auto px-6">
+    <section className="relative py-24 bg-slate-950 border-t border-white/5 overflow-hidden" id="deployments">
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-emerald-500/5 rounded-full blur-[100px]" />
+      </div>
+
+      <div className="relative z-10 max-w-5xl mx-auto px-6">
         <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-14">
           <span className="text-[10px] font-bold font-mono tracking-widest text-emerald-400 uppercase mb-3 block">Operational Metrics</span>
           <h2 className="text-4xl font-black text-white tracking-tight">Validated Optical Deployments</h2>
@@ -761,7 +789,7 @@ function StatsSection() {
             { title: 'EMI-Free Zone Maps', desc: 'Installation blueprints for heavy-machinery, hospitals, and sensitive equipment spaces.', badge: 'Industrial Blueprint', color: 'text-teal-400 bg-teal-500/10 border-teal-500/20', href: '/products#environments' },
             { title: 'Telemetry Logs', desc: 'Authenticated throughput benchmarks and link-quality registries across all deployments.', badge: 'Analytics', color: 'text-slate-300 bg-slate-500/10 border-slate-500/20', href: '/insights#studies' },
           ].map(card => (
-            <Link key={card.title} href={card.href} className="group block bg-white/3 border border-white/8 rounded-2xl p-6 hover:bg-white/6 hover:-translate-y-0.5 transition-all duration-200">
+            <Link key={card.title} href={card.href} className="group block bg-slate-900/40 backdrop-blur-md border border-white/8 rounded-2xl p-6 hover:bg-white/6 hover:-translate-y-0.5 transition-all duration-200">
               <span className={`inline-block text-[9px] font-mono font-bold px-2.5 py-0.5 rounded-md mb-4 uppercase tracking-widest border ${card.color}`}>{card.badge}</span>
               <h4 className="text-sm font-black text-white mb-2 group-hover:text-emerald-400 transition-colors">{card.title}</h4>
               <p className="text-xs text-slate-500 leading-relaxed">{card.desc}</p>
@@ -770,7 +798,7 @@ function StatsSection() {
           ))}
         </div>
 
-        <div className="relative bg-gradient-to-br from-emerald-900/60 via-slate-900 to-slate-950 border border-emerald-500/20 rounded-3xl p-10 md:p-14 text-center overflow-hidden">
+        <div className="relative bg-gradient-to-br from-emerald-900/40 via-slate-900/80 to-slate-950/90 backdrop-blur-md border border-emerald-500/20 rounded-3xl p-10 md:p-14 text-center overflow-hidden">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-32 bg-emerald-500/10 blur-3xl rounded-full pointer-events-none" />
           <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(16,185,129,0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgba(16,185,129,0.04)_1px,transparent_1px)] bg-[size:28px_28px]" />
 
@@ -811,6 +839,7 @@ export default function HomePage() {
 
       <main className="flex-grow">
         <HeroSection />
+        <SchematicSection />
         <LiFiInActionSection />
         <RoomComparisonSection />
         <ComparisonTable />
