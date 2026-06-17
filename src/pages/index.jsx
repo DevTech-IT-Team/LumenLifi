@@ -163,7 +163,7 @@ function HeroSection() {
         >
           <Image
             src="/images/hero/Homebg.png"
-            alt="LumenFi Hardware Architecture"
+            alt="Lumen LIFI"
             fill
             priority
             className="object-cover"
@@ -828,8 +828,8 @@ export default function HomePage() {
   return (
     <div className="flex flex-col min-h-screen font-sans antialiased bg-white selection:bg-emerald-200/60 text-slate-800">
       <Head>
-        <title>LiFi Next-Gen Optical Wireless Systems | LumenFi</title>
-        <meta name="description" content="LumenFi designs high-capacity optical wireless arrays — secure, multi-gigabit visible light transmission networks free of electromagnetic interference." />
+        <title>Lumen LIFI</title>
+        <meta name="description" content="Lumen LIFI — secure optical wireless connectivity powered by light." />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&display=swap" rel="stylesheet" />

@@ -128,7 +128,7 @@ export default function Header() {
           <div className="relative w-[180px] h-[50px] md:w-[210px] md:h-[55px]">
             <Image
               src={logoPl}
-              alt="LumenFi Engineering Matrix"
+              alt="Lumen LIFI"
               fill
               priority
               sizes="(max-w-768px) 180px, 210px"

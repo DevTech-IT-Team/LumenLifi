@@ -15,17 +15,15 @@ export default function Footer() {
         <div className="md:col-span-4 space-y-5">
           <Image
             src={logoPl}
-            alt="LumenFi Logo"
+            alt="Lumen LIFI Logo"
             width={220}
             height={120}
             className="filter contrast-125 mix-blend-multiply"
           />
           <p className="text-slate-500 text-sm leading-relaxed max-w-sm font-sans">
-            <strong className="text-lg text-black">Light becomes Data</strong>
+            <strong className="text-lg text-black">Lumen LIFI</strong>
             <br />
-            Connectivity is Better with LiFi
-            <br />
-            Wireless Communications that Pushes Connectivity to New Limits with Light.
+            Light becomes Data. Secure optical wireless connectivity.
           </p>
           <div className="flex items-center gap-2 text-xs font-mono font-bold text-emerald-700 bg-emerald-50/80 border border-emerald-100 px-3 py-1.5 rounded-lg w-max">
             <ShieldCheck className="w-4 h-4 text-emerald-600" />
@@ -36,22 +34,22 @@ export default function Footer() {
         {/* Links Column 1 */}
         <div className="md:col-span-2 space-y-4">
           <h4 className="text-xs font-bold font-mono tracking-wider text-slate-800 uppercase pb-2 border-b border-slate-100">
-            Ecosystem Matrix
+            Lumen LIFI
           </h4>
           <ul className="space-y-2.5 text-xs font-medium text-slate-500">
             <li>
               <Link href="/products" className="hover:text-emerald-600 transition-colors flex items-center gap-1 group">
-                Hardware Core <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                Products <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
               </Link>
             </li>
             <li>
-              <Link href="/products#kitefin" className="hover:text-emerald-600 transition-colors flex items-center gap-1 group">
-                Tactical Nodes <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+              <Link href="/about-us" className="hover:text-emerald-600 transition-colors flex items-center gap-1 group">
+                About <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
               </Link>
             </li>
             <li>
-              <Link href="/products#lifi-cube" className="hover:text-emerald-600 transition-colors flex items-center gap-1 group">
-                Desktop Receivers <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+              <Link href="/contact" className="hover:text-emerald-600 transition-colors flex items-center gap-1 group">
+                Contact <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
               </Link>
             </li>
           </ul>
@@ -112,7 +110,7 @@ export default function Footer() {
 
       {/* Footer Meta / Copyright Section */}
       <div className="max-w-7xl mx-auto px-6 border-t border-slate-200 mt-16 pt-6 text-[11px] font-mono text-slate-400 flex flex-col md:flex-row justify-between items-center gap-4">
-        <p>&copy; {new Date().getFullYear()} LumenFi Global Systems. All architectural hardware rights reserved.</p>
+        <p>&copy; {new Date().getFullYear()} Lumen LIFI. All rights reserved.</p>
         <div className="flex space-x-6">
           <Link href="/privacy" className="hover:text-emerald-600 transition-colors">Privacy Policy</Link>
           <Link href="/terms" className="hover:text-emerald-600 transition-colors">Terms & Conditions</Link>
