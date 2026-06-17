@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-bg-primary: #FFFFFF;
+    --color-bg-secondary: #F8FAFC; /* Soft slate gray-white */
+    --color-green-primary: #059669; /* Emerald Green for buttons/links */
+    --color-green-dark: #064E3B; /* Deep Forest Green for headings */
+    --color-green-accent: #34D399; /* Mint Green for high-tech glows */
+    --color-text-main: #1E293B; /* Deep slate for maximum readability */
+    --color-text-muted: #64748B;
+  }
+
+  body {
+    @apply bg-white text-[#1E293B] antialiased font-sans;
+  }
+}
+
+/* Replaces pureLiFi's orange gradient with a premium eco-tech green gradient */
+.text-gradient-green {
+  @apply bg-gradient-to-r from-[#059669] to-[#34D399] bg-clip-text text-transparent;
+}
+
+.glow-effect-green {
+  box-shadow: 0 10px 30px -10px rgba(5, 150, 105, 0.2);
+}

@@ -1,0 +1,1 @@
+export { TechBenefits } from './tech';
