@@ -1,5 +1,17 @@
 {
-  "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
-  "/_document": "pages/_document.js"
+  "/_app": "pages/_app.js",
+  "/about-us": "pages/about-us.html",
+  "/contact": "pages/contact.html",
+  "/privacy-policy/privacy-policy": "pages/privacy-policy/privacy-policy.html",
+  "/insights": "pages/insights.html",
+  "/privacy-policy/privacy": "pages/privacy-policy/privacy.html",
+  "/terms_n_conditions/terms": "pages/terms_n_conditions/terms.html",
+  "/": "pages/index.html",
+  "/terms_n_conditions/terms-and-conditions": "pages/terms_n_conditions/terms-and-conditions.html",
+  "/products": "pages/products.html",
+  "/what-is-lifi": "pages/what-is-lifi.html",
+  "/products/residential": "pages/products/residential.html",
+  "/_document": "pages/_document.js",
+  "/404": "pages/404.html"
 }
