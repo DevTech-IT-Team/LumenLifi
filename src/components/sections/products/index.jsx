@@ -1,6 +1,18 @@
 import React, { useState } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
+// Residential Use Case Assets (Images 1-5)
+import homeAutomationImg from '../../public/images/features/home-automation.png';   // image_58265e.png / item 1
+import gamingImg from '../../public/images/features/gaming.png';               // image_582625.jpg / item 2
+import streamingImg from '../../public/images/features/streaming.png';         // image_581ec3.jpg / item 3
+import infiniteDevicesImg from '../../public/images/features/infinite-connection.png';     // image_56ba64.png / item 4
+import invisibleInfraImg from '../../public/images/features/invisible.jpg';         // image_56ba41.jpg / item 5
+
+// Enterprise Use Case Assets (Images 6-9)
+import corporateBoardroomImg from '../../public/images/eco/holographic.png';     // image_56ba25.jpg / item 6
+import manufacturingImg from '../../public/images/eco/manufacturing.png';     // image_56ba1e.jpg / item 7
+import datacenterImg from '../../public/images/eco/data-centers.png';           // image_56ba00.png / item 8
+import schoolImg from '../../public/images/eco/school.png';                   // image_56b9e5.png / item 9
 import { motion, AnimatePresence } from 'framer-motion';
 import {
     Zap,
@@ -78,7 +90,7 @@ export default function LumenPhiProductsSuite() {
     const activeProduct = productsData.find(p => p.slug === selectedProductSlug) || null;
 
     return (
-        <div className="min-h-screen font-sans bg-white text-slate-800 antialiased selection:bg-emerald-100">
+        <div className="min-h-screen font-sans bg-white dark:bg-slate-950 text-slate-800 dark:text-slate-200 antialiased selection:bg-emerald-100 dark:selection:bg-emerald-950 transition-colors duration-300">
             <Head>
                 <title>Lumen LIFI</title>
                 <meta name="description" content="Lumen LIFI — residential optical wireless internet plans and hardware." />
@@ -162,10 +174,10 @@ export default function LumenPhiProductsSuite() {
                             {/* ASYMMETRIC DESIGN CONCEPT ART HARDWARE GRID */}
                             <div className="max-w-7xl mx-auto px-6 mb-24">
                                 <div className="max-w-3xl mb-12 space-y-2">
-                                    <h2 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
+                                    <h2 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white tracking-tight">
                                         Futuristic Component Architecture
                                     </h2>
-                                    <p className="text-slate-500 text-xs font-medium font-mono">
+                                    <p className="text-slate-500 dark:text-slate-400 text-xs font-medium font-mono">
                                         EXPLORE THE INDIVIDUAL CONCEPT DESIGNS DRIVING THE LUMEN PHI BROADBAND ECOSYSTEM:
                                     </p>
                                 </div>
@@ -176,7 +188,7 @@ export default function LumenPhiProductsSuite() {
                                         return (
                                             <div
                                                 key={product.slug}
-                                                className="flex flex-col rounded-2xl border border-slate-200/80 bg-white shadow-sm overflow-hidden hover:shadow-md transition-shadow"
+                                                className="flex flex-col rounded-2xl border border-slate-200/80 dark:border-slate-800 bg-white dark:bg-slate-900/40 shadow-sm dark:shadow-none overflow-hidden hover:shadow-md transition-all duration-300"
                                             >
                                                 {/* Concept Art Visual Container */}
                                                 <div className="relative w-full aspect-video bg-slate-950 overflow-hidden">
@@ -193,21 +205,21 @@ export default function LumenPhiProductsSuite() {
                                                 <div className="p-6 flex-grow flex flex-col justify-between space-y-6">
                                                     <div className="space-y-2">
                                                         <div className="flex items-center gap-2">
-                                                            <div className="p-1.5 bg-slate-50 border border-slate-100 rounded-md text-slate-600">
+                                                            <div className="p-1.5 bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 rounded-md text-slate-600 dark:text-slate-300">
                                                                 <IconComp className="w-3.5 h-3.5" />
                                                             </div>
-                                                            <span className="text-[10px] font-bold font-mono tracking-wider text-slate-400 uppercase">
+                                                            <span className="text-[10px] font-bold font-mono tracking-wider text-slate-400 dark:text-slate-500 uppercase">
                                                                 {product.badge}
                                                             </span>
                                                         </div>
-                                                        <h3 className="text-lg font-black text-slate-900 tracking-tight">{product.name}</h3>
-                                                        <p className="text-xs text-slate-500 leading-relaxed font-normal">{product.desc}</p>
+                                                        <h3 className="text-lg font-black text-slate-900 dark:text-white tracking-tight">{product.name}</h3>
+                                                        <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed font-normal">{product.desc}</p>
                                                     </div>
 
-                                                    <div className="space-y-4 pt-4 border-t border-slate-100">
+                                                    <div className="space-y-4 pt-4 border-t border-slate-100 dark:border-slate-800">
                                                         <div className="space-y-1.5">
                                                             {product.specs.map((s, idx) => (
-                                                                <p key={idx} className="text-[11px] font-mono text-slate-600 flex items-center gap-2">
+                                                                <p key={idx} className="text-[11px] font-mono text-slate-600 dark:text-slate-350 flex items-center gap-2">
                                                                     <span className="w-1 h-1 rounded-full bg-emerald-500" /> {s}
                                                                 </p>
                                                             ))}
@@ -218,7 +230,7 @@ export default function LumenPhiProductsSuite() {
                                                                 setSelectedProductSlug(product.slug);
                                                                 if (typeof window !== 'undefined') window.scrollTo({ top: 0, behavior: 'smooth' });
                                                             }}
-                                                            className="w-full py-2.5 px-4 rounded-xl bg-slate-50 hover:bg-emerald-50 border border-slate-200 hover:border-emerald-200 text-slate-700 hover:text-emerald-700 font-mono font-bold text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2"
+                                                            className="w-full py-2.5 px-4 rounded-xl bg-slate-50 dark:bg-slate-800/40 hover:bg-emerald-50 dark:hover:bg-emerald-950/30 border border-slate-200 dark:border-slate-800 hover:border-emerald-200 dark:hover:border-emerald-800 text-slate-700 dark:text-slate-300 hover:text-emerald-700 dark:hover:text-emerald-400 font-mono font-bold text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2"
                                                         >
                                                             View Specification Sheet <ArrowRight className="w-3.5 h-3.5" />
                                                         </button>
@@ -234,12 +246,12 @@ export default function LumenPhiProductsSuite() {
                             <div className="max-w-7xl mx-auto px-6 mb-24 grid grid-cols-1 lg:grid-cols-3 gap-8">
 
                                 {/* Column 1: Mandatory Legal Boilerplates */}
-                                <div className="bg-slate-50 border border-slate-200/60 p-6 rounded-2xl space-y-4">
-                                    <div className="flex items-center gap-2 text-slate-900">
+                                <div className="bg-slate-50 dark:bg-slate-900/30 border border-slate-200/60 dark:border-slate-800 p-6 rounded-2xl space-y-4">
+                                    <div className="flex items-center gap-2 text-slate-900 dark:text-white">
                                         <FileText className="w-4 h-4 text-emerald-600" />
                                         <h3 className="text-sm font-mono font-bold uppercase tracking-wider">Required Documentation</h3>
                                     </div>
-                                    <p className="text-xs text-slate-500 leading-relaxed">
+                                    <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
                                         Review our operational rules, consumer consumer data protections, and terms of service guidelines for legal merchant transparency.
                                     </p>
                                     <div className="space-y-2 pt-2 font-mono text-xs font-bold">
@@ -256,15 +268,15 @@ export default function LumenPhiProductsSuite() {
                                 </div>
 
                                 {/* Column 2: Verifiable Operational Registry Contact Info */}
-                                <div className="bg-slate-50 border border-slate-200/60 p-6 rounded-2xl space-y-4">
-                                    <div className="flex items-center gap-2 text-slate-900">
+                                <div className="bg-slate-50 dark:bg-slate-900/30 border border-slate-200/60 dark:border-slate-800 p-6 rounded-2xl space-y-4">
+                                    <div className="flex items-center gap-2 text-slate-900 dark:text-white">
                                         <Mail className="w-4 h-4 text-emerald-600" />
                                         <h3 className="text-sm font-mono font-bold uppercase tracking-wider">Corporate Identification</h3>
                                     </div>
-                                    <p className="text-xs text-slate-500 leading-relaxed">
+                                    <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
                                         Official deployment inquiries or merchant processing clearance verifications can communicate directly with our centralized desk:
                                     </p>
-                                    <div className="space-y-2 pt-1 text-xs font-mono text-slate-600">
+                                    <div className="space-y-2 pt-1 text-xs font-mono text-slate-600 dark:text-slate-350">
                                         <p className="flex items-center gap-2"><Phone className="w-3.5 h-3.5 text-slate-400" /> +91 (Commercial Support Line)</p>
                                         <p className="flex items-center gap-2"><Mail className="w-3.5 h-3.5 text-slate-400" /> operations@lumenlifi.com</p>
                                         <p className="flex items-center gap-2"><MapPin className="w-3.5 h-3.5 text-slate-400" /> Residential Node Core, India Hub</p>
@@ -272,17 +284,17 @@ export default function LumenPhiProductsSuite() {
                                 </div>
 
                                 {/* Column 3: Processing Checklist Items */}
-                                <div className="bg-slate-50 border border-slate-200/60 p-6 rounded-2xl space-y-4">
-                                    <div className="flex items-center gap-2 text-slate-900">
+                                <div className="bg-slate-50 dark:bg-slate-900/30 border border-slate-200/60 dark:border-slate-800 p-6 rounded-2xl space-y-4">
+                                    <div className="flex items-center gap-2 text-slate-900 dark:text-white">
                                         <ShieldCheck className="w-4 h-4 text-emerald-600" />
                                         <h3 className="text-sm font-mono font-bold uppercase tracking-wider">Merchant Checklist Clearance</h3>
                                     </div>
                                     <div className="space-y-2">
-                                        <div className="flex items-start gap-2 text-xs text-slate-600">
+                                        <div className="flex items-start gap-2 text-xs text-slate-600 dark:text-slate-350">
                                             <Check className="w-3.5 h-3.5 text-emerald-500 shrink-0 mt-0.5" />
                                             <span>**Delivery Timeframes**: Hardware kits ship within 3–5 operational days across domestic hub registries.</span>
                                         </div>
-                                        <div className="flex items-start gap-2 text-xs text-slate-600">
+                                        <div className="flex items-start gap-2 text-xs text-slate-600 dark:text-slate-350">
                                             <Check className="w-3.5 h-3.5 text-emerald-500 shrink-0 mt-0.5" />
                                             <span>**Transparent Invoicing**: No hidden spectrum taxations or regional equipment surcharges.</span>
                                         </div>
@@ -294,10 +306,10 @@ export default function LumenPhiProductsSuite() {
                             {/* CONSUMER COMPETITOR FAQ COMPARISON SECTION (Airtel, Jio Framework) */}
                             <div className="max-w-4xl mx-auto px-6 mb-12">
                                 <div className="text-center space-y-2 mb-12">
-                                    <h2 className="text-2xl sm:text-3xl font-black tracking-tight text-slate-900">
+                                    <h2 className="text-2xl sm:text-3xl font-black tracking-tight text-slate-900 dark:text-white">
                                         Frequently Answered Science
                                     </h2>
-                                    <p className="text-slate-500 text-xs font-mono">
+                                    <p className="text-slate-500 dark:text-slate-400 text-xs font-mono">
                                         HOW LUMEN PHI REDEFINES INDIAN HOME BROADBAND EXPECTATIONS:
                                     </p>
                                 </div>
@@ -315,15 +327,15 @@ export default function LumenPhiProductsSuite() {
                                     ].map((faq, index) => (
                                         <div
                                             key={index}
-                                            className="border border-slate-200 rounded-xl p-5 bg-white cursor-pointer"
+                                            className="border border-slate-200 dark:border-slate-800 rounded-xl p-5 bg-white dark:bg-slate-900/40 cursor-pointer"
                                             onClick={() => setActiveFaq(activeFaq === index ? -1 : index)}
                                         >
                                             <div className="flex justify-between items-center gap-4">
-                                                <h4 className="text-sm font-bold text-slate-900 font-mono">{faq.q}</h4>
+                                                <h4 className="text-sm font-bold text-slate-900 dark:text-slate-100 font-mono">{faq.q}</h4>
                                                 <HelpCircle className={`w-4 h-4 text-slate-400 shrink-0 transition-transform ${activeFaq === index ? 'rotate-180 text-emerald-600' : ''}`} />
                                             </div>
                                             {activeFaq === index && (
-                                                <p className="text-xs text-slate-500 mt-3 leading-relaxed border-t border-slate-100 pt-3">
+                                                <p className="text-xs text-slate-500 dark:text-slate-400 mt-3 leading-relaxed border-t border-slate-100 dark:border-slate-800 pt-3">
                                                     {faq.a}
                                                 </p>
                                             )}
@@ -353,28 +365,28 @@ export default function LumenPhiProductsSuite() {
                             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
                                 <div className="lg:col-span-5 relative">
                                     <div className={`absolute inset-0 bg-gradient-to-tr ${activeProduct.accent} rounded-2xl transform rotate-2 scale-[1.02] opacity-10 blur-sm`} />
-                                    <div className="w-full aspect-square rounded-2xl overflow-hidden bg-slate-950 border border-slate-200 relative">
+                                    <div className="w-full aspect-square rounded-2xl overflow-hidden bg-slate-950 border border-slate-200 dark:border-slate-800 relative">
                                         <img src={activeProduct.imageUrl} alt={activeProduct.name} className="w-full h-full object-cover opacity-90" />
                                     </div>
                                 </div>
 
                                 <div className="lg:col-span-7 space-y-6">
-                                    <span className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-slate-50 border border-slate-200 text-slate-500 font-mono text-[10px] font-bold uppercase">
+                                    <span className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-500 dark:text-slate-400 font-mono text-[10px] font-bold uppercase">
                                         PRODUCT IDENTITY CONFIG: {activeProduct.badge}
                                     </span>
 
-                                    <h2 className="text-3xl font-black text-slate-900 tracking-tight">{activeProduct.name}</h2>
-                                    <p className="text-sm text-slate-500 font-mono font-medium leading-relaxed">{activeProduct.tagline}</p>
+                                    <h2 className="text-3xl font-black text-slate-900 dark:text-white tracking-tight">{activeProduct.name}</h2>
+                                    <p className="text-sm text-slate-500 dark:text-slate-400 font-mono font-medium leading-relaxed">{activeProduct.tagline}</p>
 
-                                    <div className="p-5 bg-slate-50 border border-slate-200/80 rounded-xl text-xs text-slate-600 leading-relaxed">
+                                    <div className="p-5 bg-slate-50 dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 rounded-xl text-xs text-slate-600 dark:text-slate-350 leading-relaxed">
                                         {activeProduct.desc}
                                     </div>
 
                                     <div className="space-y-2">
-                                        <h4 className="text-[10px] font-bold font-mono tracking-widest text-slate-400 uppercase">Architecture Checklist Attributes:</h4>
+                                        <h4 className="text-[10px] font-bold font-mono tracking-widest text-slate-400 dark:text-slate-500 uppercase">Architecture Checklist Attributes:</h4>
                                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                                             {activeProduct.specs.concat(['Certified Encryption Protocol Layer', 'Residential Installation Blueprint Included']).map((spec, i) => (
-                                                <div key={i} className="flex items-center gap-2 text-xs font-mono text-slate-600">
+                                                <div key={i} className="flex items-center gap-2 text-xs font-mono text-slate-600 dark:text-slate-350">
                                                     <Check className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
                                                     <span>{spec}</span>
                                                 </div>
@@ -382,7 +394,7 @@ export default function LumenPhiProductsSuite() {
                                         </div>
                                     </div>
 
-                                    <div className="pt-6 border-t border-slate-100 flex flex-wrap gap-4">
+                                    <div className="pt-6 border-t border-slate-100 dark:border-slate-800 flex flex-wrap gap-4">
                                         <Link href="/contact" className="h-11 px-6 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-mono font-bold text-xs uppercase tracking-wider transition-colors inline-flex items-center justify-center">
                                             Pre-Order Evaluation Unit
                                         </Link>

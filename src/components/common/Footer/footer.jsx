@@ -180,34 +180,35 @@ export default function Footer() {
       </div>
 
       {/* Bottom bar */}
-      <div
-        className="max-w-7xl mx-auto px-6 mt-16 pt-6 text-[11px] font-mono flex flex-col md:flex-row justify-between items-center gap-4"
-        style={{
-          borderTop: '1px solid rgba(26,110,191,0.10)',
-          color: '#94A3B8',
-        }}
-      >
-        <p>
-          © {new Date().getFullYear()} LumenFi Global Systems. All rights
-          reserved.
-        </p>
+      {/* Bottom bar */}
+<div
+  className="max-w-7xl mx-auto px-6 mt-16 pt-6 text-[11px] font-mono flex flex-col md:flex-row justify-between items-center gap-4"
+  style={{
+    borderTop: '1px solid rgba(26,110,191,0.10)',
+    color: '#94A3B8',
+  }}
+>
+  <p>
+    © {new Date().getFullYear()} LumenFi Global Systems. All rights
+    reserved.
+  </p>
 
-        <div className="flex space-x-6">
-          <Link
-            href="#privacy"
-            className="hover:text-[#1A6EBF] transition-colors"
-          >
-            Privacy Policy
-          </Link>
+  <div className="flex flex-wrap items-center gap-3">
+    <Link
+      href="/privacy"
+      className="px-3 py-1.5 rounded-lg border border-[#1A6EBF]/20 hover:border-[#1A6EBF] hover:text-[#1A6EBF] transition-all duration-200"
+    >
+      Privacy Policy
+    </Link>
 
-          <Link
-            href="#terms"
-            className="hover:text-[#1A6EBF] transition-colors"
-          >
-            Terms & Conditions
-          </Link>
-        </div>
-      </div>
+    <Link
+      href="/terms"
+      className="px-3 py-1.5 rounded-lg border border-[#1A6EBF]/20 hover:border-[#1A6EBF] hover:text-[#1A6EBF] transition-all duration-200"
+    >
+      Terms & Conditions
+    </Link>
+  </div>
+</div>
     </footer>
   );
 }

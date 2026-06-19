@@ -4,27 +4,67 @@
 
 @layer base {
   :root {
-    /* ── LumenFi Brand Palette (extracted from logo gradient) ── */
-    --lumen-navy:    #0D2240;   /* deep navy — primary headings */
-    --lumen-blue:    #1A6EBF;   /* mid blue — buttons, links */
-    --lumen-sky:     #2AABDB;   /* sky blue — hover states */
-    --lumen-cyan:    #00C2C7;   /* bright cyan — accents/glows */
-    --lumen-teal:    #0FB89A;   /* teal — gradient endpoint */
-    --lumen-bg:      #F0F8FF;   /* alice blue — page background */
-    --lumen-surface: #FFFFFF;   /* cards / panels */
-    --lumen-border:  rgba(26,110,191,0.12); /* subtle blue border */
-    --lumen-muted:   #4A6080;   /* secondary text */
-    --lumen-light:   #E8F4FD;   /* very light blue wash */
+    /* ── LumenFi Brand Palette (Extracted from Logo Gradient) ── */
+    --lumen-navy: #0D2240;
+    /* Deep navy — primary headings & strong text */
+    --lumen-blue: #1A6EBF;
+    /* Mid blue — brand buttons, primary links */
+    --lumen-sky: #2AABDB;
+    /* Sky blue — interactions and hover states */
+    --lumen-cyan: #00C2C7;
+    /* Bright cyan — high-tech accents/glows */
+    --lumen-teal: #0FB89A;
+    /* Teal — structural gradient endpoint */
+
+    /* ── Surface Depth Washes (Breaking Up the Constant White) ── */
+    --lumen-bg: #F4F9FC;
+    /* Premium Alice Blue wash — removes bright blinding white base */
+    --lumen-surface: #FFFFFF;
+    /* Clean white — reserved exclusively for raised cards and panels */
+    --lumen-light: #EAF3FA;
+    /* Deep alternate section color — perfect for breaking up layouts */
+    --lumen-border: rgba(26, 110, 191, 0.12);
+    /* Subtle branded blue outline vector */
+    --lumen-muted: #4A6080;
+    /* Secondary prose text — high legibility, low strain */
+  }
+
+  .dark {
+    /* ── Dark Theme Variables (Premium Deep Cyber-Slate Aesthetic) ── */
+    --lumen-navy: #F8FAFC;
+    /* Slate-50 — sharp headings */
+    --lumen-blue: #38BDF8;
+    /* Sky-400 — energetic brand action triggers */
+    --lumen-sky: #0EA5E9;
+    /* Sky-500 — active state states */
+    --lumen-cyan: #06B6D4;
+    /* Cyan-500 — luminous asset glows */
+    --lumen-teal: #14B8A6;
+    /* Teal-500 — dark mode terminal accents */
+
+    /* ── Surface Depth Washes ── */
+    --lumen-bg: #030712;
+    /* Slate-950 — absolute infinite depth space */
+    --lumen-surface: #0B1120;
+    /* Slate-900 — elevated component backdrops */
+    --lumen-light: #0F172A;
+    /* Slate-800 — rich section alternating backdrop */
+    --lumen-border: rgba(56, 189, 248, 0.15);
+    /* Vibrant sub-surface bounding edge */
+    --lumen-muted: #94A3B8;
+    /* Slate-400 — structural secondary text */
   }
 
   body {
-    @apply antialiased font-sans;
+    @apply antialiased font-sans transition-colors duration-300;
     background-color: var(--lumen-bg);
     color: var(--lumen-navy);
   }
 }
 
-/* ── Gradient text matching logo ── */
+/* ── Branded Design System Tokens ── */
+
+/* Exact Logo Gradient Replication */
 .text-gradient-lumen {
   background: linear-gradient(135deg, #1A6EBF 0%, #00C2C7 50%, #0FB89A 100%);
   -webkit-background-clip: text;
@@ -32,21 +72,48 @@
   background-clip: text;
 }
 
-/* ── Glow that matches the logo cyan ── */
+/* High-fidelity Micro-Glow Effects */
 .glow-cyan {
-  box-shadow: 0 0 40px -8px rgba(0, 194, 199, 0.45);
+  box-shadow: 0 0 40px -8px rgba(0, 194, 199, 0.35);
 }
 
 .glow-blue {
-  box-shadow: 0 10px 40px -10px rgba(26, 110, 191, 0.30);
+  box-shadow: 0 10px 40px -10px rgba(26, 110, 191, 0.25);
 }
 
-/* ── Smooth scroll ── */
+/* Dynamic Alternating Layout Utilites (Apply these classes directly to section wrappers) */
+.section-wash-primary {
+  background-color: var(--lumen-bg);
+}
+
+.section-wash-secondary {
+  background-color: var(--lumen-light);
+}
+
+.card-surface {
+  background-color: var(--lumen-surface);
+  border: 1px solid var(--lumen-border);
+}
+
+/* ── Layout Smooth Motion Experience ── */
 html {
   scroll-behavior: smooth;
 }
 
-/* ── Scrollbar ── */
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: var(--lumen-bg); }
-::-webkit-scrollbar-thumb { background: var(--lumen-cyan); border-radius: 3px; }
+/* Optimized Micro-Scrollbar Architecture */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--lumen-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--lumen-cyan);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--lumen-blue);
+}
