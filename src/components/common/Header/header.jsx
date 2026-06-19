@@ -106,22 +106,19 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
 
         {/* ── Logo ── */}
-        <Link href="/" className="flex items-center gap-2 group shrink-0">
-          <div className="relative w-[200px] h-[62px] md:w-[240px] md:h-[72px]">
-            <Image
-              src={logoPl}
-<<<<<<< HEAD
-              alt="LumenFi — Light Connectivity"
-=======
-              alt="Lumen LIFI"
->>>>>>> 3f0864a2b11d6f22933447709a4b5bd81bd6b260
-              fill
-              priority
-              sizes="(max-width: 768px) 200px, 240px"
-              className="object-contain transition-transform duration-200 group-hover:scale-[1.02]"
-            />
-          </div>
-        </Link>
+        {/* ── Logo ── */}
+<Link href="/" className="flex items-center gap-2 group shrink-0">
+  <div className="relative w-[200px] h-[62px] md:w-[240px] md:h-[72px]">
+    <Image
+      src={logoPl}
+      alt="LumenFi — Light Connectivity"
+      fill
+      priority
+      sizes="(max-width: 768px) 200px, 240px"
+      className="object-contain transition-transform duration-200 group-hover:scale-[1.02]"
+    />
+  </div>
+</Link>
 
         {/* ── Desktop nav ── */}
         <nav className="hidden lg:flex items-center gap-1">
