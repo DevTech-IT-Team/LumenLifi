@@ -8,10 +8,14 @@ import roomBg from '../../public/images/hero/room-bg.jpg';
 import {
   ArrowRight, CheckCircle, Zap, Shield, Lock, Wifi, WifiOff,
   Monitor, Gamepad2, Cpu, Home, Building2, Factory, GraduationCap,
-  Stethoscope, ChevronRight, Star, Sparkles
+  Stethoscope, ChevronRight, Star, Sparkles, Eye, ShieldCheck, Activity, Sliders, Flame
 } from 'lucide-react';
 import Header from '../components/common/Header';
 import Footer from '../components/common/Footer';
+import enterpriseImg from '../../public/images/hero/enterprise.png';
+import ctaImg from '../../public/images/hero/cta.png';
+
+
 
 // ── CLIENT IMAGES 1 TO 5 (RESIDENTIAL ARCHITECTURE INTEGRATION) ──
 import homeAutomationImg from '../../public/images/hero/home-automation.png';
@@ -208,61 +212,275 @@ function SpeedTableSection() {
 /* ─────────────────────────────────────────────────────────────
    SECTION 3 — AMBIENT INTELLIGENCE (SECTION WASH PRIMARY BACKDROP)
 ───────────────────────────────────────────────────────────── */
+
 function ConsciousHomeSection() {
   const conceptualPoints = [
-    { icon: '🌅', title: 'Ambient Intelligence', sub: 'The End of the Switch', desc: 'Environmental AI maps your presence in real-time. Biometric signals route smoothly over light vectors to prepare spaces seamlessly without mechanical commands.' },
-    { icon: '🥽', title: 'Spatial Computing Links', sub: 'The TV is a Relic', desc: 'Dedicated 10 Gbps optical pipes beam high-fidelity environments straight to your spatial arrays. Zero spatial lag, zero dropped wireless vectors.' },
-    { icon: '🔒', title: 'Absolute Privacy Fortress', sub: 'Physical Optical Containment', desc: 'Because photon streams are contained by physical walls, your operations remain entirely air-gapped from neighborhood network snooping vectors.' },
-    { icon: '🎙️', title: 'Conversations, Not Commands', sub: 'Instantaneous Feedback Sync', desc: 'Sub-millisecond transmission architectures mean hardware responds precisely as your intent registers, eliminating central router waiting queues.' }
+    {
+      icon: '🌅',
+      lucide: Activity,
+      title: 'Ambient Intelligence',
+      sub: 'The End of the Switch',
+      desc: 'Environmental AI maps your presence in real-time. Biometric signals route smoothly over light vectors to prepare spaces seamlessly without mechanical commands.',
+      hotspot: 'Biometric Grid Active',
+      coords: 'top-[25%] left-[45%]'
+    },
+    {
+      icon: '🥽',
+      lucide: Eye,
+      title: 'Spatial Computing Links',
+      sub: 'The TV is a Relic',
+      desc: 'Dedicated 10 Gbps optical pipes beam high-fidelity environments straight to your spatial arrays. Zero spatial lag, zero dropped wireless vectors.',
+      hotspot: '10 Gbps Link Established',
+      coords: 'top-[45%] left-[30%]'
+    },
+    {
+      icon: '🔒',
+      lucide: ShieldCheck,
+      title: 'Absolute Privacy Fortress',
+      sub: 'Physical Optical Containment',
+      desc: 'Because photon streams are contained by physical walls, your operations remain entirely air-gapped from neighborhood network snooping vectors.',
+      hotspot: 'Photon Shield: Air-Gapped',
+      coords: 'bottom-[35%] left-[60%]'
+    },
+    {
+      icon: '🎙️',
+      lucide: Zap,
+      title: 'Conversations, Not Commands',
+      sub: 'Instantaneous Feedback Sync',
+      desc: 'Sub-millisecond transmission architectures mean hardware responds precisely as your intent registers, eliminating central router waiting queues.',
+      hotspot: 'Latency: <0.8ms Sync',
+      coords: 'bottom-[20%] left-[40%]'
+    }
   ];
 
+  const [activeIndex, setActiveIndex] = useState(0);
+  const currentFeature = conceptualPoints[activeIndex];
+  const AUTOROTATE_TIME = 6000;
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % conceptualPoints.length);
+    }, AUTOROTATE_TIME);
+    return () => clearInterval(timer);
+  }, [conceptualPoints.length]);
+
   return (
-    <section className="py-24 section-wash-primary" id="conscious-home">
+    <section className="py-24 section-wash-primary overflow-hidden" id="conscious-home">
       <div className="max-w-7xl mx-auto px-6">
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16 max-w-2xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-bold mb-4 section-wash-secondary border border-[var(--lumen-border)] text-[var(--lumen-blue)]">
-            <Sparkles size={12} /> The Conscious Home
+
+        {/* Header Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="text-center mb-20 max-w-3xl mx-auto"
+        >
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-mono font-bold mb-4 bg-white/80 dark:bg-slate-900/80 shadow-sm border border-[var(--lumen-border)] text-[var(--lumen-blue)]">
+            <Sparkles size={12} className="animate-spin" style={{ animationDuration: '3s' }} /> The Conscious Home
           </div>
-          <h2 className="text-4xl font-black tracking-tight mb-4 text-[var(--lumen-navy)]">
+          <h2 className="text-4xl sm:text-5xl font-black tracking-tight mb-4 text-[var(--lumen-navy)] leading-none">
             Stop Calling It a{' '}
-            <span className="text-gradient-lumen">"Smart Home"</span>
+            <span className="text-gradient-lumen tracking-tight font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[#1A6EBF] to-[#00C2C7]">
+              "Smart Home"
+            </span>
           </h2>
-          <p className="text-[var(--lumen-muted)]">When you replace crowded Wi-Fi with multi-gigabit light, your house stops reacting to you and starts anticipating you.</p>
+          <p className="text-sm md:text-base text-[var(--lumen-muted)] max-w-2xl mx-auto font-medium leading-relaxed">
+            When you replace crowded Wi-Fi with multi-gigabit light, your house stops reacting to you and starts anticipating you. Watch the environment cycle or select a target pipeline.
+          </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          <div className="lg:col-span-5 flex flex-col gap-6">
-            {conceptualPoints.slice(0, 2).map((item, idx) => (
-              <div key={idx} className="card-surface p-6 rounded-2xl shadow-sm">
-                <div className="text-3xl mb-2">{item.icon}</div>
-                <span className="text-[10px] font-mono font-bold tracking-wider text-[var(--lumen-cyan)] block mb-1 uppercase">{item.sub}</span>
-                <h4 className="text-lg font-black text-[var(--lumen-navy)] mb-2">{item.title}</h4>
-                <p className="text-xs text-[var(--lumen-muted)] leading-relaxed">{item.desc}</p>
-              </div>
-            ))}
+        {/* Dynamic Interactive Node Workspace Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+
+          {/* Left Side Feature Block Hooks */}
+          <div className="lg:col-span-4 flex flex-col justify-center gap-5">
+            {conceptualPoints.slice(0, 2).map((item, idx) => {
+              const globalIdx = idx;
+              const isActive = activeIndex === globalIdx;
+              const IconComponent = item.lucide;
+              return (
+                <button
+                  key={globalIdx}
+                  onClick={() => setActiveIndex(globalIdx)}
+                  className={`text-left p-6 rounded-2xl transition-all duration-500 relative overflow-hidden border group ${isActive
+                    ? 'bg-white shadow-[0_20px_50px_rgba(26,110,191,0.08)] border-[var(--lumen-blue)] scale-[1.02] z-10'
+                    : 'bg-[var(--lumen-surface)] border-[var(--lumen-border)] hover:bg-white/60 opacity-75 hover:opacity-100 shadow-sm'
+                    }`}
+                >
+                  {isActive && (
+                    <motion.div layoutId="homeIndicator" className="absolute top-0 left-0 w-1.5 h-full bg-gradient-to-b from-[var(--lumen-blue)] to-[var(--lumen-cyan)]" />
+                  )}
+
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="text-3xl filter drop-shadow-sm group-hover:scale-110 transition-transform duration-300">{item.icon}</div>
+
+                    <div className="relative w-6 h-6 flex items-center justify-center">
+                      {isActive ? (
+                        <svg className="w-full h-full transform -rotate-90">
+                          <circle cx="12" cy="12" r="9" className="stroke-[var(--lumen-border)] fill-none" strokeWidth="2" />
+                          <motion.circle
+                            cx="12" cy="12" r="9"
+                            className="stroke-[var(--lumen-blue)] fill-none"
+                            strokeWidth="2"
+                            strokeDasharray="56"
+                            initial={{ strokeDashoffset: 56 }}
+                            animate={{ strokeDashoffset: 0 }}
+                            transition={{ duration: AUTOROTATE_TIME / 1000, ease: "linear" }}
+                            key={activeIndex}
+                          />
+                        </svg>
+                      ) : (
+                        <IconComponent size={16} className="text-[var(--lumen-muted)] opacity-60 group-hover:opacity-100 transition-opacity" />
+                      )}
+                    </div>
+                  </div>
+
+                  <span className={`text-[10px] font-mono font-bold tracking-widest block mb-1 uppercase ${isActive ? 'text-[var(--lumen-blue)]' : 'text-[var(--lumen-muted)]'}`}>
+                    {item.sub}
+                  </span>
+                  <h4 className="text-lg font-bold text-[var(--lumen-navy)] mb-2 tracking-tight group-hover:text-[var(--lumen-blue)] transition-colors">{item.title}</h4>
+                  <p className="text-xs text-[var(--lumen-muted)] leading-relaxed font-medium">{item.desc}</p>
+                </button>
+              );
+            })}
           </div>
 
-          <div className="lg:col-span-2 relative aspect-square lg:aspect-[9/16] w-full rounded-2xl overflow-hidden shadow-xl border border-[var(--lumen-border)] bg-[#0A192F]">
-            <Image src={roomBg} alt="Smart home networking blueprint view" fill className="object-cover opacity-80" />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0A192F] via-transparent to-transparent opacity-60" />
+          {/* Central HIGH-VISIBILITY Telemetry Dashboard Display Screen */}
+          <div className="lg:col-span-4 relative min-h-[420px] lg:min-h-0 rounded-3xl overflow-hidden shadow-2xl border border-white/10 bg-[#111E30] flex flex-col justify-between p-5 group">
+
+            {/* Visual Grid / Blueprint System Overlays with High Opacity & Screen Blend Mode */}
+            <div className="absolute inset-0 pointer-events-none z-0">
+              <Image
+                src={roomBg}
+                alt="Smart home networking blueprint view"
+                fill
+                className="object-cover opacity-75 mix-blend-screen scale-100 transition-transform duration-1000 group-hover:scale-[1.03]"
+              />
+              {/* Softened radial mask so the image geometry stands out beautifully */}
+              <div className="absolute inset-0 bg-gradient-to-t from-[#111E30] via-transparent to-[#111E30]/40" />
+            </div>
+
+            {/* Matrix Console UI Top Header Chrome */}
+            <div className="relative z-10 flex items-center justify-between bg-[#0D2240]/95 backdrop-blur-md px-3 py-2 rounded-xl border border-white/10 text-[10px] font-mono tracking-widest text-[var(--lumen-cyan)] shadow-sm">
+              <span className="flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                LUMEN_CORE_NODE
+              </span>
+              <span className="bg-white/10 px-2 py-0.5 rounded text-[9px]">SYS_0{activeIndex + 1}</span>
+            </div>
+
+            {/* Radial Radar Scanning Hotspot Coordinates Blip */}
+            <div className="absolute inset-0 z-10 pointer-events-none">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeIndex}
+                  className={`absolute ${currentFeature.coords} flex flex-col items-center`}
+                  initial={{ opacity: 0, scale: 0.4 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.4 }}
+                  transition={{ type: "spring", stiffness: 120, damping: 14 }}
+                >
+                  <span className="relative flex h-6 w-6">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--lumen-cyan)] opacity-75" style={{ animationDuration: '2s' }} />
+                    <span className="relative inline-flex rounded-full h-6 w-6 bg-[#1A6EBF] border-2 border-white items-center justify-center shadow-md text-[9px] text-white font-bold font-mono">
+                      {activeIndex + 1}
+                    </span>
+                  </span>
+                  <motion.div
+                    initial={{ opacity: 0, y: 6 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.15 }}
+                    className="mt-2.5 px-3 py-1 bg-[#0D2240] text-[9px] font-bold font-mono text-white tracking-wider border border-[var(--lumen-cyan)]/50 rounded-lg whitespace-nowrap shadow-xl"
+                  >
+                    {currentFeature.hotspot}
+                  </motion.div>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+
+            {/* Interactive Lower Matrix Status Module */}
+            <div className="relative z-10 bg-[#0D2240]/95 backdrop-blur-md p-4 rounded-2xl border border-white/10 shadow-lg">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeIndex}
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -15 }}
+                  transition={{ duration: 0.35, ease: "easeOut" }}
+                >
+                  <div className="text-[9px] font-mono text-[var(--lumen-cyan)] uppercase font-bold tracking-widest mb-1 shadow-sm">
+                    Active Environment Track
+                  </div>
+                  <div className="text-base font-black text-white tracking-tight leading-none mb-1">
+                    {currentFeature.title}
+                  </div>
+                  <div className="text-[10px] text-white/60 font-mono tracking-wide font-medium truncate">
+                    Node Connection Status: OPTICAL_FLOW_SECURE
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+            </div>
           </div>
 
-          <div className="lg:col-span-5 flex flex-col gap-6">
-            {conceptualPoints.slice(2, 4).map((item, idx) => (
-              <div key={idx} className="card-surface p-6 rounded-2xl shadow-sm">
-                <div className="text-3xl mb-2">{item.icon}</div>
-                <span className="text-[10px] font-mono font-bold tracking-wider text-[var(--lumen-blue)] block mb-1 uppercase">{item.sub}</span>
-                <h4 className="text-lg font-black text-[var(--lumen-navy)] mb-2">{item.title}</h4>
-                <p className="text-xs text-[var(--lumen-muted)] leading-relaxed">{item.desc}</p>
-              </div>
-            ))}
+          {/* Right Side Feature Block Hooks */}
+          <div className="lg:col-span-4 flex flex-col justify-center gap-5">
+            {conceptualPoints.slice(2, 4).map((item, idx) => {
+              const globalIdx = idx + 2;
+              const isActive = activeIndex === globalIdx;
+              const IconComponent = item.lucide;
+              return (
+                <button
+                  key={globalIdx}
+                  onClick={() => setActiveIndex(globalIdx)}
+                  className={`text-left p-6 rounded-2xl transition-all duration-500 relative overflow-hidden border group ${isActive
+                    ? 'bg-white shadow-[0_20px_50px_rgba(26,110,191,0.08)] border-[var(--lumen-blue)] scale-[1.02] z-10'
+                    : 'bg-[var(--lumen-surface)] border-[var(--lumen-border)] hover:bg-white/60 opacity-75 hover:opacity-100 shadow-sm'
+                    }`}
+                >
+                  {isActive && (
+                    <motion.div layoutId="homeIndicator" className="absolute top-0 left-0 w-1.5 h-full bg-gradient-to-b from-[var(--lumen-blue)] to-[var(--lumen-cyan)]" />
+                  )}
+
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="text-3xl filter drop-shadow-sm group-hover:scale-110 transition-transform duration-300">{item.icon}</div>
+
+                    <div className="relative w-6 h-6 flex items-center justify-center">
+                      {isActive ? (
+                        <svg className="w-full h-full transform -rotate-90">
+                          <circle cx="12" cy="12" r="9" className="stroke-[var(--lumen-border)] fill-none" strokeWidth="2" />
+                          <motion.circle
+                            cx="12" cy="12" r="9"
+                            className="stroke-[var(--lumen-blue)] fill-none"
+                            strokeWidth="2"
+                            strokeDasharray="56"
+                            initial={{ strokeDashoffset: 56 }}
+                            animate={{ strokeDashoffset: 0 }}
+                            transition={{ duration: AUTOROTATE_TIME / 1000, ease: "linear" }}
+                            key={activeIndex}
+                          />
+                        </svg>
+                      ) : (
+                        <IconComponent size={16} className="text-[var(--lumen-muted)] opacity-60 group-hover:opacity-100 transition-opacity" />
+                      )}
+                    </div>
+                  </div>
+
+                  <span className={`text-[10px] font-mono font-bold tracking-widest block mb-1 uppercase ${isActive ? 'text-[var(--lumen-blue)]' : 'text-[var(--lumen-muted)]'}`}>
+                    {item.sub}
+                  </span>
+                  <h4 className="text-lg font-bold text-[var(--lumen-navy)] mb-2 tracking-tight group-hover:text-[var(--lumen-blue)] transition-colors">{item.title}</h4>
+                  <p className="text-xs text-[var(--lumen-muted)] leading-relaxed font-medium">{item.desc}</p>
+                </button>
+              );
+            })}
           </div>
+
         </div>
       </div>
     </section>
   );
 }
-
 /* ─────────────────────────────────────────────────────────────
    SECTION 4 — RESIDENTIAL ASSETS SHOWCASE (SECTION WASH SECONDARY)
 ───────────────────────────────────────────────────────────── */
@@ -378,11 +596,11 @@ function EnterpriseSection() {
             🔒 Air-Gapped Physical Facility Protection Standard
           </div>
         </div>
-        <div className="relative aspect-video rounded-2xl overflow-hidden bg-[#0A192F] border border-white/10 shadow-2xl flex flex-col items-center justify-center p-6 text-center font-mono text-xs text-cyan-400">
-          <div className="w-12 h-12 rounded-full border border-dashed border-cyan-400 animate-spin mb-4 flex items-center justify-center">
-            <Cpu size={18} />
+        <div className="relative aspect-video rounded-2xl overflow-hidden bg-[#0A192F] border border-white/10 shadow-2xl flex flex-col items-center justify-center p-2 text-center font-mono text-xs text-cyan-400">
+          <div className="relative w-full h-full">
+            <Image src={enterpriseImg} alt="Enterprise" fill />
           </div>
-          <div>[ 📊 SECURE LOG INTEGRATION ACTIVE ]</div>
+
           <div className="text-[10px] text-cyan-400/50 mt-1">Core Optical Node Transceiving Matrix Ready</div>
         </div>
       </div>
@@ -435,6 +653,19 @@ function EcosystemSection() {
 
   const [activeTab, setActiveTab] = useState('corp');
   const current = sectors.find(s => s.id === activeTab) || sectors[0];
+
+  // Automatic 5-second rotation effect loop
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveTab((prevTab) => {
+        const currentIndex = sectors.findIndex(s => s.id === prevTab);
+        const nextIndex = (currentIndex + 1) % sectors.length;
+        return sectors[nextIndex].id;
+      });
+    }, 5000); // 5000 milliseconds = 5 seconds
+
+    return () => clearInterval(timer);
+  }, [sectors.length]);
 
   return (
     <section className="py-24 section-wash-primary border-t border-b border-[var(--lumen-border)]" id="shop">
@@ -498,7 +729,6 @@ function EcosystemSection() {
     </section>
   );
 }
-
 /* ─────────────────────────────────────────────────────────────
    SECTION 7 — ANALYTICAL TELEMETRY COUNTERS (WHITE/DARK SURFACE BASE)
 ───────────────────────────────────────────────────────────── */
@@ -538,26 +768,133 @@ function StatsSection() {
   const speedCount = useCounter(10, visible);
   const timeCount = useCounter(80, visible);
 
+  // Parent container stagger orchestration configuration parameters
+  const containerVariants = {
+    hidden: {},
+    visible: {
+      transition: { staggerChildren: 0.15 }
+    }
+  };
+
+  // Child node transition physics configurations
+  const cardVariants = {
+    hidden: { opacity: 0, y: 30, scale: 0.96 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: { type: "spring", stiffness: 100, damping: 15 }
+    }
+  };
+
+  const statItems = [
+    {
+      val: visible ? `${speedCount} Gbps` : '0 Gbps',
+      label: 'Sustained Peak Air Velocity',
+      icon: Flame,
+      colorClass: 'from-amber-500 to-rose-500',
+      shadowColor: 'rgba(244,63,94,0.12)'
+    },
+    {
+      val: visible ? `${timeCount} Sec` : '0 Sec',
+      label: '100 GB Asset Sync Matrix',
+      icon: Zap,
+      colorClass: 'from-[var(--lumen-blue)] to-[var(--lumen-cyan)]',
+      shadowColor: 'rgba(0,194,199,0.14)'
+    },
+    {
+      val: '100%',
+      label: 'Physical Wall Isolation',
+      icon: Shield,
+      colorClass: 'from-emerald-500 to-teal-500',
+      shadowColor: 'rgba(16,185,129,0.12)'
+    }
+  ];
+
   return (
-    <section ref={ref} className="py-20 bg-[var(--lumen-surface)]">
-      <div className="max-w-5xl mx-auto px-6">
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-14">
-          <h2 className="text-3xl font-black text-[var(--lumen-navy)]">Validated at Scale</h2>
+    <section ref={ref} className="py-28 relative overflow-hidden bg-[var(--lumen-surface)]">
+
+      {/* Background Soft Chromatic Blended Flare Core Mesh */}
+      <div className="absolute inset-0 pointer-events-none z-0 opacity-40">
+        <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[500px] h-[350px] rounded-full blur-[130px] bg-gradient-to-r from-blue-400/10 to-cyan-400/5" />
+        <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[450px] h-[350px] rounded-full blur-[130px] bg-gradient-to-r from-teal-400/10 to-emerald-400/5" />
+      </div>
+
+      <div className="max-w-6xl mx-auto px-6 relative z-10">
+
+        {/* Section Typography Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-[var(--lumen-blue)] bg-white dark:bg-slate-900 border border-[var(--lumen-border)] px-3 py-1 rounded-full shadow-sm inline-block">
+            Performance Metrics
+          </span>
+          <h2 className="text-4xl font-black text-[var(--lumen-navy)] tracking-tight mt-4">
+            Validated at Scale
+          </h2>
         </motion.div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-          {[
-            { val: visible ? `${speedCount} Gbps` : '0 Gbps', label: 'Sustained Peak Air Velocity' },
-            { val: visible ? `${timeCount} Sec` : '0 Sec', label: '100 GB Asset Sync Matrix' },
-            { val: '100%', label: 'Physical Wall Isolation' }
-          ].map((stat, i) => (
-            <div key={i} className="p-8 rounded-3xl section-wash-primary border border-[var(--lumen-border)] shadow-sm">
-              <div className="text-4xl font-black mb-2 font-mono text-gradient-lumen">
-                {stat.val}
-              </div>
-              <div className="text-[10px] sm:text-xs text-[var(--lumen-muted)] uppercase tracking-widest font-mono font-bold">{stat.label}</div>
-            </div>
-          ))}
-        </div>
+
+        {/* Dynamic Staggered Execution Flexbox Grid */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView={visible ? "visible" : "hidden"}
+          viewport={{ once: true }}
+          className="grid grid-cols-1 md:grid-cols-3 gap-8"
+        >
+          {statItems.map((stat, i) => {
+            const IconComponent = stat.icon;
+            return (
+              <motion.div
+                key={i}
+                variants={cardVariants}
+                whileHover={{
+                  y: -8,
+                  scale: 1.02,
+                  boxShadow: `0 30px 60px ${stat.shadowColor}`
+                }}
+                className="p-8 rounded-[2rem] bg-white border border-[var(--lumen-border)] shadow-sm relative overflow-hidden transition-all duration-300 flex flex-col justify-between group"
+              >
+                {/* Chromatic Corner Ambient Ray Reveal */}
+                <div className={`absolute -top-12 -right-12 w-24 h-24 rounded-full bg-gradient-to-br ${stat.colorClass} opacity-0 group-hover:opacity-10 blur-xl transition-opacity duration-500`} />
+
+                {/* Micro-Telemetry Badge Header Line */}
+                <div className="flex items-center justify-between mb-6">
+                  <div className={`p-2.5 rounded-xl bg-gradient-to-br ${stat.colorClass} bg-opacity-10 text-white shadow-sm flex items-center justify-center`}>
+                    <IconComponent size={18} className="mix-blend-overlay group-hover:scale-110 transition-transform duration-300" />
+                  </div>
+                  <span className="text-[9px] font-mono font-bold text-[var(--lumen-muted)] bg-[var(--lumen-surface)] border border-[var(--lumen-border)] px-2 py-0.5 rounded-md">
+                    METRIC_0{i + 1}
+                  </span>
+                </div>
+
+                {/* Quantitative Data Field Display Core */}
+                <div className="mb-4">
+                  <div className={`text-5xl font-black mb-3 font-mono tracking-tight bg-clip-text text-transparent bg-gradient-to-r ${stat.colorClass}`}>
+                    {stat.val}
+                  </div>
+                  <h4 className="text-[11px] sm:text-xs text-[var(--lumen-navy)] uppercase tracking-widest font-mono font-black leading-tight">
+                    {stat.label}
+                  </h4>
+                </div>
+
+                {/* Synchronized Linear Progress Gauge Line */}
+                <div className="w-full h-[3px] bg-[var(--lumen-surface)] rounded-full overflow-hidden mt-2">
+                  <motion.div
+                    initial={{ width: 0 }}
+                    animate={visible ? { width: '100%' } : { width: 0 }}
+                    transition={{ delay: 0.3 + i * 0.1, duration: 1.2, ease: "easeOut" }}
+                    className={`h-full bg-gradient-to-r ${stat.colorClass}`}
+                  />
+                </div>
+
+              </motion.div>
+            );
+          })}
+        </motion.div>
       </div>
     </section>
   );
@@ -568,32 +905,96 @@ function StatsSection() {
 ───────────────────────────────────────────────────────────── */
 function FinalCTASection() {
   return (
-    <section className="py-24 section-wash-primary">
-      <div className="max-w-4xl mx-auto px-6 text-center">
-        <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-          <div className="rounded-3xl p-12 md:p-16 relative overflow-hidden bg-[#0D2240] text-white shadow-2xl">
-            <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(circle at 50% 0%, rgba(0,194,199,0.2) 0%, transparent 60%)' }} />
-            <div className="absolute inset-0 pointer-events-none opacity-20" style={{ backgroundImage: 'linear-gradient(rgba(0,194,199,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(0,194,199,0.1) 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
+    <section className="py-28 relative overflow-hidden section-wash-primary" id="cta-final">
+      {/* Dynamic Ambient Background Light Cones */}
+      <div className="absolute inset-0 pointer-events-none z-0"><Image src={ctaImg} alt="cta" fill />
+        <div
+          className="absolute -top-24 left-1/2 -translate-x-1/2 w-[600px] h-[400px] rounded-full blur-[140px] opacity-40"
+          style={{ background: 'radial-gradient(circle, var(--lumen-cyan) 0%, transparent 75%)' }}
+        />
+        <div
+          className="absolute -bottom-36 left-1/3 w-[500px] h-[350px] rounded-full blur-[120px] opacity-30"
+          style={{ background: 'radial-gradient(circle, rgba(26,110,191,0.2) 0%, transparent 75%)' }}
+        />
+      </div>
 
-            <div className="relative z-10">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-bold mb-6 bg-cyan-500/10 text-[var(--lumen-cyan)] border border-[var(--lumen-cyan)]/20">
-                <Zap size={12} /> Limited Early Access
-              </div>
-              <h2 className="text-4xl md:text-5xl font-black mb-4 leading-tight">
+      <div className="max-w-5xl mx-auto px-6 relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 35, scale: 0.98 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
+          {/* High-Contrast Premium Dark Accent Terminal Card */}
+          <div className="rounded-[2.5rem] p-10 sm:p-14 md:p-20 relative overflow-hidden bg-[#0D2240] text-white shadow-[0_32px_80px_rgba(13,34,64,0.3)] border border-white/5 group">
+
+            {/* Architectural Decorative Grid Matrix Mapping */}
+            <div
+              className="absolute inset-0 pointer-events-none opacity-25 mix-blend-overlay transition-transform duration-1000 group-hover:scale-105"
+              style={{
+                backgroundImage: 'linear-gradient(rgba(0,194,199,0.15) 1px, transparent 1px), linear-gradient(90deg, rgba(0,194,199,0.15) 1px, transparent 1px)',
+                backgroundSize: '40px 40px'
+              }}
+            />
+
+            {/* Cybernetic Subtle Inner Glow */}
+            <div
+              className="absolute inset-0 pointer-events-none transition-opacity duration-500 group-hover:opacity-80"
+              style={{ background: 'radial-gradient(circle at 50% 10%, rgba(0,194,199,0.18) 0%, transparent 50%)' }}
+            />
+
+            <div className="relative z-10 text-center max-w-3xl mx-auto">
+              {/* High-Impact Trendy Typography Header */}
+              <h2 className="text-4xl sm:text-5xl md:text-6xl font-black mb-6 tracking-tight leading-[1.05]">
                 Step out of the radio age.<br />
-                <span style={{ background: 'linear-gradient(135deg, #00C2C7, #0FB89A)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#00C2C7] via-[#0FB89A] to-[#00C2C7] bg-[size:200%_auto] animate-pulse" style={{ animationDuration: '4s' }}>
                   Live at the speed of light.
                 </span>
               </h2>
-              <p className="text-blue-200 text-base mb-10 max-w-lg mx-auto">Upgrade your environment's deployment footprint to the ultimate benchmark in light wave hardware throughput.</p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href="/products" className="glow-cyan inline-flex items-center justify-center gap-2 h-14 px-8 rounded-2xl text-[#0D2240] font-bold text-sm tracking-wide transition-all hover:scale-[1.03]" style={{ background: 'linear-gradient(135deg, #00C2C7, #0FB89A)' }}>
-                  Explore Home Kits <ArrowRight size={16} />
+
+              {/* Premium Medium Readability Paragraph */}
+              <p className="text-blue-100/80 text-sm sm:text-base md:text-lg mb-12 max-w-xl mx-auto font-medium leading-relaxed">
+                Upgrade your environment's footprint to the ultimate benchmark in light wave hardware wireless throughput. Secure, radiant, instantaneous.
+              </p>
+
+              {/* Action Trigger Sandbox Hub */}
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-14">
+                <Link
+                  href="/products"
+                  className="glow-cyan inline-flex items-center justify-center gap-2.5 h-14 px-10 rounded-2xl text-[#0D2240] font-black text-sm tracking-wider transition-all duration-300 hover:scale-[1.04] hover:shadow-[0_0_30px_rgba(0,194,199,0.4)] w-full sm:w-auto"
+                  style={{ background: 'linear-gradient(135deg, #00C2C7 0%, #0FB89A 100%)' }}
+                >
+                  Explore Home Kits
+                  <motion.span animate={{ x: [0, 4, 0] }} transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}>
+                    <ArrowRight size={16} />
+                  </motion.span>
                 </Link>
-                <Link href="/contact" className="inline-flex items-center justify-center gap-2 h-14 px-8 rounded-2xl font-bold text-sm tracking-wide border-2 border-white/20 text-white hover:bg-white/10 transition-all">
+
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center justify-center gap-2 h-14 px-10 rounded-2xl font-bold text-sm tracking-wider border-2 border-white/10 text-white hover:border-white/40 hover:bg-white/5 bg-transparent transition-all duration-300 w-full sm:w-auto"
+                >
                   Request a Demo
                 </Link>
               </div>
+
+              {/* Mini Social/Feature Proof Metrics Grid to accelerate conversion */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-8 border-t border-white/10 max-w-2xl mx-auto text-left sm:text-center">
+                {[
+                  { icon: Sparkles, label: '10 Gbps Active Ready' },
+                  { icon: ShieldCheck, label: 'Military-Grade Security' },
+                  { icon: Sliders, label: 'Zero Router Congestion' },
+                ].map((feat, fIdx) => {
+                  const FeatIcon = feat.icon;
+                  return (
+                    <div key={fIdx} className="flex sm:flex-col items-center gap-3 sm:gap-1.5 justify-start sm:justify-center">
+                      <FeatIcon size={14} className="text-[var(--lumen-cyan)] shrink-0" />
+                      <span className="text-xs font-mono font-medium tracking-wide text-blue-200/60 uppercase">{feat.label}</span>
+                    </div>
+                  );
+                })}
+              </div>
+
             </div>
           </div>
         </motion.div>
