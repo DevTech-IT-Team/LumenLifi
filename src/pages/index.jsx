@@ -12,9 +12,8 @@ import {
 } from 'lucide-react';
 import Header from '../components/common/Header';
 import Footer from '../components/common/Footer';
-import enterpriseImg from '../../public/images/hero/enterprise.png';
 import ctaImg from '../../public/images/hero/cta.png';
-
+import enterpriseImg from '../../public/images/hero/enterprise.png';
 
 
 // ── CLIENT IMAGES 1 TO 5 (RESIDENTIAL ARCHITECTURE INTEGRATION) ──
