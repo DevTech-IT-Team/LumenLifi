@@ -135,7 +135,7 @@ export default function TermsAndConditions() {
             additional scheduling.
           </p>
 
-          <h3 className="font-mono text-xs font-bold text-slate-900 uppercase tracking-wider pt-4">
+          <h3 id="refund-policy" className="font-mono text-xs font-bold text-slate-900 uppercase tracking-wider pt-4">
             7. Refund &amp; Cancellation Policy
           </h3>
           <p>
