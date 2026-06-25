@@ -23,7 +23,7 @@ import Footer from '../../components/common/Footer';
 const productsData = [
     {
         slug: 'lumen-core-router',
-        name: 'Lumen LIFI',
+        name: 'Lumen Core Router',
         badge: 'Central Gateway Unit',
         tagline: 'The optical heart of your residential lightwave network.',
         desc: 'Translates incoming fiber gigabit data lines directly into high-frequency optical signals. Plugs right into your home connection and powers the ceiling light array without emitting radio clutter.',
@@ -36,7 +36,7 @@ const productsData = [
     },
     {
         slug: 'photon-antenna-light',
-        name: 'Lumen LIFI',
+        name: 'Lumen Photon Antenna Light',
         badge: 'Optical Transmitter Node',
         tagline: 'High-speed broadband beams hidden inside architectural lighting.',
         desc: 'Replaces traditional radio antennas with premium, flicker-free ceiling transceivers. Floods your workspace or living room with warm illumination and multi-gigabit data simultaneously.',
@@ -49,7 +49,7 @@ const productsData = [
     },
     {
         slug: 'lumen-usb-dongle',
-        name: 'Lumen LIFI',
+        name: 'Lumen USB Dongle',
         badge: 'Client Device Adapter',
         tagline: 'Instant LiFi capability for your laptops and computers.',
         desc: 'An ultra-lightweight high-tech adapter that snaps into any standard USB-C port. Houses microscopic optical sensors that capture the data beam from your lighting layout seamlessly.',

@@ -24,5 +24,13 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anmolmathur-ux/LumenLifi.git"
+  },
+  "bugs": {
+    "url": "https://github.com/anmolmathur-ux/LumenLifi/issues"
+  },
+  "homepage": "https://github.com/anmolmathur-ux/LumenLifi#readme"
 }

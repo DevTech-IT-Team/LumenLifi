@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import Head from 'next/head';
-import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-  ArrowUpRight,
   ArrowLeft,
   Cpu,
   Download,
@@ -17,29 +15,25 @@ import {
   HelpCircle,
   FileText,
   Mail,
-  Phone,
-  MapPin,
-  Info
+  Layers3,
+  ExternalLink
 } from 'lucide-react';
 import Header from '../../components/common/Header';
 import Footer from '../../components/common/Footer';
 
-/* ==========================================================================\
-   6-PRODUCT ADVANCED RESIDENTIAL ECOSYSTEM MATRIX (PHOTONICS CYAN THEME)
-   ========================================================================== */
 const productsData = [
   {
     slug: 'lumen-core-downlighters',
     name: 'Lumen Core Downlighters',
     price: '$349',
     category: 'Network Foundation',
-    badge: 'Network Foundation',
+    badge: 'NETWORK TRANSMITTERS',
     tagline: 'The heart of your network.',
     desc: 'These architectural LED ceiling lights act as your invisible routers, beaming dedicated 10 Gbps data cones to every room in your house while providing pristine, tunable ambient lighting.',
     icon: Cpu,
-    accent: 'from-cyan-500 to-blue-600',
-    imageUrl: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=600',
-    size: 'lg:col-span-6',
+    accent: 'from-amber-500/20 to-amber-600/10 border-amber-500/40',
+    textAccent: 'text-amber-400',
+    imageUrl: '/images/products/Lumen Core Downlighters.png',
     specs: ['10 Gbps Data Cones', 'Tunable Ambient Light', 'Zero RF Radiation']
   },
   {
@@ -47,13 +41,13 @@ const productsData = [
     name: 'Lumen Photon Dongle (USB-C)',
     price: '$129',
     category: 'Network Foundation',
-    badge: 'Network Foundation',
+    badge: 'NETWORK TRANSCEIVERS',
     tagline: 'Instantly upgrade your current hardware.',
     desc: 'Plug this microscopic receiver into any laptop, PC, or tablet to instantly transition your device from crowded Wi-Fi to a dedicated 10 Gbps optical link.',
     icon: Laptop,
-    accent: 'from-cyan-600 to-cyan-400',
-    imageUrl: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&q=80&w=600',
-    size: 'lg:col-span-6',
+    accent: 'from-cyan-500/20 to-cyan-600/10 border-cyan-500/40',
+    textAccent: 'text-cyan-400',
+    imageUrl: '/images/products/Lumen Photon Dongle.png',
     specs: ['Microscopic Receiver', 'USB-C Plug-and-Play', 'Dedicated 10 Gbps Link']
   },
   {
@@ -61,126 +55,98 @@ const productsData = [
     name: 'Lumen Matrix 8K TV',
     price: '$1,999',
     category: 'Entertainment & Computing',
-    badge: 'Entertainment & Computing',
+    badge: 'ENTERTAINMENT & COMPUTING',
     tagline: "The first television that doesn't compress your media.",
     desc: 'Powered by a direct optical link from your ceiling, it streams raw, uncompressed 8K video and cloud gaming seamlessly, entirely immune to the bandwidth being used in the rest of the house.',
     icon: Sun,
-    accent: 'from-blue-500 to-indigo-600',
-    imageUrl: 'https://images.unsplash.com/photo-1507668077129-56e32842fceb?auto=format&fit=crop&q=80&w=600',
-    size: 'lg:col-span-4',
+    accent: 'from-cyan-500/20 to-cyan-600/10 border-cyan-500/40',
+    textAccent: 'text-cyan-400',
+    imageUrl: '/images/products/Lumen 8k TV.png',
     specs: ['Uncompressed 8K Video', 'Cloud Gaming Sync', 'Immune to Congestion']
   },
   {
     slug: 'lumen-studio-laptop',
-    name: 'Lumen Studio Laptop',
+    name: 'Lumen Laptop',
     price: '$2,499',
     category: 'Entertainment & Computing',
-    badge: 'Entertainment & Computing',
+    badge: 'ENTERTAINMENT & COMPUTING',
     tagline: 'Designed for spatial computing and extreme rendering.',
     desc: 'With an integrated Li-Fi transceiver built directly into the lid, you receive hardwired, 10 Gbps speeds without ever plugging in an ethernet cable.',
     icon: Laptop,
-    accent: 'from-cyan-500 to-blue-500',
-    imageUrl: 'https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&q=80&w=600',
-    size: 'lg:col-span-4',
-    specs: ['Integrated Transceiver', '10 Gbps Hardwired Speeds', 'Designed for Spatial Computing']
+    accent: 'from-cyan-500/20 to-cyan-600/10 border-cyan-500/40',
+    textAccent: 'text-cyan-400',
+    imageUrl: '/images/products/Lumen Studio Laptop.png',
+    specs: ['Integrated Transceiver', '10 Gbps Hardwired Speeds', 'Spatial Compute Optimized']
   },
   {
     slug: 'lumen-echo-soundbar',
-    name: 'Lumen Echo Soundbar',
+    name: 'Echo Soundbar',
     price: '$599',
     category: 'Entertainment & Computing',
-    badge: 'Entertainment & Computing',
+    badge: 'ENTERTAINMENT & COMPUTING',
     tagline: 'Forget audio syncing issues.',
     desc: 'Connected via sub-millisecond light beams, this speaker processes voice commands and AI home requests the literal millisecond you finish speaking.',
     icon: Activity,
-    accent: 'from-purple-500 to-indigo-500',
-    imageUrl: 'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&q=80&w=600',
-    size: 'lg:col-span-4',
-    specs: ['Sub-millisecond Light Beams', 'Instant AI Processing', 'Pristine Audio Sync']
+    accent: 'from-cyan-500/20 to-cyan-600/10 border-cyan-500/40',
+    textAccent: 'text-cyan-400',
+    imageUrl: '/images/products/Lumen Echo Soundbar.png',
+    specs: ['Sub-millisecond Beams', 'Instant AI Processing', 'Pristine Audio Sync']
   },
   {
     slug: 'lumen-sentinel-video-doorbell',
     name: 'Lumen Sentinel Video Doorbell',
-    price: '$349',
+    price: '$249',
     category: 'Security & Perimeter',
-    badge: 'Security & Perimeter',
+    badge: 'DOMESTIC & PERIMETER',
     tagline: 'Unjammable front-door security.',
     desc: 'Powered by the Li-Fi beam from your porch light, it streams flawless 4K video instantly to your phone. Because it relies on light, it is mathematically impossible for thieves to use Wi-Fi jammers to blind it.',
     icon: Shield,
-    accent: 'from-cyan-600 to-blue-400',
-    imageUrl: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&q=80&w=600',
-    size: 'lg:col-span-6',
-    specs: ['Porch Light Powered', 'Flawless 4K Stream', 'Jamm-Proof Architecture']
+    accent: 'from-cyan-500/20 to-cyan-600/10 border-cyan-500/40',
+    textAccent: 'text-cyan-400',
+    imageUrl: '/images/products/Lumen Sentinel Video Doorbell.png',
+    specs: ['Porch Light Powered', 'Flawless 4K Stream', 'Jam-Proof Architecture']
   },
   {
     slug: 'lumen-aegis-floodlight-cams',
     name: 'Lumen Aegis Floodlight Cams',
     price: '$499',
     category: 'Security & Perimeter',
-    badge: 'Security & Perimeter',
+    badge: 'DOMESTIC & PERIMETER',
     tagline: 'Absolute perimeter control.',
     desc: 'These ultra-bright exterior lights double as multi-gigabit data transmitters, securely linking your outdoor cameras to your local server without broadcasting your security feed onto the public street.',
     icon: ShieldCheck,
-    accent: 'from-slate-700 to-slate-900',
-    imageUrl: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=600',
-    size: 'lg:col-span-6',
+    accent: 'from-cyan-500/20 to-cyan-600/10 border-cyan-500/40',
+    textAccent: 'text-cyan-400',
+    imageUrl: '/images/products/Lumen Aegis Floodlight Cams.png',
     specs: ['Multi-gigabit Uplink', 'Ultra-bright LEDs', 'Air-gapped Perimeter']
   },
   {
     slug: 'lumen-glacier-fridge',
-    name: 'Lumen Glacier Fridge',
-    price: '$3,499',
+    name: 'Glacier Fridge',
+    price: '$349',
     category: 'Conscious Appliances & Home Automation',
-    badge: 'Conscious Appliances & Home Automation',
-    tagline: 'The zero-lag kitchen command center.',
+    badge: 'CONSCIOUS APPLIANCES',
+    tagline: 'The integrated LiFi connection.',
     desc: 'Say goodbye to the loading screens of traditional fridges. Stream 4K cooking tutorials, sync your AI grocery trackers, and run your home dashboard with zero buffering, right from the door.',
     icon: Activity,
-    accent: 'from-blue-600 to-cyan-500',
-    imageUrl: 'https://images.unsplash.com/photo-1601524909162-be87252be298?auto=format&fit=crop&q=80&w=600',
-    size: 'lg:col-span-4',
+    accent: 'from-cyan-500/20 to-cyan-600/10 border-cyan-500/40',
+    textAccent: 'text-cyan-400',
+    imageUrl: '/images/products/Lumen Glacier Smart Fridge.png',
     specs: ['Zero Buffering Dashboard', 'AI Grocery Trackers', '4K Tutorial Streaming']
   },
   {
     slug: 'lumen-precision-robot-vacuum',
-    name: 'Lumen Precision Robot Vacuum',
+    name: 'Precision Robot Vacuum',
     price: '$899',
     category: 'Conscious Appliances & Home Automation',
-    badge: 'Conscious Appliances & Home Automation',
-    tagline: 'Standard vacuums lose their maps in Wi-Fi dead zones.',
+    badge: 'CONSCIOUS APPLIANCES',
+    tagline: 'Absolute Robot vacuum.',
     desc: 'Powered by a continuous optical link, this vacuum processes real-time 3D spatial mapping and AI obstacle avoidance with zero latency, meaning it never bumps into a chair leg again.',
     icon: Zap,
-    accent: 'from-cyan-500 to-indigo-500',
-    imageUrl: 'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&q=80&w=600',
-    size: 'lg:col-span-4',
-    specs: ['Continuous Optical Link', '3D Spatial Mapping', 'Zero Latency Navigation']
-  },
-  {
-    slug: 'lumen-eclipse-window-shades',
-    name: 'Lumen Eclipse Window Shades',
-    price: '$449',
-    category: 'Conscious Appliances & Home Automation',
-    badge: 'Conscious Appliances & Home Automation',
-    tagline: 'True ambient intelligence.',
-    desc: "These motorized shades communicate instantly with your ceiling's optical sensors, adjusting silently to the sun's position and your circadian rhythm without ever requiring a clunky, third-party bridge.",
-    icon: Shield,
-    accent: 'from-cyan-600 to-blue-400',
-    imageUrl: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=600',
-    size: 'lg:col-span-4',
-    specs: ['Optical Sensor Sync', 'Circadian Adjustment', 'Silent Motor Drivers']
-  },
-  {
-    slug: 'lumen-climate-hub',
-    name: 'Lumen Climate Hub',
-    price: '$299',
-    category: 'Conscious Appliances & Home Automation',
-    badge: 'Conscious Appliances & Home Automation',
-    tagline: 'A thermostat that actually thinks.',
-    desc: 'It uses invisible infrared beams to detect exactly how many people are in a room, micro-adjusting the temperature instantly with zero network delay.',
-    icon: Cpu,
-    accent: 'from-cyan-500 to-blue-600',
-    imageUrl: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=600',
-    size: 'lg:col-span-12',
-    specs: ['Infrared Occupancy Tracking', 'Micro-Adjust Temperature', 'Zero Network Delay']
+    accent: 'from-cyan-500/20 to-cyan-600/10 border-cyan-500/40',
+    textAccent: 'text-cyan-400',
+    imageUrl: '/images/products/Lumen Precision Robot Vacuum.png',
+    specs: ['Continuous Optical Link', '3D Spatial Mapping', 'Zero Latency Nav']
   }
 ];
 
@@ -190,282 +156,327 @@ export default function ProductsPage() {
   const activeProduct = productsData.find(p => p.slug === selectedProductSlug) || null;
 
   return (
-    <div className="min-h-screen font-sans bg-[#0B111E] text-slate-200 antialiased selection:bg-cyan-950/50 selection:text-cyan-400 transition-colors duration-300">
+    <div
+      className="min-h-screen font-sans bg-[#080D1A] text-slate-300 antialiased relative overflow-hidden selection:bg-cyan-500 selection:text-white bg-cover bg-no-repeat"
+      style={{ backgroundImage: "url('/images/products/herobg.png')" }}
+    >
+      {/* Background Dimming Layer */}
+      <div className="absolute inset-0 bg-[#080D1A]/85 pointer-events-none z-0" />
+
+      {/* Dynamic Midtone Environmental Lighting Masks */}
+      <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-radial from-[#152B52]/45 via-transparent to-transparent pointer-events-none opacity-70 blur-3xl z-10" />
+      <div className="absolute top-[400px] right-10 w-[700px] h-[500px] bg-radial from-[#0A1C38]/65 via-transparent to-transparent pointer-events-none opacity-50 blur-3xl z-10" />
+
+      {/* Decorative Network Optical Rays Pattern Grid */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#0f192e_1px,transparent_1px),linear-gradient(to_bottom,#0f192e_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-35 z-10" />
+
       <Head>
-        <title>Lumen LIFI | Shop the Conscious Home Ecosystem</title>
-        <meta name="description" content="Welcome to the world's first fully optical conscious home. Every device in the LumenFi ecosystem is equipped with integrated Li-Fi receivers." />
+        <title>Lumen LiFi | Shop the Conscious Home Ecosystem</title>
+        <meta name="description" content="Welcome to the world's first fully optical conscious home." />
       </Head>
 
       <Header />
 
-      <main className="pt-24 select-none">
-        {/* Merchant Layer Compliance Status Bar */}
-        <div className="bg-[#090D1A] border-b border-slate-800/60 py-3 px-6">
-          <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2 text-xs font-mono">
-            <div className="flex items-center gap-2 text-[#00D2FF] font-bold tracking-wide">
-              <Zap className="w-4 h-4 text-[#00D2FF] animate-pulse" />
-              <span>10 Gbps Unthrottled Speed</span>
-            </div>
-            <div className="flex items-center gap-2 text-[#00D2FF] font-bold tracking-wide">
-              <Shield className="w-4 h-4 text-[#00D2FF]" />
-              <span>Absolute Signal Privacy</span>
-            </div>
-            <div className="flex items-center gap-2 text-[#00D2FF] font-bold tracking-wide">
-              <ShieldCheck className="w-4 h-4 text-[#00D2FF]" />
-              <span>Zero Radio Frequency (RF)</span>
-            </div>
-          </div>
-        </div>
-
+      <main className="pt-28 pb-16 relative z-20 max-w-[1450px] mx-auto px-4 sm:px-6 lg:px-8">
         <AnimatePresence mode="wait">
           {!activeProduct ? (
             <motion.div
               key="catalog-view"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="space-y-16 py-16"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              className="py-6 space-y-16"
             >
-              {/* Concept Framework Text Block */}
-              <div className="max-w-7xl mx-auto px-6 lg:px-8">
-                <div className="space-y-4 max-w-3xl">
-                  <h2 className="text-4xl sm:text-5xl font-black text-white tracking-tight leading-none">
-                    Shop the Conscious Home Ecosystem
-                  </h2>
-                  <p className="text-slate-400 text-lg max-w-2xl font-medium leading-relaxed">
-                    Welcome to the world's first fully optical conscious home. Every device in the LumenFi ecosystem is equipped with integrated Li-Fi receivers, guaranteeing zero lag, unjammable security, and infinite bandwidth.
+
+              {/* --- IMMERSIVE HERO CANVAS BANNER --- */}
+              <div
+                className="relative w-full min-h-[560px] lg:min-h-[640px] bg-cover bg-center bg-no-repeat rounded-[2rem] border border-slate-800/80 p-8 sm:p-12 lg:p-16 flex flex-col justify-between overflow-hidden shadow-2xl group"
+                style={{ backgroundImage: "url('/images/products/fullbg.png')" }}
+              >
+                {/* Dark protection gradient filter for effortless typographic clarity */}
+                <div className="absolute inset-0 bg-gradient-to-br from-[#060B16]/80 via-[#060B16]/20 to-transparent pointer-events-none z-0" />
+
+                {/* Cybernetic ambient glow vectors */}
+                <div className="absolute top-0 right-0 w-[450px] h-[450px] bg-cyan-500/5 rounded-full blur-[140px] pointer-events-none z-0" />
+                <div className="absolute -bottom-20 -left-10 w-96 h-96 bg-orange-500/[0.03] rounded-full blur-[100px] pointer-events-none z-0" />
+
+                {/* Primary Narrative Text Block */}
+                <div className="relative z-10 max-w-xl space-y-4">
+                  <h1 className="text-4xl sm:text-5xl xl:text-6xl font-black text-white tracking-tight leading-[1.05]">
+                    Shop the Conscious <br />
+                    <span className="bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent opacity-90">
+                      Home Ecosystem
+                    </span>
+                  </h1>
+
+                  <p className="text-slate-200/90 text-sm sm:text-base font-normal leading-relaxed max-w-lg drop-shadow-md">
+                    Welcome to the world's first fully optical conscious home. Every device in the Lumenfi ecosystem is equipped with integrated LiFi receivers, guaranteeing zero lag, unjammable security, and infinite bandwidth.
                   </p>
-                  <p className="text-sm font-mono font-bold uppercase tracking-widest text-[#00D2FF]">
-                    Stop piecing together a broken Wi-Fi network. Build a Conscious Home.
-                  </p>
+                </div>
+
+                {/* Authentic Metallic Gold Centerpiece Floating Badge */}
+                <div className="relative z-10 w-full flex justify-center pt-12 lg:pt-0">
+                  <div className="relative max-w-xl w-full bg-gradient-to-b from-[#D4AF37]/25 via-[#AA7C11]/15 to-[#5A4106]/35 backdrop-blur-md border border-[#D4AF37]/40 rounded-xl p-4 px-6 text-center shadow-2xl flex flex-col items-center justify-center gap-2 overflow-hidden group/gold">
+
+                    {/* Dynamic metallic gleam sheen highlight */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover/gold:translate-x-full transition-transform duration-1000 ease-out" />
+
+                    {/* Industrial rivet detail pins on card bounds */}
+                    <div className="absolute top-2 left-2 w-1 h-1 rounded-full bg-[#D4AF37]/40 shadow-inner" />
+                    <div className="absolute top-2 right-2 w-1 h-1 rounded-full bg-[#D4AF37]/40 shadow-inner" />
+                    <div className="absolute bottom-2 left-2 w-1 h-1 rounded-full bg-[#D4AF37]/40 shadow-inner" />
+                    <div className="absolute bottom-2 right-2 w-1 h-1 rounded-full bg-[#D4AF37]/40 shadow-inner" />
+
+                    {/* Operational heartbeat optical connection link */}
+                    <div className="flex items-center justify-center">
+                      <span className="relative flex h-2.5 w-2.5">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75" />
+                        <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-cyan-400 border border-white/20" />
+                      </span>
+                    </div>
+
+                    <p className="text-xs sm:text-sm font-sans font-medium text-amber-100 tracking-wide leading-relaxed">
+                      Stop piecing together a broken Wi-Fi network. <br className="hidden sm:inline" />
+                      <span className="font-bold text-white">Build a conscious home.</span>
+                    </p>
+                  </div>
                 </div>
               </div>
 
-              {/* Category Groups */}
-              {['Network Foundation', 'Entertainment & Computing', 'Security & Perimeter', 'Conscious Appliances & Home Automation'].map((catName) => {
-                const catProducts = productsData.filter(p => p.category === catName);
-                return (
-                  <div key={catName} className="max-w-7xl mx-auto px-6 lg:px-8 space-y-8">
-                    <div className="border-b border-slate-800/80 pb-4">
-                      <h3 className="text-2xl font-black text-white tracking-tight uppercase font-mono text-[#00D2FF]">
-                        {catName}
-                      </h3>
-                    </div>
-                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-                      {catProducts.map((product, index) => {
-                        return (
-                          <motion.div
-                            key={product.slug}
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, margin: "-80px" }}
-                            transition={{ duration: 0.65, delay: index * 0.05, ease: [0.16, 1, 0.3, 1] }}
-                            className={`${product.size} flex flex-col`}
-                          >
-                            <div
-                              className="w-full group relative flex flex-col h-full rounded-3xl border border-slate-800 bg-[#0F172A]/40 overflow-hidden transition-all duration-300 hover:border-[#00D2FF]/50 hover:shadow-[0_0_30px_rgba(0,210,255,0.15)]"
-                            >
-                              {/* Image Header with Badge Overlay */}
-                              <div className="relative w-full aspect-[16/10] overflow-hidden bg-slate-950 border-b border-slate-800">
-                                <img
-                                  src={product.imageUrl}
-                                  alt={product.name}
-                                  className="w-full h-full object-cover transform scale-105 group-hover:scale-100 opacity-70 group-hover:opacity-90 transition-all duration-700 ease-out"
-                                />
-                                <span className="absolute top-4 left-4 bg-slate-900/90 backdrop-blur-md border border-slate-700 text-[10px] font-mono font-bold tracking-widest text-[#00D2FF] uppercase px-3 py-1 rounded-full">
-                                  {product.badge}
-                                </span>
+
+              {/* --- UNIFIED FULL-WIDTH MATRIX PRODUCT GRID --- */}
+              <div className="space-y-16">
+
+                {/* GRID SECTION 1: SYSTEM RECEPTORS / FOUNDATIONAL TRANSMITTERS */}
+                <div className="space-y-6">
+                  <div className="bg-cyan-950/20 border-l-2 border-cyan-400 px-4 py-2.5 rounded-r-lg max-w-xs">
+                    <h2 className="text-sm font-black text-white tracking-widest uppercase font-mono flex items-center gap-2">
+                      <Layers3 className="w-4 h-4 text-cyan-400" /> NETWORK FOUNDATION
+                    </h2>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    {productsData.filter(p => p.category === 'Network Foundation').map((product) => {
+                      const Icon = product.icon;
+                      return (
+                        <div key={product.slug} className="group relative bg-[#0B1121]/95 border border-slate-800 rounded-2xl overflow-hidden transition-all duration-300 hover:border-slate-700 hover:shadow-xl flex flex-col justify-between">
+                          <div className="relative aspect-[16/10] w-full bg-slate-950 overflow-hidden">
+                            <img src={product.imageUrl} alt={product.name} className="w-full h-full object-cover opacity-50 group-hover:opacity-90 group-hover:scale-102 transition-all duration-700" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-[#0B1121] via-transparent to-transparent" />
+                            <span className="absolute top-4 left-4 bg-[#050A14] border border-slate-700 text-[10px] font-mono font-bold tracking-widest text-cyan-400 px-3 py-1 rounded-sm uppercase">
+                              {product.badge}
+                            </span>
+                          </div>
+
+                          <div className="p-6 space-y-4 relative -mt-6 bg-[#0B1121] flex-grow flex flex-col justify-between">
+                            <div className="space-y-3">
+                              <div className="flex justify-between items-baseline gap-4">
+                                <h3 className="text-2xl font-bold text-white tracking-tight">{product.name}</h3>
+                                <span className="text-xl font-mono font-bold text-cyan-400">{product.price}</span>
                               </div>
-
-                              {/* Content Body */}
-                              <div className="p-6 sm:p-8 flex-1 flex flex-col justify-between space-y-6">
-                                <div className="space-y-3">
-                                  <div className="flex items-baseline justify-between gap-4">
-                                    <h3 className="text-2xl font-extrabold text-white tracking-tight">
-                                      {product.name}
-                                    </h3>
-                                    <span className="text-xl font-mono font-bold text-white">
-                                      {product.price}
-                                    </span>
-                                  </div>
-                                  <p className="text-sm text-[#00D2FF] font-medium tracking-wide">
-                                    {product.tagline}
-                                  </p>
-                                  <p className="text-slate-400 text-xs leading-relaxed font-normal">
-                                    {product.desc}
-                                  </p>
-                                </div>
-
-                                {/* Specification Checklist Row */}
-                                <div className="space-y-4 pt-2">
-                                  <div className="space-y-2">
-                                    {product.specs.map((spec) => (
-                                      <div key={spec} className="flex items-center gap-2.5 text-xs text-slate-300 font-medium">
-                                        <span className="text-[#00D2FF] text-sm">›</span>
-                                        <span>{spec}</span>
-                                      </div>
-                                    ))}
-                                  </div>
-
-                                  {/* Action Call-To-Action Button */}
-                                  <button
-                                    onClick={() => setSelectedProductSlug(product.slug)}
-                                    className="w-full h-11 border border-slate-700 hover:border-[#00D2FF] bg-slate-900/60 hover:bg-[#00D2FF]/10 text-white font-bold text-xs rounded-xl tracking-wider uppercase transition-all duration-300 shadow-inner"
-                                  >
-                                    Add to Cart
-                                  </button>
-                                </div>
-                              </div>
+                              <p className="text-xs font-mono text-orange-400 flex items-center gap-2">
+                                <Icon className="w-4 h-4" /> {product.tagline}
+                              </p>
+                              <p className="text-slate-400 text-sm leading-relaxed font-light">{product.desc}</p>
                             </div>
-                          </motion.div>
-                        );
-                      })}
-                    </div>
-                  </div>
-                );
-              })}
 
-              {/* Regulatory Transparency & Norms Framework Layout */}
-              <div className="max-w-7xl mx-auto px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-3 gap-8 pt-8">
-                <div className="bg-[#0F172A]/30 border border-slate-800 p-6 rounded-2xl space-y-4">
-                  <div className="flex items-center gap-2 text-white">
-                    <FileText className="w-4 h-4 text-[#00D2FF]" />
-                    <h3 className="text-xs font-mono font-bold uppercase tracking-wider">Required Documentation Links</h3>
-                  </div>
-                  <p className="text-xs text-slate-400 leading-relaxed">Review our residential network configurations, transparent user guidelines, and operational deployment rules.</p>
-                  <div className="space-y-2 pt-2 font-mono text-xs font-bold">
-                    <Link href="/privacy" className="block text-[#00D2FF] hover:underline">→ Infrastructure Privacy Policy</Link>
-                    <Link href="/terms" className="block text-[#00D2FF] hover:underline">→ System Terms & Conditions</Link>
+                            <div className="space-y-4 pt-4">
+                              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 pt-2 border-t border-slate-900/60">
+                                {product.specs.map((spec, i) => (
+                                  <span key={i} className="text-[11px] font-mono text-slate-300 bg-[#050A14] px-2 py-1.5 rounded border border-slate-900 text-center block truncate">
+                                    ▪ {spec}
+                                  </span>
+                                ))}
+                              </div>
+
+                              <button
+                                onClick={() => setSelectedProductSlug(product.slug)}
+                                className="w-full py-3 bg-gradient-to-r from-slate-900 to-slate-950 hover:from-cyan-950 hover:to-slate-900 border border-slate-800 text-xs uppercase font-mono font-bold text-slate-200 rounded-xl transition-all tracking-widest flex items-center justify-center gap-2"
+                              >
+                                CONFIGURE TRANSMITTER <ExternalLink className="w-3.5 h-3.5" />
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
 
-                <div className="bg-[#0F172A]/30 border border-slate-800 p-6 rounded-2xl space-y-4">
-                  <div className="flex items-center gap-2 text-white">
-                    <Mail className="w-4 h-4 text-[#00D2FF]" />
-                    <h3 className="text-xs font-mono font-bold uppercase tracking-wider">Corporate Identification Desk</h3>
-                  </div>
-                  <p className="text-xs text-slate-400 leading-relaxed">Official commercial deployment requests or compliance verification checks can communicate directly with our centralized desk:</p>
-                  <div className="space-y-1.5 pt-1 text-xs font-mono text-slate-400">
-                    <p className="flex items-center gap-2"><Phone className="w-3.5 h-3.5 text-slate-500" /> +91 (Commercial Support Hub)</p>
-                    <p className="flex items-center gap-2"><Mail className="w-3.5 h-3.5 text-slate-500" /> engineering@lumenfi.com</p>
-                    <p className="flex items-center gap-2"><MapPin className="w-3.5 h-3.5 text-slate-500" /> Residential Operations Core, India Hub</p>
-                  </div>
-                </div>
-
-                <div className="bg-[#0F172A]/30 border border-slate-800 p-6 rounded-2xl space-y-4">
-                  <div className="flex items-center gap-2 text-white">
-                    <ShieldCheck className="w-4 h-4 text-[#00D2FF]" />
-                    <h3 className="text-xs font-mono font-bold uppercase tracking-wider">Logistical Parameter Matrix</h3>
-                  </div>
-                  <div className="space-y-3">
-                    <div className="flex items-start gap-2 text-xs text-slate-400">
-                      <Check className="w-3.5 h-3.5 text-[#00D2FF] shrink-0 mt-0.5" />
-                      <span><strong>Deployment Windows</strong>: Home hardware kits step into configuration cycles within 3–5 structural business days.</span>
-                    </div>
-                    <div className="flex items-start gap-2 text-xs text-slate-400">
-                      <Check className="w-3.5 h-3.5 text-[#00D2FF] shrink-0 mt-0.5" />
-                      <span><strong>Transparent Invoicing</strong>: No localized frequency surcharges or surprise equipment taxes added later.</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Science Clarification FAQ Block */}
-              <div className="max-w-4xl mx-auto px-6 pt-8">
-                <div className="text-center space-y-2 mb-12">
-                  <h2 className="text-2xl sm:text-3xl font-black tracking-tight text-white">Frequently Evaluated Physics</h2>
-                  <p className="text-[#00D2FF] text-xs font-mono uppercase tracking-widest font-bold">Unpacking The Signal Transmission Paradigm:</p>
-                </div>
-
-                <div className="space-y-4">
-                  {[
-                    {
-                      q: "How does this scale beyond my standard Jio or Airtel Fiber setup?",
-                      a: "Traditional fiber providers do an excellent job bringing high-speed data lines to your home boundary, but they bottleneck inside your rooms by handing that traffic over to standard radio wave Wi-Fi routers. Lumen LIFI takes your fiber line and routes it straight through clean overhead visible light waves, preventing your speeds from suffering wireless degradation across walls."
-                    },
-                    {
-                      q: "Why is optical wireless internet highly optimized for next-generation AI platforms?",
-                      a: "Modern AI network arrays require persistent, un-throttled data pipes with zero packet delay. Because light waves operate on an entirely separate, massive un-congested spectrum bands, it eliminates typical micro-stuttering or drops in tracking speed, giving local AI processing environments instantaneous data access metrics."
-                    }
-                  ].map((faq, index) => (
-                    <div
-                      key={index}
-                      className="border border-slate-800 rounded-xl p-5 bg-[#0F172A]/40 cursor-pointer hover:border-slate-700 transition-colors"
-                      onClick={() => setActiveFaq(activeFaq === index ? -1 : index)}
-                    >
-                      <div className="flex justify-between items-center gap-4">
-                        <h4 className="text-sm font-bold text-white font-mono">{faq.q}</h4>
-                        <HelpCircle className={`w-4 h-4 text-slate-500 shrink-0 transition-transform ${activeFaq === index ? 'rotate-180 text-[#00D2FF]' : ''}`} />
+                {/* GRID SECTION 2: DOWNSTREAM NODE ARRAYS */}
+                {['Entertainment & Computing', 'Security & Perimeter', 'Conscious Appliances & Home Automation'].map((catName) => {
+                  const catProducts = productsData.filter(p => p.category === catName);
+                  if (catProducts.length === 0) return null;
+                  return (
+                    <div key={catName} className="space-y-6">
+                      <div className="bg-slate-900/50 border-l-2 border-slate-700 px-4 py-2 rounded-r-lg backdrop-blur-xs max-w-md">
+                        <h2 className="text-xs font-black text-slate-400 tracking-widest uppercase font-mono">
+                          {catName.toUpperCase()}
+                        </h2>
                       </div>
-                      {activeFaq === index && (
-                        <p className="text-xs text-slate-400 mt-3 leading-relaxed border-t border-slate-800 pt-3 font-sans">
-                          {faq.a}
-                        </p>
-                      )}
+
+                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {catProducts.map((product) => (
+                          <div key={product.slug} className="bg-[#0B1121]/90 border border-slate-800/80 rounded-xl p-5 flex flex-col justify-between hover:border-slate-700 hover:bg-[#0E162B]/90 transition-all shadow-xl group backdrop-blur-xs">
+                            <div className="space-y-4">
+                              <div className="rounded-lg overflow-hidden aspect-[16/10] bg-slate-950 opacity-60 group-hover:opacity-100 transition-opacity relative border border-slate-900">
+                                <img src={product.imageUrl} alt={product.name} className="w-full h-full object-cover" />
+                              </div>
+
+                              <div className="space-y-1">
+                                <div className="flex justify-between items-start gap-2">
+                                  <h3 className="text-base font-bold text-white tracking-tight group-hover:text-cyan-400 transition-colors line-clamp-1">{product.name}</h3>
+                                  <span className="text-sm font-mono font-bold text-cyan-400 shrink-0">{product.price}</span>
+                                </div>
+                                <p className="text-[11px] text-orange-400/90 font-mono font-medium line-clamp-1">✓ {product.tagline}</p>
+                              </div>
+
+                              <p className="text-slate-400 text-xs leading-relaxed line-clamp-3 font-light font-sans">{product.desc}</p>
+                            </div>
+
+                            <button
+                              onClick={() => setSelectedProductSlug(product.slug)}
+                              className="w-full py-2.5 mt-5 bg-[#050A14] border border-slate-900 text-[10px] uppercase font-mono font-bold text-slate-400 rounded-lg hover:bg-slate-900 hover:text-white transition-colors tracking-wider"
+                            >
+                              VIEW DATASHEET
+                            </button>
+                          </div>
+                        ))}
+                      </div>
                     </div>
-                  ))}
+                  );
+                })}
+              </div>
+
+
+              {/* --- EVALUATED PHYSICS / TECHNICAL LOGS SECTION --- */}
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 pt-12 border-t border-slate-800/80">
+                <div className="lg:col-span-8 space-y-4">
+                  <div className="space-y-1">
+                    <h2 className="text-xl font-bold text-white tracking-tight">Frequently Evaluated Physics</h2>
+                    <p className="text-xs font-mono text-cyan-400 tracking-wider uppercase">UNPACKING THE OPTICAL WAVE SYSTEM SPECIFICATIONS:</p>
+                  </div>
+
+                  <div className="space-y-3">
+                    {[
+                      {
+                        q: "How does this scale beyond my standard Jio or Airtel Fiber setup?",
+                        a: "Traditional fiber providers do an excellent job bringing high-speed data lines to your home boundary, but they bottleneck inside your rooms by handing that traffic over to standard radio wave Wi-Fi routers. Lumen LIFI takes your fiber line and routes it straight through clean overhead visible light waves, preventing your speeds from suffering wireless degradation across walls."
+                      },
+                      {
+                        q: "Why is optical wireless internet highly optimized for next-generation AI platforms?",
+                        a: "Modern AI network arrays require persistent, un-throttled data pipes with zero packet delay. Because light waves operate on an entirely separate, massive un-congested spectrum bands, it eliminates typical micro-stuttering or drops in tracking speed, giving local AI processing environments instantaneous data access metrics."
+                      }
+                    ].map((faq, index) => (
+                      <div
+                        key={index}
+                        className="border border-slate-800/80 rounded-xl p-4 bg-[#060B14]/90 cursor-pointer hover:border-slate-700 transition-colors backdrop-blur-xs"
+                        onClick={() => setActiveFaq(activeFaq === index ? -1 : index)}
+                      >
+                        <div className="flex justify-between items-center gap-4">
+                          <h4 className="text-xs font-bold text-white font-mono">{faq.q}</h4>
+                          <HelpCircle className={`w-4 h-4 text-slate-500 shrink-0 transition-transform ${activeFaq === index ? 'rotate-180 text-cyan-400' : ''}`} />
+                        </div>
+                        {activeFaq === index && (
+                          <p className="text-xs text-slate-400 mt-2.5 border-t border-slate-800/60 pt-2.5 leading-relaxed font-sans">
+                            {faq.a}
+                          </p>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Left Side Metadata Infrastructure Documentation Links */}
+                <div className="lg:col-span-4 grid grid-cols-1 gap-4 text-[11px] font-mono text-slate-400">
+                  <div className="bg-[#060B14]/80 border border-slate-800/80 p-5 rounded-xl space-y-2 backdrop-blur-xs">
+                    <div className="flex items-center gap-2 text-white">
+                      <FileText className="w-4 h-4 text-cyan-400" />
+                      <h3 className="font-bold uppercase tracking-wider text-[10px]">DOCUMENTATION INDEX</h3>
+                    </div>
+                    <p className="text-[11px] leading-relaxed opacity-70">Review residential network profiles, hardware compliance maps, and configuration guidelines.</p>
+                    <div className="space-y-1 pt-1 font-bold">
+                      <span className="block text-cyan-400 hover:underline cursor-pointer">→ Infrastructure Privacy Policy</span>
+                      <span className="block text-cyan-400 hover:underline cursor-pointer">→ System Terms & Conditions</span>
+                    </div>
+                  </div>
+
+                  <div className="bg-[#060B14]/80 border border-slate-800/80 p-5 rounded-xl space-y-2 backdrop-blur-xs">
+                    <div className="flex items-center gap-2 text-white">
+                      <Mail className="w-4 h-4 text-orange-400" />
+                      <h3 className="font-bold uppercase tracking-wider text-[10px]">OPERATIONS ROUTING</h3>
+                    </div>
+                    <div className="space-y-1 opacity-70 text-[10px]">
+                      <p>LINE: +91 (Commercial Support Hub)</p>
+                      <p>MAIL: engineering@lumenfi.com</p>
+                      <p className="text-slate-500">Registry: Residential Operations Core, India Hub</p>
+                    </div>
+                  </div>
                 </div>
               </div>
+
             </motion.div>
           ) : (
-            /* Sub-Page Detail Specification Block */
+
+            /* --- DETAILED COMPONENT DATASHEET SPEC SHEET VIEW --- */
             <motion.section
               key="detail-view"
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -15 }}
-              transition={{ duration: 0.4, ease: 'easeInOut' }}
-              className="max-w-6xl mx-auto px-6 py-12 pb-24"
+              transition={{ duration: 0.3 }}
+              className="max-w-5xl mx-auto py-8"
             >
               <button
                 onClick={() => setSelectedProductSlug(null)}
-                className="inline-flex items-center gap-2 font-mono text-xs text-slate-400 hover:text-[#00D2FF] transition-colors mb-12 group font-bold"
+                className="inline-flex items-center gap-2 font-mono text-xs text-slate-400 hover:text-cyan-400 transition-colors mb-10 group font-bold"
               >
-                <ArrowLeft className="w-3.5 h-3.5 transform group-hover:-translate-x-0.5 transition-transform" />
-                RETURN TO HARDWARE ECOSYSTEM
+                <ArrowLeft className="w-3.5 h-3.5 transform group-hover:-translate-x-1 transition-transform" />
+                RETURN TO OVERVIEW MODULE
               </button>
 
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start bg-[#0A1121]/95 border border-slate-800 p-8 rounded-3xl relative backdrop-blur-md">
+                <div className="absolute inset-0 bg-radial from-cyan-500/5 via-transparent to-transparent opacity-60 pointer-events-none" />
+
                 <div className="lg:col-span-5 relative">
-                  <div className={`absolute inset-0 bg-gradient-to-tr ${activeProduct.accent} rounded-[50px_20px_80px_40px] transform rotate-2 scale-[1.02] opacity-15 blur-sm`} />
-                  <div className="w-full aspect-[4/5] rounded-[50px_20px_80px_40px] overflow-hidden border-4 border-slate-900 shadow-xl relative bg-slate-900">
-                    <img src={activeProduct.imageUrl} alt={activeProduct.name} className="w-full h-full object-cover opacity-80 mix-blend-screen" />
+                  <div className="w-full aspect-square rounded-2xl overflow-hidden border border-slate-800 shadow-2xl bg-slate-950">
+                    <img src={activeProduct.imageUrl} alt={activeProduct.name} className="w-full h-full object-cover opacity-70" />
                   </div>
                 </div>
 
-                <div className="lg:col-span-7 space-y-6">
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-slate-900 border border-slate-800 text-slate-400 font-mono text-[10px] font-bold uppercase">
-                    <Cpu className="w-3.5 h-3.5 text-[#00D2FF]" /> CORE HARDWARE // {activeProduct.badge}
+                <div className="lg:col-span-7 space-y-6 relative z-10">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-slate-950 border border-slate-800 text-slate-400 font-mono text-[10px] font-bold uppercase">
+                    <Cpu className="w-3.5 h-3.5 text-cyan-400" /> SYSTEM DEFINITION // {activeProduct.badge}
                   </div>
-                  <h1 className="text-4xl sm:text-5xl font-black text-white tracking-tight leading-none">{activeProduct.name}</h1>
-                  <p className="text-base text-[#00D2FF] font-semibold font-mono leading-relaxed">{activeProduct.tagline}</p>
+                  <div className="flex justify-between items-start gap-4">
+                    <h1 className="text-3xl sm:text-4xl font-black text-white tracking-tight leading-none">{activeProduct.name}</h1>
+                    <span className="text-2xl font-mono font-bold text-cyan-400">{activeProduct.price}</span>
+                  </div>
+                  <p className="text-sm text-cyan-500 font-semibold font-mono">{activeProduct.tagline}</p>
 
-                  <div className="p-6 bg-slate-900/60 border border-slate-800 rounded-2xl">
-                    <h3 className="font-mono text-xs font-bold text-white uppercase tracking-wider mb-2 flex items-center gap-2">
-                      <Cpu className="w-3.5 h-3.5 text-[#00D2FF]" /> Architectural Statement
-                    </h3>
-                    <p className="text-xs text-slate-400 leading-relaxed font-normal">{activeProduct.desc}</p>
+                  <div className="p-5 bg-slate-950/80 border border-slate-900 rounded-xl text-xs text-slate-400 leading-relaxed font-light">
+                    {activeProduct.desc}
                   </div>
 
                   <div className="space-y-3">
-                    <h4 className="font-mono text-[11px] font-bold text-slate-500 uppercase tracking-widest">VERIFIED PROTOCOL SPECIFICATIONS</h4>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                      {activeProduct.specs.concat(['Microsecond packet translation layer', '100% optical physical containment boundary']).map((item) => (
-                        <div key={item} className="flex items-start gap-2 text-xs font-medium text-slate-300">
-                          <Check className="w-4 h-4 text-[#00D2FF] shrink-0 mt-0.5" />
+                    <h4 className="font-mono text-[10px] font-bold text-slate-500 uppercase tracking-widest">VERIFIED PROTOCOL CHECKLIST</h4>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                      {activeProduct.specs.concat(['Microsecond processing translation layer', '100% optical space containment isolation']).map((item) => (
+                        <div key={item} className="flex items-center gap-2 text-xs text-slate-300 font-mono">
+                          <Check className="w-3.5 h-3.5 text-cyan-400 shrink-0" />
                           <span>{item}</span>
                         </div>
                       ))}
                     </div>
                   </div>
 
-                  <div className="pt-6 border-t border-slate-800 flex flex-wrap gap-4">
-                    <button className="h-12 px-6 rounded-xl bg-slate-900 border border-slate-700 hover:border-[#00D2FF] text-white font-mono font-bold text-xs uppercase tracking-wider transition-colors inline-flex items-center gap-2">
-                      <Download className="w-4 h-4" /> Download Tech Blueprint
+                  <div className="pt-6 border-t border-slate-900 flex flex-wrap gap-4">
+                    <button className="h-11 px-5 rounded-xl bg-[#050A14] border border-slate-800 hover:border-slate-700 text-white font-mono font-bold text-xs uppercase tracking-wider transition-colors inline-flex items-center gap-2">
+                      <Download className="w-3.5 h-3.5" /> Technical Blueprint (PDF)
                     </button>
-                    <Link href="/contact" className="h-12 px-6 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:opacity-90 text-white font-mono font-bold text-xs uppercase tracking-wider transition-all inline-flex items-center justify-center shadow-lg shadow-cyan-500/10">
+                    <button className="h-11 px-6 rounded-xl bg-gradient-to-r from-cyan-600 to-blue-600 hover:opacity-90 text-white font-mono font-bold text-xs uppercase tracking-wider transition-all inline-flex items-center justify-center shadow-lg shadow-cyan-500/10">
                       Request Deployment Review
-                    </Link>
+                    </button>
                   </div>
                 </div>
               </div>

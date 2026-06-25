@@ -1,8 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Send, ShieldCheck, ArrowUpRight } from 'lucide-react';
-import logoPl from '../../../assets/icons/Lumenlogo.png';
-
+import logoPl from '/public/brand/logo.png';
 export default function Footer() {
   return (
     <footer
@@ -21,25 +20,27 @@ export default function Footer() {
       <div className="relative max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-12 gap-12 z-10">
         {/* Brand Column */}
         <div className="md:col-span-4 space-y-5">
-          <div className="relative w-[200px] h-[62px]">
+          {/* Extra-Large Logo Container matching Hero sizing */}
+          <div className="relative w-64 h-20 sm:w-80 sm:h-24 flex items-center justify-start">
             <Image
               src={logoPl}
               alt="LumenFi Logo"
               fill
-              className="object-contain"
+              className="object-contain object-left"
+              priority
             />
           </div>
 
+          {/* Simplified, easy-to-read text for a 6th-grade level */}
           <p
             className="text-sm leading-relaxed max-w-sm"
             style={{ color: '#4A6080' }}
           >
             <strong className="text-[#0D2240] text-base">
-              Light becomes Data.
+              Light turns into Internet data.
             </strong>
             <br />
-            Connectivity is Better with LiFi. Wireless communications that
-            pushes connectivity to new limits with light.
+            LiFi makes it easy to get online using bright light beams instead of regular Wi-Fi radio waves. It is super fast wireless internet powered by pure light!
           </p>
 
           <div
@@ -54,10 +55,9 @@ export default function Footer() {
               className="w-4 h-4"
               style={{ color: '#00C2C7' }}
             />
-            <span>IEEE 802.11bb Architecture Compliant</span>
+            <span>Built to Official Global LiFi Technology Standards</span>
           </div>
         </div>
-
         {/* Links Column 1 */}
         <div className="md:col-span-2 space-y-4">
           <h4
@@ -181,34 +181,34 @@ export default function Footer() {
 
       {/* Bottom bar */}
       {/* Bottom bar */}
-<div
-  className="max-w-7xl mx-auto px-6 mt-16 pt-6 text-[11px] font-mono flex flex-col md:flex-row justify-between items-center gap-4"
-  style={{
-    borderTop: '1px solid rgba(26,110,191,0.10)',
-    color: '#94A3B8',
-  }}
->
-  <p>
-    © {new Date().getFullYear()} LumenFi Global Systems. All rights
-    reserved.
-  </p>
+      <div
+        className="max-w-7xl mx-auto px-6 mt-16 pt-6 text-[11px] font-mono flex flex-col md:flex-row justify-between items-center gap-4"
+        style={{
+          borderTop: '1px solid rgba(26,110,191,0.10)',
+          color: '#94A3B8',
+        }}
+      >
+        <p>
+          © {new Date().getFullYear()} LumenFi Global Systems. All rights
+          reserved.
+        </p>
 
-  <div className="flex flex-wrap items-center gap-3">
-    <Link
-      href="/privacy"
-      className="px-3 py-1.5 rounded-lg border border-[#1A6EBF]/20 hover:border-[#1A6EBF] hover:text-[#1A6EBF] transition-all duration-200"
-    >
-      Privacy Policy
-    </Link>
+        <div className="flex flex-wrap items-center gap-3">
+          <Link
+            href="/privacy"
+            className="px-3 py-1.5 rounded-lg border border-[#1A6EBF]/20 hover:border-[#1A6EBF] hover:text-[#1A6EBF] transition-all duration-200"
+          >
+            Privacy Policy
+          </Link>
 
-    <Link
-      href="/terms"
-      className="px-3 py-1.5 rounded-lg border border-[#1A6EBF]/20 hover:border-[#1A6EBF] hover:text-[#1A6EBF] transition-all duration-200"
-    >
-      Terms & Conditions
-    </Link>
-  </div>
-</div>
+          <Link
+            href="/terms"
+            className="px-3 py-1.5 rounded-lg border border-[#1A6EBF]/20 hover:border-[#1A6EBF] hover:text-[#1A6EBF] transition-all duration-200"
+          >
+            Terms & Conditions
+          </Link>
+        </div>
+      </div>
     </footer>
   );
 }

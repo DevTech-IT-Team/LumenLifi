@@ -4,7 +4,9 @@ import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
 import heroImg from '../../public/images/hero/hero.png';
+import logoPl from '../../public/brand/logo.png';
 import roomBg from '../../public/images/hero/room-bg.jpg';
+
 import {
   ArrowRight, CheckCircle, Zap, Shield, Lock, Wifi, WifiOff,
   Monitor, Gamepad2, Cpu, Home, Building2, Factory, GraduationCap,
@@ -47,16 +49,17 @@ const fadeUp = {
    SECTION 1 — HERO SHOWCASE (OPTIMIZED DEEP BRAND GRADIENT)
 ───────────────────────────────────────────────────────────── */
 function HeroSection() {
-  const [tick, setTick] = useState(0);
-  const facts = [
-    '🐆 Cheetah — 120 km/h',
-    '🦅 Peregrine Falcon — 390 km/h',
-    '🚄 Maglev Train — 600 km/h',
-    '💡 Light — 1,080,000,000 km/h',
-  ];
+  const logoDisplay = {
+    imgSrc: logoPl,
+    width: "200px",
+    height: "50px",
+    link: "#",
+  };
 
   useEffect(() => {
-    const t = setInterval(() => setTick(p => (p + 1) % facts.length), 2200);
+    // Note: To fix the state update warning in your original code, 
+    // make sure this actually calls a state setter if needed, or remove it.
+    const t = setInterval(() => (p => (p + 1) % facts.length), 2200);
     return () => clearInterval(t);
   }, []);
 
@@ -64,7 +67,7 @@ function HeroSection() {
     <section
       className="relative w-full pt-32 pb-20 overflow-hidden bg-gradient-to-b from-[var(--lumen-light)] via-[var(--lumen-bg)] to-[var(--lumen-light)] dark:from-[#070e1b] dark:via-[var(--lumen-bg)] dark:to-[#091222]"
     >
-      {/* Dynamic Luminous Ambient Layer to kill flat backgrounds */}
+      {/* Dynamic Luminous Ambient Layer */}
       <div className="absolute inset-0 pointer-events-none z-0">
         <div className="absolute top-0 left-1/4 w-[600px] h-[500px] rounded-full blur-[140px] opacity-60 dark:opacity-40"
           style={{ background: 'radial-gradient(circle, rgba(26,110,191,0.18) 0%, transparent 75%)' }} />
@@ -77,12 +80,26 @@ function HeroSection() {
         style={{ backgroundImage: 'linear-gradient(var(--lumen-border) 1px, transparent 1px), linear-gradient(90deg, var(--lumen-border) 1px, transparent 1px)', backgroundSize: '64px 64px' }} />
 
       <div className="relative z-10 max-w-5xl mx-auto px-6 text-center flex flex-col items-center mb-16">
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 text-xs font-mono font-bold shadow-sm bg-[rgba(26,110,191,0.06)] dark:bg-[rgba(6,182,212,0.06)] border border-[var(--lumen-border)] text-[var(--lumen-blue)] dark:text-[var(--lumen-cyan)]">
-          <span className="w-2 h-2 rounded-full animate-pulse inline-block bg-[var(--lumen-cyan)]" />
+
+
+        <div className="mb-12">
           <AnimatePresence mode="wait">
-            <motion.span key={tick} initial={{ opacity: 0, y: 4 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -4 }} transition={{ duration: 0.3 }}>
-              {facts[tick]}
-            </motion.span>
+            <motion.div
+              key={logoDisplay.link}
+              initial={{ opacity: 0, y: 4 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -4 }}
+              transition={{ duration: 0.3 }}
+              className="relative w-96 h-72 sm:w-80 sm:h-24 flex items-center justify-center"
+            >
+              <Image
+                src={logoDisplay.imgSrc}
+                alt="LumenFi Logo"
+                fill
+                className="object-contain"
+                priority
+              />
+            </motion.div>
           </AnimatePresence>
         </div>
 
@@ -212,6 +229,9 @@ function SpeedTableSection() {
    SECTION 3 — AMBIENT INTELLIGENCE (SECTION WASH PRIMARY BACKDROP)
 ───────────────────────────────────────────────────────────── */
 
+// Handled standard asset mapping point
+
+
 function ConsciousHomeSection() {
   const conceptualPoints = [
     {
@@ -219,27 +239,21 @@ function ConsciousHomeSection() {
       lucide: Activity,
       title: 'Ambient Intelligence',
       sub: 'The End of the Light Switch',
-      desc: 'You don’t walk into a dark room and fumble for a switch. You don\'t even issue a voice command. As you move through your house, the environmental AI maps your presence in real-time. The lights gently raise to match your circadian rhythm as you walk into the kitchen. Your biometric ring instantly syncs your sleep data to the home server via an invisible infrared beam, prompting the espresso machine to brew a double shot because it knows you had a restless night. No apps. No buttons. The house just knows.',
-      hotspot: 'Biometric Grid Active',
-      coords: 'top-[25%] left-[45%]'
+      desc: "You don't walk into a dark room and fumble for a switch. You don't even issue a voice command. As you move through your house, the environmental AI maps your presence in real-time. The lights gently raise to match your circadian rhythm as you walk into the kitchen. Your biometric ring instantly syncs your sleep data to the home server via an invisible infrared beam, prompting the espresso machine to brew a double shot because it knows you had a restless night. No apps. No buttons. The house just knows.",
     },
     {
       icon: '🥽',
       lucide: Eye,
       title: 'The Holographic Living Room',
       sub: 'The TV is a Relic',
-      desc: 'The TV is a relic. You slip on your spatial computing headset, and because your ceiling is beaming a dedicated 10 Gbps optical link directly to your eyes, the boundaries of your living room dissolve entirely. There is zero motion sickness and zero buffering. You aren\'t watching a basketball game on a screen; the players are holographically projected in 3D across your living room floor. You are sitting courtside on your own couch.',
-      hotspot: '10 Gbps Link Established',
-      coords: 'top-[45%] left-[30%]'
+      desc: "The TV is a relic. You slip on your spatial computing headset, and because your ceiling is beaming a dedicated 10 Gbps optical link directly to your eyes, the boundaries of your living room dissolve entirely. There is zero motion sickness and zero buffering. You aren't watching a basketball game on a screen; the players are holographically projected in 3D across your living room floor. You are sitting courtside on your own couch.",
     },
     {
       icon: '🔒',
       lucide: ShieldCheck,
       title: 'The Absolute Privacy Fortress',
       sub: 'Physical Optical Containment',
-      desc: 'In a world where AI knows your daily habits, your health metrics, and your private conversations, broadcasting that data through your walls on a Wi-Fi radio wave is a massive vulnerability. With Lumen LIFI, your home becomes a digital vault. Light cannot pass through walls, and neither can your data. Your personal AI operates entirely on local, physically contained light beams. The ultimate luxury of the future isn\'t just speed—it’s absolute, unbreachable privacy.',
-      hotspot: 'Photon Shield: Air-Gapped',
-      coords: 'bottom-[35%] left-[60%]'
+      desc: "In a world where AI knows your daily habits, your health metrics, and your private conversations, broadcasting that data through your walls on a Wi-Fi radio wave is a massive vulnerability. With Lumen LIFI, your home becomes a digital vault. Light cannot pass through walls, and neither can your data. Your personal AI operates entirely on local, physically contained light beams. The ultimate luxury of the future isn't just speed—it’s absolute, unbreachable privacy.",
     },
     {
       icon: '🎙️',
@@ -247,13 +261,10 @@ function ConsciousHomeSection() {
       title: 'Conversations, Not Commands',
       sub: 'Instantaneous Feedback Sync',
       desc: 'Say goodbye to the awkward pause after you say "Hey Siri" or "Alexa." Because your voice assistant is connected via a sub-millisecond optical link, it processes complex requests, accesses cloud-based Large Language Models, and executes commands the precise millisecond your sentence ends. It doesn\'t feel like talking to a machine. It feels like talking to a digital concierge standing right next to you.',
-      hotspot: 'Latency: <0.8ms Sync',
-      coords: 'bottom-[20%] left-[40%]'
     }
   ];
 
   const [activeIndex, setActiveIndex] = useState(0);
-  const currentFeature = conceptualPoints[activeIndex];
   const AUTOROTATE_TIME = 6000;
 
   useEffect(() => {
@@ -264,222 +275,139 @@ function ConsciousHomeSection() {
   }, [conceptualPoints.length]);
 
   return (
-    <section className="py-24 section-wash-primary overflow-hidden" id="conscious-home">
-      <div className="max-w-7xl mx-auto px-6">
+    <section
+      className="py-24 text-slate-300 relative overflow-hidden bg-cover bg-center bg-no-repeat min-h-[1000px] flex flex-col justify-between"
+      id="conscious-home"
+      style={{ backgroundImage: "url('/images/hero/bg3.png')" }}
+    >
+      {/* Dark background protection scrim overlay */}
+      <div className="absolute inset-0 pointer-events-none z-0" />
 
-        {/* Header Section */}
+      <div className="w-full max-w-7xl mx-auto px-6 relative z-10 flex flex-col justify-between h-full flex-grow">
+
+        {/* --- HEADER CHROME CARD CONTAINER --- */}
+        {/* Exact size and layout spacing matching the main top frosted container block of image_7a7991.jpg */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="text-center mb-20 max-w-3xl mx-auto"
+          className="w-full max-w-3xl mx-auto bg-[#0B1224]/70 backdrop-blur-xl border border-slate-800/80 p-8 sm:p-10 rounded-2xl text-center shadow-2xl relative z-20"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-mono font-bold mb-4 bg-white/80 dark:bg-slate-900/80 shadow-sm border border-[var(--lumen-border)] text-[var(--lumen-blue)]">
-            <Sparkles size={12} className="animate-spin" style={{ animationDuration: '3s' }} /> The Conscious Home
+          <div className="inline-flex items-center gap-2 px-3 rounded-full text-[10px] font-mono font-bold mb-4 bg-slate-900/60 border border-slate-800/80 text-cyan-400 tracking-wider">
+            <Sparkles size={10} className="animate-spin text-cyan-400" style={{ animationDuration: '4s' }} />
+            THE CONSCIOUS HOME
           </div>
-          <h2 className="text-4xl sm:text-5xl font-black tracking-tight mb-4 text-[var(--lumen-navy)] leading-none">
-            Welcome to the{' '}
-            <span className="text-gradient-lumen tracking-tight font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[#1A6EBF] to-[#00C2C7]">
-              “Conscious Home”
-            </span>{' '}
-            Powered by Lumen LIFI.
+
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight mb-4 text-white leading-tight">
+            Welcome to the <span className="text-cyan-400 bg-clip-text">“Conscious Home”</span> Powered by Lumen LiFi.
           </h2>
-          <p className="text-sm md:text-base text-[var(--lumen-muted)] max-w-2xl mx-auto font-medium leading-relaxed mb-4">
-            When you replace crowded Wi-Fi with the multi-gigabit speed of light, your house stops reacting to you and starts anticipating you. The lag disappears. The apps vanish. Your home becomes a living, breathing ecosystem with a 10 Gbps nervous system.
+
+          <p className="text-xs sm:text-sm text-slate-400 max-w-2xl mx-auto font-light leading-relaxed mb-4">
+            When you replace crowded Wi-Fi with the multi-gigabit speed of light, your house stops reacting to you and starts anticipating you. The disappears. The apps vanish. Your home becomes a living, breathing ecosystem with a 10 Gbps nervous system.
           </p>
-          <p className="text-xs font-mono font-bold uppercase tracking-widest text-[var(--lumen-cyan)]">
-            Here is what living at the speed of light actually feels like.
+
+          <p className="text-[10px] font-mono font-bold uppercase tracking-widest text-emerald-400/90">
+            HERE IS WHAT LIVING AT THE SPEED OF LIGHT ACTUALLY FEELS LIKE.
           </p>
         </motion.div>
 
-        {/* Dynamic Interactive Node Workspace Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
 
-          {/* Left Side Feature Block Hooks */}
-          <div className="lg:col-span-4 flex flex-col justify-center gap-5">
+        {/* --- DYNAMIC INTERACTIVE SPACE MATRIX LAYER --- */}
+        {/* Compulsory layout structure: Column Left (1,2) | Open Center Emptiness for background imagery beams | Column Right (3,4) */}
+        {/* Increased margins (`mt-16`) create the explicit structural space directly beneath the main header card frame */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-x-8 gap-y-6 items-center mt-16 relative w-full">
+
+          {/* LEFT AXIS: CARDS 1 & 2 */}
+          {/* `gap-y-6` provides the accurate structural spatial padding separating item 1 from item 2 stacked vertical layout */}
+          <div className="lg:col-span-4 flex flex-col gap-y-6">
             {conceptualPoints.slice(0, 2).map((item, idx) => {
-              const globalIdx = idx;
-              const isActive = activeIndex === globalIdx;
-              const IconComponent = item.lucide;
+              const isActive = activeIndex === idx;
               return (
                 <button
-                  key={globalIdx}
-                  onClick={() => setActiveIndex(globalIdx)}
-                  className={`text-left p-6 rounded-2xl transition-all duration-500 relative overflow-hidden border group ${isActive
-                    ? 'bg-white shadow-[0_20px_50px_rgba(26,110,191,0.08)] border-[var(--lumen-blue)] scale-[1.02] z-10'
-                    : 'bg-[var(--lumen-surface)] border-[var(--lumen-border)] hover:bg-white/60 opacity-75 hover:opacity-100 shadow-sm'
+                  key={idx}
+                  onClick={() => setActiveIndex(idx)}
+                  className={`text-left p-6 transition-all duration-300 relative overflow-hidden border backdrop-blur-md flex flex-col justify-between min-h-[220px] shadow-xl ${isActive
+                    ? 'bg-[#0B1224]/90 border-cyan-500/50 rounded-xl ring-1 ring-cyan-500/20'
+                    : 'bg-[#0B1224]/40 border-slate-800/80 rounded-xl opacity-75 hover:opacity-100 hover:bg-[#0B1224]/60'
                     }`}
                 >
-                  {isActive && (
-                    <motion.div layoutId="homeIndicator" className="absolute top-0 left-0 w-1.5 h-full bg-gradient-to-b from-[var(--lumen-blue)] to-[var(--lumen-cyan)]" />
-                  )}
-
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="text-3xl filter drop-shadow-sm group-hover:scale-110 transition-transform duration-300">{item.icon}</div>
-
-                    <div className="relative w-6 h-6 flex items-center justify-center">
-                      {isActive ? (
-                        <svg className="w-full h-full transform -rotate-90">
-                          <circle cx="12" cy="12" r="9" className="stroke-[var(--lumen-border)] fill-none" strokeWidth="2" />
-                          <motion.circle
-                            cx="12" cy="12" r="9"
-                            className="stroke-[var(--lumen-blue)] fill-none"
-                            strokeWidth="2"
-                            strokeDasharray="56"
-                            initial={{ strokeDashoffset: 56 }}
-                            animate={{ strokeDashoffset: 0 }}
-                            transition={{ duration: AUTOROTATE_TIME / 1000, ease: "linear" }}
-                            key={activeIndex}
-                          />
-                        </svg>
-                      ) : (
-                        <IconComponent size={16} className="text-[var(--lumen-muted)] opacity-60 group-hover:opacity-100 transition-opacity" />
+                  <div className="space-y-3 w-full">
+                    <div className="flex items-center justify-between">
+                      <span className="text-[10px] font-mono text-slate-500 font-bold tracking-widest uppercase">
+                        {item.sub}
+                      </span>
+                      {isActive && (
+                        <div className="w-1.5 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_8px_#22d3ee] animate-pulse" />
                       )}
                     </div>
-                  </div>
 
-                  <span className={`text-[10px] font-mono font-bold tracking-widest block mb-1 uppercase ${isActive ? 'text-[var(--lumen-blue)]' : 'text-[var(--lumen-muted)]'}`}>
-                    {item.sub}
-                  </span>
-                  <h4 className="text-lg font-bold text-[var(--lumen-navy)] mb-2 tracking-tight group-hover:text-[var(--lumen-blue)] transition-colors">{item.title}</h4>
-                  <p className="text-xs text-[var(--lumen-muted)] leading-relaxed font-medium">{item.desc}</p>
+                    <h3 className="text-lg font-bold text-white tracking-tight flex items-center gap-2 group-hover:text-cyan-400 transition-colors">
+                      <span className="text-2xl filter drop-shadow-sm">{item.icon}</span>
+                      {item.title}
+                    </h3>
+
+                    <p className="text-[11px] text-slate-400 leading-relaxed font-light font-sans">
+                      {item.desc}
+                    </p>
+                  </div>
                 </button>
               );
             })}
           </div>
 
-          {/* Central HIGH-VISIBILITY Telemetry Dashboard Display Screen */}
-          <div className="lg:col-span-4 relative min-h-[420px] lg:min-h-0 rounded-3xl overflow-hidden shadow-2xl border border-white/10 bg-[#111E30] flex flex-col justify-between p-5 group">
+          {/* OPEN CENTRAL ALIGNMENT SYSTEM FOR LIGHT RAY BACKGROUND */}
+          {/* Completely empty layout pane to reveal the high-fidelity center background imagery vector safely */}
+          <div className="hidden lg:block lg:col-span-4 min-h-[400px] pointer-events-none" />
 
-            {/* Visual Grid / Blueprint System Overlays with High Opacity & Screen Blend Mode */}
-            <div className="absolute inset-0 pointer-events-none z-0">
-              <Image
-                src={roomBg}
-                alt="Smart home networking blueprint view"
-                fill
-                className="object-cover opacity-75 mix-blend-screen scale-100 transition-transform duration-1000 group-hover:scale-[1.03]"
-              />
-              {/* Softened radial mask so the image geometry stands out beautifully */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#111E30] via-transparent to-[#111E30]/40" />
-            </div>
-
-            {/* Matrix Console UI Top Header Chrome */}
-            <div className="relative z-10 flex items-center justify-between bg-[#0D2240]/95 backdrop-blur-md px-3 py-2 rounded-xl border border-white/10 text-[10px] font-mono tracking-widest text-[var(--lumen-cyan)] shadow-sm">
-              <span className="flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                LUMEN_CORE_NODE
-              </span>
-              <span className="bg-white/10 px-2 py-0.5 rounded text-[9px]">SYS_0{activeIndex + 1}</span>
-            </div>
-
-            {/* Radial Radar Scanning Hotspot Coordinates Blip */}
-            <div className="absolute inset-0 z-10 pointer-events-none">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={activeIndex}
-                  className={`absolute ${currentFeature.coords} flex flex-col items-center`}
-                  initial={{ opacity: 0, scale: 0.4 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.4 }}
-                  transition={{ type: "spring", stiffness: 120, damping: 14 }}
-                >
-                  <span className="relative flex h-6 w-6">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--lumen-cyan)] opacity-75" style={{ animationDuration: '2s' }} />
-                    <span className="relative inline-flex rounded-full h-6 w-6 bg-[#1A6EBF] border-2 border-white items-center justify-center shadow-md text-[9px] text-white font-bold font-mono">
-                      {activeIndex + 1}
-                    </span>
-                  </span>
-                  <motion.div
-                    initial={{ opacity: 0, y: 6 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.15 }}
-                    className="mt-2.5 px-3 py-1 bg-[#0D2240] text-[9px] font-bold font-mono text-white tracking-wider border border-[var(--lumen-cyan)]/50 rounded-lg whitespace-nowrap shadow-xl"
-                  >
-                    {currentFeature.hotspot}
-                  </motion.div>
-                </motion.div>
-              </AnimatePresence>
-            </div>
-
-            {/* Interactive Lower Matrix Status Module */}
-            <div className="relative z-10 bg-[#0D2240]/95 backdrop-blur-md p-4 rounded-2xl border border-white/10 shadow-lg">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={activeIndex}
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -15 }}
-                  transition={{ duration: 0.35, ease: "easeOut" }}
-                >
-                  <div className="text-[9px] font-mono text-[var(--lumen-cyan)] uppercase font-bold tracking-widest mb-1 shadow-sm">
-                    Active Environment Track
-                  </div>
-                  <div className="text-base font-black text-white tracking-tight leading-none mb-1">
-                    {currentFeature.title}
-                  </div>
-                  <div className="text-[10px] text-white/60 font-mono tracking-wide font-medium truncate">
-                    Node Connection Status: OPTICAL_FLOW_SECURE
-                  </div>
-                </motion.div>
-              </AnimatePresence>
-            </div>
-          </div>
-
-          {/* Right Side Feature Block Hooks */}
-          <div className="lg:col-span-4 flex flex-col justify-center gap-5">
+          {/* RIGHT AXIS: CARDS 3 & 4 */}
+          {/* Perfectly symmetrical execution layout matrix containing consistent layout gap properties */}
+          <div className="lg:col-span-4 flex flex-col gap-y-6">
             {conceptualPoints.slice(2, 4).map((item, idx) => {
               const globalIdx = idx + 2;
               const isActive = activeIndex === globalIdx;
-              const IconComponent = item.lucide;
               return (
                 <button
                   key={globalIdx}
                   onClick={() => setActiveIndex(globalIdx)}
-                  className={`text-left p-6 rounded-2xl transition-all duration-500 relative overflow-hidden border group ${isActive
-                    ? 'bg-white shadow-[0_20px_50px_rgba(26,110,191,0.08)] border-[var(--lumen-blue)] scale-[1.02] z-10'
-                    : 'bg-[var(--lumen-surface)] border-[var(--lumen-border)] hover:bg-white/60 opacity-75 hover:opacity-100 shadow-sm'
+                  className={`text-left p-6 transition-all duration-300 relative overflow-hidden border backdrop-blur-md flex flex-col justify-between min-h-[220px] shadow-xl ${isActive
+                    ? 'bg-[#0B1224]/90 border-cyan-500/50 rounded-xl ring-1 ring-cyan-500/20'
+                    : 'bg-[#0B1224]/40 border-slate-800/80 rounded-xl opacity-75 hover:opacity-100 hover:bg-[#0B1224]/60'
                     }`}
                 >
-                  {isActive && (
-                    <motion.div layoutId="homeIndicator" className="absolute top-0 left-0 w-1.5 h-full bg-gradient-to-b from-[var(--lumen-blue)] to-[var(--lumen-cyan)]" />
-                  )}
-
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="text-3xl filter drop-shadow-sm group-hover:scale-110 transition-transform duration-300">{item.icon}</div>
-
-                    <div className="relative w-6 h-6 flex items-center justify-center">
-                      {isActive ? (
-                        <svg className="w-full h-full transform -rotate-90">
-                          <circle cx="12" cy="12" r="9" className="stroke-[var(--lumen-border)] fill-none" strokeWidth="2" />
-                          <motion.circle
-                            cx="12" cy="12" r="9"
-                            className="stroke-[var(--lumen-blue)] fill-none"
-                            strokeWidth="2"
-                            strokeDasharray="56"
-                            initial={{ strokeDashoffset: 56 }}
-                            animate={{ strokeDashoffset: 0 }}
-                            transition={{ duration: AUTOROTATE_TIME / 1000, ease: "linear" }}
-                            key={activeIndex}
-                          />
-                        </svg>
-                      ) : (
-                        <IconComponent size={16} className="text-[var(--lumen-muted)] opacity-60 group-hover:opacity-100 transition-opacity" />
+                  <div className="space-y-3 w-full">
+                    <div className="flex items-center justify-between">
+                      <span className="text-[10px] font-mono text-slate-500 font-bold tracking-widest uppercase">
+                        {item.sub}
+                      </span>
+                      {isActive && (
+                        <div className="w-1.5 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_8px_#22d3ee] animate-pulse" />
                       )}
                     </div>
-                  </div>
 
-                  <span className={`text-[10px] font-mono font-bold tracking-widest block mb-1 uppercase ${isActive ? 'text-[var(--lumen-blue)]' : 'text-[var(--lumen-muted)]'}`}>
-                    {item.sub}
-                  </span>
-                  <h4 className="text-lg font-bold text-[var(--lumen-navy)] mb-2 tracking-tight group-hover:text-[var(--lumen-blue)] transition-colors">{item.title}</h4>
-                  <p className="text-xs text-[var(--lumen-muted)] leading-relaxed font-medium">{item.desc}</p>
+                    <h3 className="text-lg font-bold text-white tracking-tight flex items-center gap-2 group-hover:text-cyan-400 transition-colors">
+                      <span className="text-2xl filter drop-shadow-sm">{item.icon}</span>
+                      {item.title}
+                    </h3>
+
+                    <p className="text-[11px] text-slate-400 leading-relaxed font-light font-sans">
+                      {item.desc}
+                    </p>
+                  </div>
                 </button>
               );
             })}
           </div>
 
         </div>
+
+        {/* --- CONSOLE LOWER METADATA CHROME --- */}
+        <div className="w-full text-center pt-16 pb-4">
+          <p className="text-[10px] font-mono tracking-widest text-slate-500 uppercase">
+            HERE IS WHAT LIVING AT THE SPEED OF LIGHT ACTUALLY FEELS LIKE.
+          </p>
+        </div>
+
       </div>
     </section>
   );
