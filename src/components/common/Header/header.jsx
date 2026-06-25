@@ -19,7 +19,8 @@ import {
   Box,
   Sun,
   Moon,
-  ShieldAlert
+  ShieldAlert,
+  FlaskConical // Imported lab icon
 } from 'lucide-react';
 import logoPl from '/public/brand/logo.png';
 import { useApp } from '../../../context/content';
@@ -40,25 +41,15 @@ const navConfig = [
     ],
   },
   {
-    label: 'Resource Engine',
-    href: '/insights',
-    icon: Cpu,
-    hoverClass: 'hover:text-[#22C55E]',
-    iconColor: 'group-hover:text-green-500',
-    activeIconColor: 'text-green-500',
-    dropdown: [
-      { label: 'Technical Registry', desc: 'Deep-dives, whitepapers & specifications', href: '/insights', icon: FileText },
-      { label: 'Research Lab', desc: 'Academic validations & optical studies', href: '/insights#studies', icon: BookOpen },
-    ],
-  },
-  {
-    label: 'Ecosystem & Governance',
+    label: 'Lumen Lab',
     href: '/about',
-    icon: Cpu, // Changed over to CPU icon
+    icon: FlaskConical, // Updated icon for Lumen Lab
     hoverClass: 'hover:text-[#0FB89A]',
     iconColor: 'group-hover:text-[#0FB89A]',
     activeIconColor: 'text-[#0FB89A]',
     dropdown: [
+      { label: 'Technical Registry', desc: 'Deep-dives, whitepapers & specifications', href: '/insights', icon: FileText },
+      { label: 'Research Lab', desc: 'Academic validations & optical studies', href: '/insights#studies', icon: BookOpen },
       { label: 'Core Engineering Team', desc: 'The architects behind the lightwave layer', href: '/about', icon: Users },
       { label: 'Operational History', desc: 'Milestones in IEEE 802.11bb evolution', href: '/about#timeline', icon: Clock },
       { label: 'Open Positions', desc: 'Shape next-generation communications infrastructure', href: '/about#careers', icon: Briefcase },

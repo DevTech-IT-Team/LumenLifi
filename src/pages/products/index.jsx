@@ -28,13 +28,13 @@ const productsData = [
     price: '$349',
     category: 'Network Foundation',
     badge: 'NETWORK TRANSMITTERS',
-    tagline: 'The heart of your network.',
-    desc: 'These architectural LED ceiling lights act as your invisible routers, beaming dedicated 10 Gbps data cones to every room in your house while providing pristine, tunable ambient lighting.',
+    tagline: 'The heart of your home light network.',
+    desc: 'These ceiling lights act like invisible internet routers. They beam super fast internet to every room while giving you beautiful light that you can adjust easily.',
     icon: Cpu,
     accent: 'from-amber-500/20 to-amber-600/10 border-amber-500/40',
     textAccent: 'text-amber-400',
     imageUrl: '/images/products/Lumen Core Downlighters.png',
-    specs: ['10 Gbps Data Cones', 'Tunable Ambient Light', 'Zero RF Radiation']
+    specs: ['Super Fast Internet Beams', 'Adjustable Room Lighting', 'No Radio Wave Mess']
   },
   {
     slug: 'lumen-photon-dongle',
@@ -42,13 +42,13 @@ const productsData = [
     price: '$129',
     category: 'Network Foundation',
     badge: 'NETWORK TRANSCEIVERS',
-    tagline: 'Instantly upgrade your current hardware.',
-    desc: 'Plug this microscopic receiver into any laptop, PC, or tablet to instantly transition your device from crowded Wi-Fi to a dedicated 10 Gbps optical link.',
+    tagline: 'Gives your current devices instant light-speed internet.',
+    desc: 'Plug this tiny receiver into any laptop, computer, or tablet. It instantly switches your device from slow, crowded Wi-Fi to a super fast light connection.',
     icon: Laptop,
     accent: 'from-cyan-500/20 to-cyan-600/10 border-cyan-500/40',
     textAccent: 'text-cyan-400',
     imageUrl: '/images/products/Lumen Photon Dongle.png',
-    specs: ['Microscopic Receiver', 'USB-C Plug-and-Play', 'Dedicated 10 Gbps Link']
+    specs: ['Tiny Light Receiver', 'Easy Plug-and-Play Setup', 'Private Fast Internet Beam']
   },
   {
     slug: 'lumen-matrix-8k-tv',
@@ -56,13 +56,13 @@ const productsData = [
     price: '$1,999',
     category: 'Entertainment & Computing',
     badge: 'ENTERTAINMENT & COMPUTING',
-    tagline: "The first television that doesn't compress your media.",
-    desc: 'Powered by a direct optical link from your ceiling, it streams raw, uncompressed 8K video and cloud gaming seamlessly, entirely immune to the bandwidth being used in the rest of the house.',
+    tagline: "The first TV that plays perfect, crystal-clear videos without slowing down.",
+    desc: 'Powered by a direct light connection from your ceiling. It streams perfect 8K videos and video games smoothly, without ever slowing down when other people use the internet.',
     icon: Sun,
     accent: 'from-cyan-500/20 to-cyan-600/10 border-cyan-500/40',
     textAccent: 'text-cyan-400',
     imageUrl: '/images/products/Lumen 8k TV.png',
-    specs: ['Uncompressed 8K Video', 'Cloud Gaming Sync', 'Immune to Congestion']
+    specs: ['Perfect 8K Video Quality', 'Smooth Video Gaming', 'Never Slows Down']
   },
   {
     slug: 'lumen-studio-laptop',
@@ -70,13 +70,13 @@ const productsData = [
     price: '$2,499',
     category: 'Entertainment & Computing',
     badge: 'ENTERTAINMENT & COMPUTING',
-    tagline: 'Designed for spatial computing and extreme rendering.',
-    desc: 'With an integrated Li-Fi transceiver built directly into the lid, you receive hardwired, 10 Gbps speeds without ever plugging in an ethernet cable.',
+    tagline: 'Made for heavy schoolwork, high-end design, and fast apps.',
+    desc: 'With a built-in light receiver right inside the screen lid. You get super fast, stable internet speeds without ever needing a messy internet cable.',
     icon: Laptop,
     accent: 'from-cyan-500/20 to-cyan-600/10 border-cyan-500/40',
     textAccent: 'text-cyan-400',
     imageUrl: '/images/products/Lumen Studio Laptop.png',
-    specs: ['Integrated Transceiver', '10 Gbps Hardwired Speeds', 'Spatial Compute Optimized']
+    specs: ['Built-in Light Receiver', 'Super Fast Cable-Free Speeds', 'Great for Heavy Apps']
   },
   {
     slug: 'lumen-echo-soundbar',
@@ -84,13 +84,13 @@ const productsData = [
     price: '$599',
     category: 'Entertainment & Computing',
     badge: 'ENTERTAINMENT & COMPUTING',
-    tagline: 'Forget audio syncing issues.',
-    desc: 'Connected via sub-millisecond light beams, this speaker processes voice commands and AI home requests the literal millisecond you finish speaking.',
+    tagline: 'Say goodbye to sound delays.',
+    desc: 'Connected by super fast beams of light. This speaker answers your voice commands and smart home requests the very second you finish talking.',
     icon: Activity,
     accent: 'from-cyan-500/20 to-cyan-600/10 border-cyan-500/40',
     textAccent: 'text-cyan-400',
     imageUrl: '/images/products/Lumen Echo Soundbar.png',
-    specs: ['Sub-millisecond Beams', 'Instant AI Processing', 'Pristine Audio Sync']
+    specs: ['Super Fast Light Beams', 'Instant Voice Answers', 'Perfect Sound Sync']
   },
   {
     slug: 'lumen-sentinel-video-doorbell',
@@ -98,13 +98,13 @@ const productsData = [
     price: '$249',
     category: 'Security & Perimeter',
     badge: 'DOMESTIC & PERIMETER',
-    tagline: 'Unjammable front-door security.',
-    desc: 'Powered by the Li-Fi beam from your porch light, it streams flawless 4K video instantly to your phone. Because it relies on light, it is mathematically impossible for thieves to use Wi-Fi jammers to blind it.',
+    tagline: 'Front-door security that cannot be blocked.',
+    desc: 'Powered by the light beam from your porch bulb. It sends clear 4K video straight to your phone. Because it uses light, thieves cannot block it with Wi-Fi signal jammers.',
     icon: Shield,
     accent: 'from-cyan-500/20 to-cyan-600/10 border-cyan-500/40',
     textAccent: 'text-cyan-400',
     imageUrl: '/images/products/Lumen Sentinel Video Doorbell.png',
-    specs: ['Porch Light Powered', 'Flawless 4K Stream', 'Jam-Proof Architecture']
+    specs: ['Porch Light Powered', 'Clear 4K Video Stream', 'Cannot Be Blocked']
   },
   {
     slug: 'lumen-aegis-floodlight-cams',
@@ -112,13 +112,13 @@ const productsData = [
     price: '$499',
     category: 'Security & Perimeter',
     badge: 'DOMESTIC & PERIMETER',
-    tagline: 'Absolute perimeter control.',
-    desc: 'These ultra-bright exterior lights double as multi-gigabit data transmitters, securely linking your outdoor cameras to your local server without broadcasting your security feed onto the public street.',
+    tagline: 'Complete safety around your house.',
+    desc: 'These bright outdoor lights also work as fast internet transmitters. They safely link your outdoor cameras to your home computer without sending your private video out to the public street.',
     icon: ShieldCheck,
     accent: 'from-cyan-500/20 to-cyan-600/10 border-cyan-500/40',
     textAccent: 'text-cyan-400',
     imageUrl: '/images/products/Lumen Aegis Floodlight Cams.png',
-    specs: ['Multi-gigabit Uplink', 'Ultra-bright LEDs', 'Air-gapped Perimeter']
+    specs: ['Super Fast Video Links', 'Very Bright LED Bulbs', 'Private and Safe Feed']
   },
   {
     slug: 'lumen-glacier-fridge',
@@ -126,13 +126,13 @@ const productsData = [
     price: '$349',
     category: 'Conscious Appliances & Home Automation',
     badge: 'CONSCIOUS APPLIANCES',
-    tagline: 'The integrated LiFi connection.',
-    desc: 'Say goodbye to the loading screens of traditional fridges. Stream 4K cooking tutorials, sync your AI grocery trackers, and run your home dashboard with zero buffering, right from the door.',
+    tagline: 'A smart fridge with built-in light internet.',
+    desc: 'Say goodbye to loading screens on your fridge. Stream cooking videos, track your food items, and run your smart home screen without any waiting, right from the door.',
     icon: Activity,
     accent: 'from-cyan-500/20 to-cyan-600/10 border-cyan-500/40',
     textAccent: 'text-cyan-400',
     imageUrl: '/images/products/Lumen Glacier Smart Fridge.png',
-    specs: ['Zero Buffering Dashboard', 'AI Grocery Trackers', '4K Tutorial Streaming']
+    specs: ['No-Wait Smart Screen', 'Smart Food Trackers', 'Smooth Video Streaming']
   },
   {
     slug: 'lumen-precision-robot-vacuum',
@@ -140,13 +140,13 @@ const productsData = [
     price: '$899',
     category: 'Conscious Appliances & Home Automation',
     badge: 'CONSCIOUS APPLIANCES',
-    tagline: 'Absolute Robot vacuum.',
-    desc: 'Powered by a continuous optical link, this vacuum processes real-time 3D spatial mapping and AI obstacle avoidance with zero latency, meaning it never bumps into a chair leg again.',
+    tagline: 'The smartest robot vacuum for your floors.',
+    desc: 'Powered by a steady beam of light. This vacuum builds a 3D map of your room and avoids obstacles instantly, meaning it will never crash into chairs or tables.',
     icon: Zap,
     accent: 'from-cyan-500/20 to-cyan-600/10 border-cyan-500/40',
     textAccent: 'text-cyan-400',
     imageUrl: '/images/products/Lumen Precision Robot Vacuum.png',
-    specs: ['Continuous Optical Link', '3D Spatial Mapping', 'Zero Latency Nav']
+    specs: ['Steady Light Connection', 'Smart 3D Room Maps', 'Instant Driving Logic']
   }
 ];
 
@@ -171,8 +171,8 @@ export default function ProductsPage() {
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#0f192e_1px,transparent_1px),linear-gradient(to_bottom,#0f192e_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-35 z-10" />
 
       <Head>
-        <title>Lumen LiFi | Shop the Conscious Home Ecosystem</title>
-        <meta name="description" content="Welcome to the world's first fully optical conscious home." />
+        <title>Lumen LiFi | Shop the Smart Home Light Network</title>
+        <meta name="description" content="Welcome to the world's first home run entirely on light." />
       </Head>
 
       <Header />
@@ -203,14 +203,14 @@ export default function ProductsPage() {
                 {/* Primary Narrative Text Block */}
                 <div className="relative z-10 max-w-xl space-y-4">
                   <h1 className="text-4xl sm:text-5xl xl:text-6xl font-black text-white tracking-tight leading-[1.05]">
-                    Shop the Conscious <br />
+                    Shop the Smart Home <br />
                     <span className="bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent opacity-90">
-                      Home Ecosystem
+                      Light Network
                     </span>
                   </h1>
 
                   <p className="text-slate-200/90 text-sm sm:text-base font-normal leading-relaxed max-w-lg drop-shadow-md">
-                    Welcome to the world's first fully optical conscious home. Every device in the Lumenfi ecosystem is equipped with integrated LiFi receivers, guaranteeing zero lag, unjammable security, and infinite bandwidth.
+                    Welcome to the world's first home run entirely on light. Every device in our family has built-in light receivers. This gives you zero lag, completely safe security, and unlimited internet speed.
                   </p>
                 </div>
 
@@ -236,8 +236,8 @@ export default function ProductsPage() {
                     </div>
 
                     <p className="text-xs sm:text-sm font-sans font-medium text-amber-100 tracking-wide leading-relaxed">
-                      Stop piecing together a broken Wi-Fi network. <br className="hidden sm:inline" />
-                      <span className="font-bold text-white">Build a conscious home.</span>
+                      Stop trying to fix a broken Wi-Fi network. <br className="hidden sm:inline" />
+                      <span className="font-bold text-white">Build a smart home run on light.</span>
                     </p>
                   </div>
                 </div>
@@ -293,7 +293,7 @@ export default function ProductsPage() {
                                 onClick={() => setSelectedProductSlug(product.slug)}
                                 className="w-full py-3 bg-gradient-to-r from-slate-900 to-slate-950 hover:from-cyan-950 hover:to-slate-900 border border-slate-800 text-xs uppercase font-mono font-bold text-slate-200 rounded-xl transition-all tracking-widest flex items-center justify-center gap-2"
                               >
-                                CONFIGURE TRANSMITTER <ExternalLink className="w-3.5 h-3.5" />
+                                SETUP LIGHT TRANSMITTER <ExternalLink className="w-3.5 h-3.5" />
                               </button>
                             </div>
                           </div>
@@ -338,7 +338,7 @@ export default function ProductsPage() {
                               onClick={() => setSelectedProductSlug(product.slug)}
                               className="w-full py-2.5 mt-5 bg-[#050A14] border border-slate-900 text-[10px] uppercase font-mono font-bold text-slate-400 rounded-lg hover:bg-slate-900 hover:text-white transition-colors tracking-wider"
                             >
-                              VIEW DATASHEET
+                              SEE FULL DETAILS
                             </button>
                           </div>
                         ))}
@@ -353,19 +353,19 @@ export default function ProductsPage() {
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 pt-12 border-t border-slate-800/80">
                 <div className="lg:col-span-8 space-y-4">
                   <div className="space-y-1">
-                    <h2 className="text-xl font-bold text-white tracking-tight">Frequently Evaluated Physics</h2>
-                    <p className="text-xs font-mono text-cyan-400 tracking-wider uppercase">UNPACKING THE OPTICAL WAVE SYSTEM SPECIFICATIONS:</p>
+                    <h2 className="text-xl font-bold text-white tracking-tight">Common Questions About Light Internet</h2>
+                    <p className="text-xs font-mono text-cyan-400 tracking-wider uppercase">LEARN HOW OUR SMART LIGHT CHIPS WORK:</p>
                   </div>
 
                   <div className="space-y-3">
                     {[
                       {
-                        q: "How does this scale beyond my standard Jio or Airtel Fiber setup?",
-                        a: "Traditional fiber providers do an excellent job bringing high-speed data lines to your home boundary, but they bottleneck inside your rooms by handing that traffic over to standard radio wave Wi-Fi routers. Lumen LIFI takes your fiber line and routes it straight through clean overhead visible light waves, preventing your speeds from suffering wireless degradation across walls."
+                        q: "How is this better than my standard Jio or Airtel fiber network setup?",
+                        a: "Normal internet companies bring fast cables to your house, but the internet gets slow inside your rooms because standard Wi-Fi routers use crowded radio waves. Lumen LiFi takes that fast cable line and sends it directly through your clean ceiling lights, keeping your speeds super fast everywhere."
                       },
                       {
-                        q: "Why is optical wireless internet highly optimized for next-generation AI platforms?",
-                        a: "Modern AI network arrays require persistent, un-throttled data pipes with zero packet delay. Because light waves operate on an entirely separate, massive un-congested spectrum bands, it eliminates typical micro-stuttering or drops in tracking speed, giving local AI processing environments instantaneous data access metrics."
+                        q: "Why is light internet great for new smart AI tools?",
+                        a: "New AI tools need a steady, full-speed internet connection that never drops or pauses. Because light uses a giant, empty path that never gets crowded, it stops all micro-pauses or slowdowns, giving your smart tools instant information."
                       }
                     ].map((faq, index) => (
                       <div
@@ -392,24 +392,24 @@ export default function ProductsPage() {
                   <div className="bg-[#060B14]/80 border border-slate-800/80 p-5 rounded-xl space-y-2 backdrop-blur-xs">
                     <div className="flex items-center gap-2 text-white">
                       <FileText className="w-4 h-4 text-cyan-400" />
-                      <h3 className="font-bold uppercase tracking-wider text-[10px]">DOCUMENTATION INDEX</h3>
+                      <h3 className="font-bold uppercase tracking-wider text-[10px]">HELPFUL DOCUMENTS</h3>
                     </div>
-                    <p className="text-[11px] leading-relaxed opacity-70">Review residential network profiles, hardware compliance maps, and configuration guidelines.</p>
+                    <p className="text-[11px] leading-relaxed opacity-70">Read our simple setup books, safety rules, and home network guides.</p>
                     <div className="space-y-1 pt-1 font-bold">
-                      <span className="block text-cyan-400 hover:underline cursor-pointer">→ Infrastructure Privacy Policy</span>
-                      <span className="block text-cyan-400 hover:underline cursor-pointer">→ System Terms & Conditions</span>
+                      <span className="block text-cyan-400 hover:underline cursor-pointer">→ Privacy Policy Rules</span>
+                      <span className="block text-cyan-400 hover:underline cursor-pointer">→ Terms and Conditions</span>
                     </div>
                   </div>
 
                   <div className="bg-[#060B14]/80 border border-slate-800/80 p-5 rounded-xl space-y-2 backdrop-blur-xs">
                     <div className="flex items-center gap-2 text-white">
                       <Mail className="w-4 h-4 text-orange-400" />
-                      <h3 className="font-bold uppercase tracking-wider text-[10px]">OPERATIONS ROUTING</h3>
+                      <h3 className="font-bold uppercase tracking-wider text-[10px]">CONTACT OUR TEAM</h3>
                     </div>
                     <div className="space-y-1 opacity-70 text-[10px]">
-                      <p>LINE: +91 (Commercial Support Hub)</p>
-                      <p>MAIL: engineering@lumenfi.com</p>
-                      <p className="text-slate-500">Registry: Residential Operations Core, India Hub</p>
+                      <p>Phone: +91 (Support Help Desk)</p>
+                      <p>Email: engineering@lumenfi.com</p>
+                      <p className="text-slate-500">Main Office Hub, India</p>
                     </div>
                   </div>
                 </div>
@@ -432,7 +432,7 @@ export default function ProductsPage() {
                 className="inline-flex items-center gap-2 font-mono text-xs text-slate-400 hover:text-cyan-400 transition-colors mb-10 group font-bold"
               >
                 <ArrowLeft className="w-3.5 h-3.5 transform group-hover:-translate-x-1 transition-transform" />
-                RETURN TO OVERVIEW MODULE
+                BACK TO ALL PRODUCTS
               </button>
 
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start bg-[#0A1121]/95 border border-slate-800 p-8 rounded-3xl relative backdrop-blur-md">
@@ -446,7 +446,7 @@ export default function ProductsPage() {
 
                 <div className="lg:col-span-7 space-y-6 relative z-10">
                   <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-slate-950 border border-slate-800 text-slate-400 font-mono text-[10px] font-bold uppercase">
-                    <Cpu className="w-3.5 h-3.5 text-cyan-400" /> SYSTEM DEFINITION // {activeProduct.badge}
+                    <Cpu className="w-3.5 h-3.5 text-cyan-400" /> PRODUCT TYPE: {activeProduct.badge}
                   </div>
                   <div className="flex justify-between items-start gap-4">
                     <h1 className="text-3xl sm:text-4xl font-black text-white tracking-tight leading-none">{activeProduct.name}</h1>
@@ -459,9 +459,9 @@ export default function ProductsPage() {
                   </div>
 
                   <div className="space-y-3">
-                    <h4 className="font-mono text-[10px] font-bold text-slate-500 uppercase tracking-widest">VERIFIED PROTOCOL CHECKLIST</h4>
+                    <h4 className="font-mono text-[10px] font-bold text-slate-500 uppercase tracking-widest">KEY FEATURES OF THIS PRODUCT:</h4>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                      {activeProduct.specs.concat(['Microsecond processing translation layer', '100% optical space containment isolation']).map((item) => (
+                      {activeProduct.specs.concat(['Super Safe Built-in Data Security', 'Internet Signals Stay Inside Your Walls']).map((item) => (
                         <div key={item} className="flex items-center gap-2 text-xs text-slate-300 font-mono">
                           <Check className="w-3.5 h-3.5 text-cyan-400 shrink-0" />
                           <span>{item}</span>
@@ -472,10 +472,10 @@ export default function ProductsPage() {
 
                   <div className="pt-6 border-t border-slate-900 flex flex-wrap gap-4">
                     <button className="h-11 px-5 rounded-xl bg-[#050A14] border border-slate-800 hover:border-slate-700 text-white font-mono font-bold text-xs uppercase tracking-wider transition-colors inline-flex items-center gap-2">
-                      <Download className="w-3.5 h-3.5" /> Technical Blueprint (PDF)
+                      <Download className="w-3.5 h-3.5" /> Technical Guide (PDF)
                     </button>
                     <button className="h-11 px-6 rounded-xl bg-gradient-to-r from-cyan-600 to-blue-600 hover:opacity-90 text-white font-mono font-bold text-xs uppercase tracking-wider transition-all inline-flex items-center justify-center shadow-lg shadow-cyan-500/10">
-                      Request Deployment Review
+                      Ask for a Setup Review
                     </button>
                   </div>
                 </div>
@@ -488,4 +488,4 @@ export default function ProductsPage() {
       <Footer />
     </div>
   );
-}
+} 

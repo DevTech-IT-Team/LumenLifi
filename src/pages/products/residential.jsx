@@ -25,40 +25,40 @@ const productsData = [
         slug: 'lumen-core-router',
         name: 'Lumen Core Router',
         badge: 'Central Gateway Unit',
-        tagline: 'The optical heart of your residential lightwave network.',
-        desc: 'Translates incoming fiber gigabit data lines directly into high-frequency optical signals. Plugs right into your home connection and powers the ceiling light array without emitting radio clutter.',
+        tagline: 'The heart of your home light network.',
+        desc: 'Turns your incoming high-speed internet cables into clean light signals. It plugs right into your home connection and runs your ceiling lights without any messy radio waves.',
         icon: Cpu,
         accent: 'from-emerald-500 to-teal-500',
         bg: 'bg-emerald-50/30',
         border: 'border-emerald-100',
         imageUrl: 'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&q=80&w=600',
-        specs: ['Fiber-to-Light Processing Unit', 'Zero Radio Frequency Clutter', 'Multi-room Driver Array']
+        specs: ['Fiber-to-Light Converter', 'No Radio Wave Mess', 'Runs Multiple Rooms']
     },
     {
         slug: 'photon-antenna-light',
         name: 'Lumen Photon Antenna Light',
         badge: 'Optical Transmitter Node',
-        tagline: 'High-speed broadband beams hidden inside architectural lighting.',
-        desc: 'Replaces traditional radio antennas with premium, flicker-free ceiling transceivers. Floods your workspace or living room with warm illumination and multi-gigabit data simultaneously.',
+        tagline: 'Super fast internet hidden right inside your lights.',
+        desc: 'Replaces ugly radio antennas with smooth, flicker-free ceiling lights. It fills your room with beautiful warm light and super-fast internet at the exact same time.',
         icon: Sun,
         accent: 'from-amber-500 to-orange-500',
         bg: 'bg-amber-50/30',
         border: 'border-amber-100',
         imageUrl: 'https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?auto=format&fit=crop&q=80&w=600',
-        specs: ['Dual-Function LED Engineering', 'Symmetric Gigabit Downlink', 'Complete Wall-Contained Signal']
+        specs: ['Two-in-One Smart LED Lights', 'Super Fast Download and Upload', 'Internet Signal Stays Inside the Walls']
     },
     {
         slug: 'lumen-usb-dongle',
         name: 'Lumen USB Dongle',
         badge: 'Client Device Adapter',
-        tagline: 'Instant LiFi capability for your laptops and computers.',
-        desc: 'An ultra-lightweight high-tech adapter that snaps into any standard USB-C port. Houses microscopic optical sensors that capture the data beam from your lighting layout seamlessly.',
+        tagline: 'Gives your laptops and computers instant light-speed internet.',
+        desc: 'A small, lightweight adapter that plugs into any standard USB-C port. It has tiny light sensors inside that easily catch the internet beams from your ceiling lights.',
         icon: Laptop,
         accent: 'from-cyan-500 to-blue-500',
         bg: 'bg-cyan-50/30',
         border: 'border-cyan-100',
         imageUrl: 'https://images.unsplash.com/photo-1601524909162-be87252be298?auto=format&fit=crop&q=80&w=600',
-        specs: ['Plug-and-Play Configuration', 'Microscopic Optical Array', 'Low Power Consumption Rate']
+        specs: ['Easy Plug-and-Play Setup', 'Tiny Built-in Light Sensors', 'Uses Very Little Power']
     }
 ];
 
@@ -81,7 +81,7 @@ export default function LumenPhiProductsSuite() {
                     <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2 text-center sm:text-left">
                         <p className="flex items-center gap-2 font-mono">
                             <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
-                            <span>Verified Merchant Processing Compliance Layer Active</span>
+                            <span>Safe and Verified Payment System Active</span>
                         </p>
                         <div className="flex gap-4 font-mono text-[11px]">
                             <span className="text-slate-400">100% Secure Checkout</span>
@@ -105,7 +105,7 @@ export default function LumenPhiProductsSuite() {
 
                                     <div className="lg:col-span-7 space-y-6">
                                         <span className="text-xs font-bold font-mono tracking-widest text-emerald-400 uppercase bg-emerald-950 border border-emerald-800/60 px-3 py-1 rounded-full w-max block">
-                                            The Next Leap in Home Internet
+                                            The Next Big Step for Home Internet
                                         </span>
                                         <h1 className="text-4xl sm:text-5xl font-black tracking-tight leading-tight">
                                             Internet Delivered at the <br />
@@ -114,7 +114,7 @@ export default function LumenPhiProductsSuite() {
                                             </span>
                                         </h1>
                                         <p className="text-slate-400 text-sm leading-relaxed max-w-xl">
-                                            Lumen LIFI replaces congested, traditional home broadband with lightning-fast optical wireless technology. Experience pristine, dedicated connectivity built for modern streaming, professional home workspaces, and advanced AI application tracking.
+                                            Lumen LiFi replaces crowded, slow home internet with super-fast light technology. Enjoy a private, clean connection made for smooth video streaming, home school, working from home, and fast apps.
                                         </p>
                                         <div className="flex flex-wrap gap-4 pt-2">
                                             <div className="flex items-center gap-2 bg-slate-900 border border-slate-800 px-4 py-2 rounded-xl text-xs font-mono text-slate-300">
@@ -129,14 +129,14 @@ export default function LumenPhiProductsSuite() {
                                     <div className="lg:col-span-5 bg-slate-900 border border-slate-800/80 p-6 rounded-2xl space-y-4">
                                         <div className="flex items-center gap-2 text-amber-400">
                                             <Info className="w-4 h-4 shrink-0" />
-                                            <h3 className="text-xs font-mono font-bold uppercase tracking-wider">Crucial Science Parameter</h3>
+                                            <h3 className="text-xs font-mono font-bold uppercase tracking-wider">Important Science Fact</h3>
                                         </div>
                                         <h4 className="text-base font-bold text-white tracking-tight">How is LiFi different from WiFi?</h4>
                                         <p className="text-xs text-slate-400 leading-relaxed">
-                                            Traditional <strong>WiFi uses congested radio waves</strong> to pass data, which easily drops speeds due to neighboring router interference.
+                                            Traditional <strong>WiFi uses crowded radio waves</strong> to send data. This easily slows down when your neighbors are using their internet at the same time.
                                         </p>
                                         <p className="text-xs text-slate-400 leading-relaxed">
-                                            <strong>Lumen LIFI transmits data through pristine light waves</strong> emitted from advanced LED components. This provides dedicated high-bandwidth beams that cannot be choked or intercepted from outside your walls.
+                                            <strong>Lumen LIFI sends data through clean waves of light</strong> from advanced LED bulbs. This gives you your very own fast internet beam that never gets jammed or stolen from outside your walls.
                                         </p>
                                     </div>
                                 </div>
@@ -144,8 +144,8 @@ export default function LumenPhiProductsSuite() {
 
                             <div className="max-w-7xl mx-auto px-6 mb-24">
                                 <div className="max-w-3xl mb-12 space-y-2">
-                                    <h2 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">Futuristic Component Architecture</h2>
-                                    <p className="text-slate-500 text-xs font-medium font-mono">EXPLORE THE INDIVIDUAL CONCEPT DESIGNS DRIVING THE LUMEN PHI BROADBAND ECOSYSTEM:</p>
+                                    <h2 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">How Our System Works</h2>
+                                    <p className="text-slate-500 text-xs font-medium font-mono">LOOK AT THE SMART DEVICES THAT BRING LIGHT-SPEED INTERNET TO YOUR HOME:</p>
                                 </div>
 
                                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -155,7 +155,7 @@ export default function LumenPhiProductsSuite() {
                                             <div key={product.slug} className="flex flex-col rounded-2xl border border-slate-200/80 bg-white shadow-sm overflow-hidden hover:shadow-md transition-shadow">
                                                 <div className="relative w-full aspect-video bg-slate-950 overflow-hidden">
                                                     <img src={product.imageUrl} alt={product.name} className="w-full h-full object-cover opacity-80 mix-blend-luminosity hover:opacity-100 hover:mix-blend-normal transition-all duration-500" />
-                                                    <div className="absolute top-3 left-3 bg-slate-900/90 backdrop-blur-md px-2.5 py-1 rounded-md text-[9px] font-mono font-bold text-emerald-400 uppercase tracking-widest border border-slate-700">Concept Visualization</div>
+                                                    <div className="absolute top-3 left-3 bg-slate-900/90 backdrop-blur-md px-2.5 py-1 rounded-md text-[9px] font-mono font-bold text-emerald-400 uppercase tracking-widest border border-slate-700">Product Picture</div>
                                                 </div>
 
                                                 <div className="p-6 flex-grow flex flex-col justify-between space-y-6">
@@ -186,7 +186,7 @@ export default function LumenPhiProductsSuite() {
                                                             }}
                                                             className="w-full py-2.5 px-4 rounded-xl bg-slate-50 hover:bg-emerald-50 border border-slate-200 hover:border-emerald-200 text-slate-700 hover:text-emerald-700 font-mono font-bold text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2"
                                                         >
-                                                            View Specification Sheet <ArrowRight className="w-3.5 h-3.5" />
+                                                            See Full Details <ArrowRight className="w-3.5 h-3.5" />
                                                         </button>
                                                     </div>
                                                 </div>
@@ -200,41 +200,41 @@ export default function LumenPhiProductsSuite() {
                                 <div className="bg-slate-50 border border-slate-200/60 p-6 rounded-2xl space-y-4">
                                     <div className="flex items-center gap-2 text-slate-900">
                                         <FileText className="w-4 h-4 text-emerald-600" />
-                                        <h3 className="text-sm font-mono font-bold uppercase tracking-wider">Required Documentation</h3>
+                                        <h3 className="text-sm font-mono font-bold uppercase tracking-wider">Important Documents</h3>
                                     </div>
-                                    <p className="text-xs text-slate-500 leading-relaxed">Review our operational rules, consumer data protections, and terms of service guidelines for legal merchant transparency.</p>
+                                    <p className="text-xs text-slate-500 leading-relaxed">Read our simple rules, data protection guidelines, and terms of service so you know exactly how we help you.</p>
                                     <div className="space-y-2 pt-2 font-mono text-xs font-bold">
-                                        <Link href="/privacy" className="block text-emerald-600 hover:underline">→ Privacy Policy Blueprint</Link>
-                                        <Link href="/terms" className="block text-emerald-600 hover:underline">→ Terms & Conditions Template</Link>
+                                        <Link href="/privacy" className="block text-emerald-600 hover:underline">→ Privacy Policy Rules</Link>
+                                        <Link href="/terms" className="block text-emerald-600 hover:underline">→ Terms and Conditions</Link>
                                     </div>
                                 </div>
 
                                 <div className="bg-slate-50 border border-slate-200/60 p-6 rounded-2xl space-y-4">
                                     <div className="flex items-center gap-2 text-slate-900">
                                         <Mail className="w-4 h-4 text-emerald-600" />
-                                        <h3 className="text-sm font-mono font-bold uppercase tracking-wider">Corporate Identification</h3>
+                                        <h3 className="text-sm font-mono font-bold uppercase tracking-wider">Contact Information</h3>
                                     </div>
-                                    <p className="text-xs text-slate-500 leading-relaxed">Official deployment inquiries or merchant processing clearance verifications can communicate directly with our centralized desk:</p>
+                                    <p className="text-xs text-slate-500 leading-relaxed">For questions about setting up your system or verifying orders, you can contact our main desk directly:</p>
                                     <div className="space-y-2 pt-1 text-xs font-mono text-slate-600">
-                                        <p className="flex items-center gap-2"><Phone className="w-3.5 h-3.5 text-slate-400" /> +91 (Commercial Support Line)</p>
+                                        <p className="flex items-center gap-2"><Phone className="w-3.5 h-3.5 text-slate-400" /> +91 (Help and Support Line)</p>
                                         <p className="flex items-center gap-2"><Mail className="w-3.5 h-3.5 text-slate-400" /> operations@lumenlifi.com</p>
-                                        <p className="flex items-center gap-2"><MapPin className="w-3.5 h-3.5 text-slate-400" /> Residential Node Core, India Hub</p>
+                                        <p className="flex items-center gap-2"><MapPin className="w-3.5 h-3.5 text-slate-400" /> Main Office Hub, India</p>
                                     </div>
                                 </div>
 
                                 <div className="bg-slate-50 border border-slate-200/60 p-6 rounded-2xl space-y-4">
                                     <div className="flex items-center gap-2 text-slate-900">
                                         <ShieldCheck className="w-4 h-4 text-emerald-600" />
-                                        <h3 className="text-sm font-mono font-bold uppercase tracking-wider">Merchant Checklist Clearance</h3>
+                                        <h3 className="text-sm font-mono font-bold uppercase tracking-wider">Shipping and Payment Info</h3>
                                     </div>
                                     <div className="space-y-2">
                                         <div className="flex items-start gap-2 text-xs text-slate-600">
                                             <Check className="w-3.5 h-3.5 text-emerald-500 shrink-0 mt-0.5" />
-                                            <span><strong>Delivery Timeframes</strong>: Hardware kits ship within 3–5 operational days across domestic hub registries.</span>
+                                            <span><strong>Fast Shipping</strong>: Your hardware kit will ship within 3 to 5 business days anywhere in India.</span>
                                         </div>
                                         <div className="flex items-start gap-2 text-xs text-slate-600">
                                             <Check className="w-3.5 h-3.5 text-emerald-500 shrink-0 mt-0.5" />
-                                            <span><strong>Transparent Invoicing</strong>: No hidden spectrum taxations or regional equipment surcharges.</span>
+                                            <span><strong>Honest Prices</strong>: No hidden fees, extra taxes, or surprise gear charges.</span>
                                         </div>
                                     </div>
                                 </div>
@@ -242,19 +242,19 @@ export default function LumenPhiProductsSuite() {
 
                             <div className="max-w-4xl mx-auto px-6 mb-12">
                                 <div className="text-center space-y-2 mb-12">
-                                    <h2 className="text-2xl sm:text-3xl font-black tracking-tight text-slate-900">Frequently Answered Science</h2>
-                                    <p className="text-slate-500 text-xs font-mono">HOW LUMEN PHI REDEFINES INDIAN HOME BROADBAND EXPECTATIONS:</p>
+                                    <h2 className="text-2xl sm:text-3xl font-black tracking-tight text-slate-900">Common Questions</h2>
+                                    <p className="text-slate-500 text-xs font-mono">LEARN HOW LUMEN LIFI MAKES INDIAN HOME INTERNET BETTER:</p>
                                 </div>
 
                                 <div className="space-y-4">
                                     {[
                                         {
                                             q: "How does this replace my standard Jio or Airtel fiber network setup?",
-                                            a: "Lumen LIFI functions similarly to standard premium home ISPs, except for the internal room distribution method. Instead of projecting a messy WiFi radio wave signal that slows down across walls, our technology patches data cleanly via ceiling light illumination arrays."
+                                            a: "Lumen LiFi works just like your fast Jio or Airtel internet, but it sends the signal around the room differently. Instead of using messy Wi-Fi radio waves that slow down through walls, our system sends data cleanly through your ceiling lights."
                                         },
                                         {
-                                            q: "What is the return and transaction cancellation policy structure?",
-                                            a: "To ensure full clearance transparency for our merchant processors, Lumen LIFI offers a comprehensive 30-day structural testing window. If the equipment configuration fails to achieve parameters, a full resource refund is issued immediately."
+                                            q: "What is your return and refund policy?",
+                                            a: "To give you peace of mind, Lumen LiFi comes with a 30-day test window. If the devices do not work perfectly in your home, you can return them for a full refund right away."
                                         }
                                     ].map((faq, index) => (
                                         <div key={index} className="border border-slate-200 rounded-xl p-5 bg-white cursor-pointer" onClick={() => setActiveFaq(activeFaq === index ? -1 : index)}>
@@ -279,7 +279,7 @@ export default function LumenPhiProductsSuite() {
                             className="max-w-6xl mx-auto px-6 py-12 pb-24"
                         >
                             <button onClick={() => setSelectedProductSlug(null)} className="inline-flex items-center gap-2 font-mono text-xs text-slate-400 hover:text-emerald-600 transition-colors mb-12 group font-bold">
-                                ← BACK TO HARDWARE OVERVIEW
+                                ← BACK TO ALL PRODUCTS
                             </button>
 
                             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
@@ -292,7 +292,7 @@ export default function LumenPhiProductsSuite() {
 
                                 <div className="lg:col-span-7 space-y-6">
                                     <span className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-slate-50 border border-slate-200 text-slate-500 font-mono text-[10px] font-bold uppercase">
-                                        PRODUCT IDENTITY CONFIG: {activeProduct.badge}
+                                        PRODUCT TYPE: {activeProduct.badge}
                                     </span>
                                     <h2 className="text-3xl font-black text-slate-900 tracking-tight">{activeProduct.name}</h2>
                                     <p className="text-sm text-slate-500 font-mono font-medium leading-relaxed">{activeProduct.tagline}</p>
@@ -300,9 +300,9 @@ export default function LumenPhiProductsSuite() {
                                     <div className="p-5 bg-slate-50 border border-slate-200/80 rounded-xl text-xs text-slate-600 leading-relaxed">{activeProduct.desc}</div>
 
                                     <div className="space-y-2">
-                                        <h4 className="text-[10px] font-bold font-mono tracking-widest text-slate-400 uppercase">Architecture Checklist Attributes:</h4>
+                                        <h4 className="text-[10px] font-bold font-mono tracking-widest text-slate-400 uppercase">Key Features of This Product:</h4>
                                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                                            {activeProduct.specs.concat(['Certified Encryption Protocol Layer', 'Residential Installation Blueprint Included']).map((spec, i) => (
+                                            {activeProduct.specs.concat(['Super Safe Built-in Data Security', 'Easy Home Installation Guide Included']).map((spec, i) => (
                                                 <div key={i} className="flex items-center gap-2 text-xs font-mono text-slate-600">
                                                     <Check className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
                                                     <span>{spec}</span>
@@ -313,7 +313,7 @@ export default function LumenPhiProductsSuite() {
 
                                     <div className="pt-6 border-t border-slate-100 flex flex-wrap gap-4">
                                         <Link href="/contact" className="h-11 px-6 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-mono font-bold text-xs uppercase tracking-wider transition-colors inline-flex items-center justify-center">
-                                            Pre-Order Evaluation Unit
+                                            Pre-Order Your Kit Now
                                         </Link>
                                     </div>
                                 </div>
