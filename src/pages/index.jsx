@@ -76,27 +76,27 @@ function HeroSection() {
 
       <div className="relative z-10 max-w-5xl mx-auto px-6 text-center flex flex-col items-center mb-16">
 
-        <div className="mb-12">
+        <div className="mb-12 flex justify-center w-full">
           <AnimatePresence mode="wait">
             <motion.div
               key={logoDisplay.link}
-              initial={{ opacity: 0, y: 4 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -4 }}
-              transition={{ duration: 0.3 }}
-              className="relative w-96 h-72 sm:w-80 sm:h-24 flex items-center justify-center"
+              initial={{ opacity: 0, y: 6, scale: 0.98 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -6, scale: 0.98 }}
+              transition={{ duration: 0.3, ease: 'easeOut' }}
+              className="relative w-full max-w-lg sm:max-w-xl md:max-w-2xl h-20 sm:h-28 md:h-32 flex items-center justify-center px-4"
             >
               <Image
                 src={logoDisplay.imgSrc}
                 alt="LumenFi Logo"
                 fill
-                className="object-contain"
+                className="object-contain object-center"
                 priority
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 700px, 850px"
               />
             </motion.div>
           </AnimatePresence>
         </div>
-
         <motion.h1 custom={1} variants={fadeUp} initial="hidden" animate="visible" className="text-5xl sm:text-6xl md:text-7xl font-black tracking-tight leading-[1.1] mb-6 max-w-4xl text-[var(--lumen-navy)]">
           The Speed of Light.{' '}
           <span className="text-gradient-lumen">
